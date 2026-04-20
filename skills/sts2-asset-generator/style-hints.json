@@ -1,0 +1,54 @@
+{
+  "battleSprite": {
+    "stylePrompt": "digital painting, heroic fantasy full body character, dynamic pose, stylized realism, visible but clean brushstrokes, no harsh outlines, detailed textures",
+    "lighting": "dramatic lighting, strong key light, prominent rim lighting, subtle internal glow, soft shadows",
+    "background": "pure black background, solid dark void",
+    "avoidTerms": [
+      "cartoon",
+      "anime",
+      "cell shading",
+      "photorealistic",
+      "blurry",
+      "low contrast",
+      "pastel colors",
+      "busy background"
+    ]
+  },
+  "charSelect": {
+    "stylePrompt": "digital painting, heroic fantasy close-up portrait, stylized realism, defined forms, subtle material texture, clean rendering, visible brushstrokes",
+    "lighting": "dramatic cinematic lighting, strong directional light, deep atmospheric shadows, prominent rim light",
+    "background": "dark minimalist background, abstract dark red and black shapes, subtle swirling texture",
+    "avoidTerms": [
+      "cartoon",
+      "anime",
+      "cell shading",
+      "photorealistic",
+      "bright background",
+      "flat color",
+      "low detail"
+    ]
+  },
+  "icon": {
+    "stylePrompt": "game UI icon, crisp graphic design, high contrast, bold simple shapes, clean defined edges, glowing elements, bright on dark",
+    "avoidTerms": [
+      "photorealistic",
+      "painterly",
+      "blurry",
+      "complex details",
+      "low contrast",
+      "cartoonish",
+      "gritty",
+      "soft edges"
+    ]
+  },
+  "sharedTerms": [
+    "digital painting",
+    "stylized realism",
+    "heroic fantasy",
+    "clean edges",
+    "high contrast",
+    "no harsh outlines",
+    "dark background",
+    "dramatic lighting"
+  ]
+}

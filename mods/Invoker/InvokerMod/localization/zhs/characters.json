@@ -1,0 +1,17 @@
+{
+  "INVOKER-INVOKER_CHARACTER.aromaPrinciple": "[sine][blue]……三种元素，汇聚一身……[/blue][/sine]",
+  "INVOKER-INVOKER_CHARACTER.banter.alive.endTurnPing": "祈求！",
+  "INVOKER-INVOKER_CHARACTER.banter.dead.endTurnPing": "……",
+  "INVOKER-INVOKER_CHARACTER.cardsModifierDescription": "祈求者的卡牌现在会出现在奖励和商店中。",
+  "INVOKER-INVOKER_CHARACTER.cardsModifierTitle": "祈求者卡牌",
+  "INVOKER-INVOKER_CHARACTER.description": "一位掌握三种元素之力的奥术大师。\n运用[blue]冰魂[/blue]、[yellow]雷魂[/yellow]与[red]炎魂[/red]的力量，[gold]元素祈求[/gold]出毁灭性的技能。",
+  "INVOKER-INVOKER_CHARACTER.eventDeathPrevention": "还未到时候……我还有更多法术要施展。",
+  "INVOKER-INVOKER_CHARACTER.goldMonologue": "[sine]金币……可以用来购买卷轴和材料……[/sine]",
+  "INVOKER-INVOKER_CHARACTER.possessiveAdjective": "他的",
+  "INVOKER-INVOKER_CHARACTER.pronounObject": "他",
+  "INVOKER-INVOKER_CHARACTER.pronounPossessive": "他的",
+  "INVOKER-INVOKER_CHARACTER.pronounSubject": "他",
+  "INVOKER-INVOKER_CHARACTER.title": "祈求者",
+  "INVOKER-INVOKER_CHARACTER.titleObject": "祈求者",
+  "INVOKER-INVOKER_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]完成一局游戏来解锁这个角色。"
+}

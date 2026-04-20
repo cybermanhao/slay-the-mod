@@ -1,0 +1,21 @@
+{
+  "INVOKER-QUAS_COMMAND_STONE.title": "Quas Command Stone",
+  "INVOKER-QUAS_COMMAND_STONE.description": "Start combat with QQQ. Each turn start, choose 1 orb to channel ([blue]Quas[/blue]/[yellow]Wex[/yellow]/[red]Exort[/red]). Enhances: Cold Snap, Ghost Walk, Ice Wall.",
+  "INVOKER-QUAS_COMMAND_STONE.flavor": "The essence of frost, crystallized.",
+
+  "INVOKER-WEX_COMMAND_STONE.title": "Wex Command Stone",
+  "INVOKER-WEX_COMMAND_STONE.description": "Start combat with WWW. Each turn start, choose 1 orb to channel ([blue]Quas[/blue]/[yellow]Wex[/yellow]/[red]Exort[/red]). Enhances: Tornado, EMP, Alacrity.",
+  "INVOKER-WEX_COMMAND_STONE.flavor": "Lightning contained in obsidian.",
+
+  "INVOKER-EXORT_COMMAND_STONE.title": "Exort Command Stone",
+  "INVOKER-EXORT_COMMAND_STONE.description": "Start combat with EEE. Each turn start, choose 1 orb to channel ([blue]Quas[/blue]/[yellow]Wex[/yellow]/[red]Exort[/red]). Enhances: Forge Spirit, Chaos Meteor, Sun Strike.",
+  "INVOKER-EXORT_COMMAND_STONE.flavor": "Pure fire, never extinguished.",
+
+  "INVOKER-AGHANIMS_SCEPTER.title": "Aghanim's Scepter",
+  "INVOKER-AGHANIMS_SCEPTER.description": "When you play Invoke, add 2 spell cards to hand instead of 1.",
+  "INVOKER-AGHANIMS_SCEPTER.flavor": "The scepter hums with arcane potential.",
+
+  "INVOKER-AGHANIMS_FRAGMENT.title": "Aghanim's Fragment",
+  "INVOKER-AGHANIMS_FRAGMENT.description": "At the start of each turn, 25% chance to add a random Invoker spell to your hand.",
+  "INVOKER-AGHANIMS_FRAGMENT.flavor": "A shard of the scepter's power."
+}

@@ -1,0 +1,116 @@
+<h2>祈求者 · 特写构图方案</h2>
+<p class="subtitle">参考STS2风格：极度近景，头/胸部，单一背景色</p>
+
+<div class="section">
+  <p class="label">构图选项（点击选择）</p>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+
+    <!-- Option A: Face close-up with crown/circlet -->
+    <div class="card" data-choice="face-crown" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#3d2200;height:200px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+        <!-- Crown -->
+        <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:60px;height:18px;background:linear-gradient(to bottom,#f0c040,#c9820a);clip-path:polygon(0% 100%,15% 0%,30% 60%,50% 0%,70% 60%,85% 0%,100% 100%);"></div>
+        <!-- Face oval -->
+        <div style="width:80px;height:100px;background:linear-gradient(to bottom,#f5e8d0,#e8cfa8);border-radius:50% 50% 45% 45%;position:absolute;top:28px;border:2px solid #3a2000"></div>
+        <!-- Hair left -->
+        <div style="position:absolute;top:20px;left:28px;width:30px;height:80px;background:#e8e0d0;border-radius:50% 0 0 30%;transform:rotate(-5deg)"></div>
+        <!-- Hair right -->
+        <div style="position:absolute;top:20px;right:28px;width:30px;height:80px;background:#e8e0d0;border-radius:0 50% 30% 0;transform:rotate(5deg)"></div>
+        <!-- Eyes glow purple -->
+        <div style="position:absolute;top:62px;left:50%;transform:translateX(-50%);display:flex;gap:16px">
+          <div style="width:10px;height:8px;background:#9d6fff;border-radius:50%;box-shadow:0 0 8px #6930c3,0 0 16px #6930c3"></div>
+          <div style="width:10px;height:8px;background:#9d6fff;border-radius:50%;box-shadow:0 0 8px #6930c3,0 0 16px #6930c3"></div>
+        </div>
+        <!-- Armor collar -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,#c9820a,#f0c040);clip-path:polygon(0% 100%,0% 40%,20% 20%,50% 30%,80% 20%,100% 40%,100% 100%)"></div>
+        <!-- Gold trim -->
+        <div style="position:absolute;bottom:42px;left:50%;transform:translateX(-50%);width:36px;height:8px;background:#f0c040;border-radius:4px;box-shadow:0 0 6px #f0c040"></div>
+      </div>
+      <div class="card-body">
+        <h3>A · 正面+王冠</h3>
+        <p>正脸特写，头顶王冠/头饰，白发散落两侧，发光紫眸，金甲领口。<br><span style="color:#f0c040;font-size:0.8em">辨识度：王冠+白发+紫眼</span></p>
+      </div>
+    </div>
+
+    <!-- Option B: 3/4 view with cape/mantle -->
+    <div class="card" data-choice="three-quarter" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#2d1b00;height:200px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+        <!-- Cape blue-purple sweeping -->
+        <div style="position:absolute;top:0;right:0;width:70px;height:200px;background:linear-gradient(to bottom,#1a0a3d,#3d1b6e);clip-path:polygon(30% 0%,100% 0%,100% 100%,0% 100%)"></div>
+        <!-- Cape gold trim -->
+        <div style="position:absolute;top:0;right:68px;width:4px;height:200px;background:linear-gradient(to bottom,#f0c040,#c9820a)"></div>
+        <!-- Face 3/4 -->
+        <div style="width:70px;height:90px;background:linear-gradient(135deg,#f5e8d0,#e0c090);border-radius:45% 50% 45% 45%;position:absolute;top:30px;left:30px;border:2px solid #3a2000"></div>
+        <!-- Hair flowing -->
+        <div style="position:absolute;top:22px;left:20px;width:40px;height:100px;background:linear-gradient(to bottom,#f0ece0,#d4cfc0);border-radius:40% 0 0 30%;transform:rotate(-8deg)"></div>
+        <!-- Eye glow -->
+        <div style="position:absolute;top:66px;left:58px;width:10px;height:8px;background:#9d6fff;border-radius:50%;box-shadow:0 0 10px #6930c3,0 0 20px #6930c3"></div>
+        <!-- Shoulder armor -->
+        <div style="position:absolute;bottom:20px;left:0;width:60px;height:50px;background:linear-gradient(135deg,#f0c040,#8b5a00);border-radius:0 30% 20% 0;border:2px solid #c9820a"></div>
+      </div>
+      <div class="card-body">
+        <h3>B · 3/4侧身+披风</h3>
+        <p>斜侧脸，奥术紫色大披风从右侧金边扫过，肩甲入镜。动感，气场强。<br><span style="color:#f0c040;font-size:0.8em">辨识度：披风+侧脸+肩甲</span></p>
+      </div>
+    </div>
+
+    <!-- Option C: Low angle, dramatic upshot -->
+    <div class="card" data-choice="dramatic-upshot" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#1a0a00;height:200px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <!-- Dramatic light from below/behind -->
+        <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:80px;background:radial-gradient(ellipse at 50% 100%,rgba(240,192,64,0.4),transparent);"></div>
+        <!-- Arcane glow behind head -->
+        <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:80px;height:80px;background:radial-gradient(circle,rgba(157,111,255,0.3),transparent);border-radius:50%"></div>
+        <!-- Face looking up/dramatic -->
+        <div style="width:78px;height:92px;background:linear-gradient(to top,#f5e8d0,#ead4a8);border-radius:50% 50% 40% 40%;position:absolute;bottom:60px;border:2px solid #3a2000"></div>
+        <!-- Hair cascading back -->
+        <div style="position:absolute;bottom:80px;left:18px;width:25px;height:70px;background:#e8e4d8;border-radius:30% 0 0 50%;transform:rotate(15deg)"></div>
+        <div style="position:absolute;bottom:80px;right:18px;width:25px;height:70px;background:#e8e4d8;border-radius:0 30% 50% 0;transform:rotate(-15deg)"></div>
+        <!-- Eyes dramatic glow -->
+        <div style="position:absolute;bottom:110px;left:50%;transform:translateX(-50%);display:flex;gap:14px">
+          <div style="width:11px;height:9px;background:#b07fff;border-radius:50%;box-shadow:0 0 12px #7040e0,0 0 24px #5020c0"></div>
+          <div style="width:11px;height:9px;background:#b07fff;border-radius:50%;box-shadow:0 0 12px #7040e0,0 0 24px #5020c0"></div>
+        </div>
+        <!-- Massive collar/armor -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to top,#8b5a00,#f0c040,#c9820a);clip-path:polygon(0% 100%,0% 30%,15% 0%,50% 15%,85% 0%,100% 30%,100% 100%)"></div>
+      </div>
+      <div class="card-body">
+        <h3>C · 仰视+戏剧光</h3>
+        <p>仰视角，头顶奥术光晕，发光双眼，巨大金色领甲从下方涌入。最有压迫感与神性。<br><span style="color:#f0c040;font-size:0.8em">辨识度：仰视+光晕+领甲</span></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="background:#12100e;border:1px solid #3a2800;border-radius:8px;padding:12px 16px">
+  <p class="label" style="color:#888">当前调色板（金白主·紫色点缀）</p>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#3d2200;border:1px solid #555"></div>
+      <span style="font-size:0.7em;color:#888">背景</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#8b5a00"></div>
+      <span style="font-size:0.7em;color:#888">暗金</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#f0c040"></div>
+      <span style="font-size:0.7em;color:#888">亮金</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#f5f0e8"></div>
+      <span style="font-size:0.7em;color:#888">白发/皮肤</span>
+    </div>
+    <div style="width:1px;height:32px;background:#444;margin:0 4px"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#6930c3"></div>
+      <span style="font-size:0.7em;color:#888">奥术紫</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:32px;height:32px;border-radius:6px;background:#2d1b6e"></div>
+      <span style="font-size:0.7em;color:#888">披风暗紫</span>
+    </div>
+    <span style="color:#666;font-size:0.85em;margin-left:8px">← 点缀用，非主色</span>
+  </div>
+</div>

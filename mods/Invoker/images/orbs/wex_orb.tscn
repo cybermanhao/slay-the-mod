@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wex_orb_visual"]
+
+[ext_resource type="Texture2D" path="res://images/orbs/wex_orb.png" id="1"]
+
+[node name="OrbVisual" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+offset = Vector2(-64, -64)

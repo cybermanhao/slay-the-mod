@@ -1,0 +1,67 @@
+{
+  "id": "invoker",
+  "displayName": "Invoker",
+  "lore": "Once a revered master of elemental magic in a forgotten realm, the Invoker was drawn into the Spire by an insatiable thirst for ultimate knowledge. Now, his formidable arcane might is twisted by the Spire's influence, his spells echoing with both ancient power and dark whispers, forever seeking to master the cosmic energies that bind existence.",
+  "theme": "Arcane Elemental Master, Aristocratic Sorcerer, Eldritch Scholar",
+  "appearance": {
+    "body": "Tall, slender, and elegant physique, with a commanding posture that conveys both age and immense power. His build is lean but suggests underlying arcane strength.",
+    "clothing": "Luxurious, flowing robes of deep indigo and rich purple, adorned with intricate golden embroidery and patterns that hint at ancient magical symbols. High, ornate collar. Layers of fine fabric create a dramatic silhouette. Golden clasps and belts secure the heavy garments.",
+    "accessories": "Three distinct elemental orbs (Quas: icy blue, Wex: crackling violet, Exort: fiery orange-red) perpetually orbit him, each pulsing with its unique elemental energy. Ornate golden rings on several fingers. Perhaps a subtle, glowing arcane sigil on his forehead or chest.",
+    "face": "Sharp, angular features with a high nose and pronounced cheekbones. Piercing, intelligent eyes that glow faintly with arcane energy, set under thick, well-defined brows. Long, flowing white/silver hair cascades down his back and over his shoulders. A look of intense focus or subtle disdain.",
+    "silhouette": "Distinctive and dramatic. The flowing robes create a wide, elegant base, tapering upwards to his broad shoulders. The long, prominent white/silver hair adds to his unique profile. The three orbiting elemental orbs are a key, instantly recognizable feature, clearly visible against the dark background."
+  },
+  "colorPalette": {
+    "primary": "#3A0057",
+    "secondary": "#B8860B",
+    "accent": "#ADD8E6, #EE82EE, #FF4500",
+    "glow": "#E0B0FF"
+  },
+  "artStyle": {
+    "viewAngle": "3/4 front-facing view",
+    "lighting": "Dramatic lighting, emphasizing key features like his face, hands, and the glowing elemental orbs. Strong contrasts between highlights and deep shadows, creating depth and a sense of mystique.",
+    "background": "solid black background",
+    "renderStyle": "painterly, STS2 style, 2D illustration, dark fantasy",
+    "avoidList": [
+      "text",
+      "words",
+      "UI elements",
+      "card frames",
+      "multiple characters"
+    ]
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "description": "Invoker stands tall, weight slightly forward in a confident battle stance, arms subtly raised and ready. His long white/silver hair gently sways with an imperceptible arcane current. The three elemental orbs (icy blue Quas, crackling violet Wex, fiery orange-red Exort) slowly orbit his torso in a smooth, continuous motion, each pulsing with a soft, consistent light. His eyes occasionally flicker with faint arcane energy.",
+      "duration": 3,
+      "fps": 24,
+      "loop": true,
+      "seedancePrompt": "A painterly 2D animated illustration in dark fantasy STS2 style. An aristocratic sorcerer with long white/silver hair, elven ears, and glowing purple eyes stands in a confident battle stance, arms subtly raised. He wears luxurious, layered robes of deep indigo and rich purple, adorned with intricate golden embroidery and patterns, with golden clasps and rings. His white/silver hair gently sways. Three elemental orbs – an icy blue swirling Quas orb, a crackling violet Wex orb, and a fiery orange-red swirling Exort orb – slowly orbit his torso in a smooth, continuous motion, each pulsing with soft, consistent light. His glowing purple eyes occasionally flicker with arcane energy. Single character centered on a solid black background. Seamless loop."
+    },
+    {
+      "name": "attack",
+      "description": "Invoker's body tenses, his weight shifting decisively forward. His right arm sweeps upward in a grand arc, gathering energy, while his left arm extends forward, palm open and fingers splayed. The three elemental orbs rapidly converge into his outstretched hand, merging into a single, intensely glowing sphere. This sphere then erupts into a powerful, focused beam or burst of arcane energy, accompanied by a specific elemental effect (e.g., a barrage of ice shards, a lightning bolt, or a fiery explosion) directed towards the viewer. After the spell is cast, his arms return swiftly to his ready stance, and the orbs reform their orbit.",
+      "duration": 1.5,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration in a painterly STS2 game character style, depicting Invoker, an Arcane Elemental Master. He has long white hair, pale skin, pointed ears, and glowing purple eyes. He wears luxurious, flowing robes of deep indigo and rich purple, adorned with intricate golden embroidery and patterns, a high ornate collar, golden clasps and belts. Three elemental orbs (icy blue, crackling violet, fiery orange-red) orbit him. He is centered in a 3/4 front-facing view against a solid black background.\n\nInvoker's body tenses, shifting his weight forward. His right arm sweeps upward in a grand arc, gathering energy. Simultaneously, his left arm extends forward, palm open. The three elemental orbs rapidly converge into his outstretched left hand, merging into a single, intensely glowing sphere. This sphere erupts into a powerful, focused beam of arcane energy, shimmering with ice, lightning, and fire, directed towards the viewer. His arms swiftly return to a ready stance, and the orbs reform their orbit. Smooth motion, ends still."
+    },
+    {
+      "name": "hit",
+      "description": "Invoker recoils sharply backward from an incoming blow, his robes rippling dramatically with the impact. His head snaps back, and a brief grimace of pain or annoyance crosses his face. One hand might instinctively rise to shield himself. The orbiting elemental orbs briefly flicker erratically or wobble out of formation before quickly stabilizing as he regains his composure and returns to his idle stance.",
+      "duration": 0.7,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration in a painterly, dark fantasy style, reminiscent of STS2 game characters. A single character, Invoker, is centered against a solid black background. He has long, flowing silver-white hair, an elongated face with pointed ears, and intense purple glowing eyes. He wears luxurious, flowing robes of deep indigo and rich purple, adorned with intricate golden embroidery and patterns, with a high ornate collar. Golden clasps and belts secure his garments. Three elemental orbs orbit him: an icy blue orb near his left hand, a crackling violet orb above his right shoulder, and a fiery orange-red orb near his right hand, all glowing brightly.\n\nInvoker recoils sharply backward from an unseen impact, his layered robes rippling dramatically. His head snaps back, and a fleeting grimace of pain crosses his face. His right hand instinctively rises slightly. The elemental orbs briefly flicker erratically and wobble before quickly stabilizing as he regains his composure and returns to an idle stance. Static camera, smooth motion, ends still."
+    },
+    {
+      "name": "death",
+      "description": "Invoker stumbles backward, losing his balance, his powerful posture failing. He collapses slowly to one knee, head bowed, his long hair falling forward. The arcane glow in his eyes dims and fades completely. His three elemental orbs lose their light, crackle once, and then dissipate into wisps of faint, colored smoke that vanish into the black background. His body then slumps completely to the ground, becoming still and lifeless, his robes settling around him.",
+      "duration": 2.5,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration of Invoker, a pale-skinned male with long white hair, pointed ears, and formerly glowing purple eyes. He wears luxurious, flowing robes of deep indigo and rich purple, adorned with intricate golden embroidery, patterns, and golden clasps. Ornate golden rings are on his fingers. Three distinct elemental orbs, icy blue, crackling violet, and fiery orange-red, initially orbit him. The background is solid black. Invoker stumbles backward, losing balance, his powerful posture failing. He slowly collapses to one knee, head bowed, his long white hair falling forward. The arcane glow in his eyes dims and fades completely. Simultaneously, the three elemental orbs lose their light, crackle once, and dissipate into faint, colored smoke wisps that vanish. His body then slumps completely to the ground, becoming still and lifeless, his robes settling around him. Painterly style, dark fantasy, dramatic lighting, strong contrasts. Static camera, single character centered in frame. Smooth motion, ends still."
+    }
+  ],
+  "referenceImagePrompt": "Slay the Spire 2 style character art of Invoker. A tall, elegant, aristocratic wizard with a commanding presence. He wears ornate, flowing robes of deep indigo and rich purple with intricate golden embroidery, a high collar, and golden clasps. Long, flowing white/silver hair cascades down his back. His sharp, intelligent face has piercing eyes that glow faintly with arcane energy. Three distinct elemental orbs (icy blue, crackling violet, fiery orange-red) orbit him, each pulsing with light. He is depicted in a 3/4 front-facing view, weight slightly forward, arms subtly raised, ready to cast. The lighting is dramatic, with strong highlights on his face, hands, and the glowing orbs, creating deep shadows. Rendered as a painterly 2D illustration in a dark fantasy style, against a solid black background. Avoid any text, words, UI elements, card frames, or multiple characters."
+}

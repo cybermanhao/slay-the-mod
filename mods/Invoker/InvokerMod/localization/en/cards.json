@@ -1,0 +1,122 @@
+{
+  "INVOKER-STRIKE_INVOKER_CARD.title": "Strike",
+  "INVOKER-STRIKE_INVOKER_CARD.description": "Deal {Damage} damage.",
+  "INVOKER-STRIKE_INVOKER_CARD.upgrade_description": "Deal {Damage} damage.",
+
+  "INVOKER-DEFEND_INVOKER_CARD.title": "Defend",
+  "INVOKER-DEFEND_INVOKER_CARD.description": "Gain {Block} Block.",
+  "INVOKER-DEFEND_INVOKER_CARD.upgrade_description": "Gain {Block} Block.",
+
+  "INVOKER-SUMMON_CARD.title": "Summon Orb",
+  "INVOKER-SUMMON_CARD.description": "Choose Ice, Lightning, or Fire. Channel that orb and gain its effect.",
+  "INVOKER-SUMMON_CARD.upgrade_description": "Choose Ice, Lightning, or Fire. Channel that orb and gain its effect. [gold]Retain[/gold].",
+
+  "INVOKER-SUMMON_ORB_CARD.title": "Summon Quas",
+  "INVOKER-SUMMON_ORB_CARD.description": "Once per turn. Channel a [blue]Quas[/blue] orb. Gain 8 + 4× (current Quas count) Block.",
+
+  "INVOKER-SUMMON_WEX_CARD.title": "Summon Wex",
+  "INVOKER-SUMMON_WEX_CARD.description": "Once per turn. Channel a [yellow]Wex[/yellow] orb. Deal 5 damage to a random enemy.",
+
+  "INVOKER-SUMMON_EXORT_CARD.title": "Summon Exort",
+  "INVOKER-SUMMON_EXORT_CARD.description": "Once per turn. Channel an [red]Exort[/red] orb. Deal 3 damage to ALL enemies.",
+
+  "INVOKER-INVOKE_CARD.title": "Invoke",
+  "INVOKER-INVOKE_CARD.description": "Perform an [gold]Invoke[/gold] based on your current orb combination.",
+  "INVOKER-INVOKE_CARD.upgrade_description": "[gold]Invoke[/gold]. Add 1 unupgraded Invoke to your hand.",
+
+  "INVOKER-COLD_SNAP_CARD.title": "Cold Snap",
+  "INVOKER-COLD_SNAP_CARD.description": "[gold]Scroll[/gold]. (QQQ) Apply [gold]Cold Snap[/gold] to an enemy: each time it takes damage, lose 1 Strength. Expires at player turn end.",
+
+  "INVOKER-GHOST_WALK_CARD.title": "Ghost Walk",
+  "INVOKER-GHOST_WALK_CARD.description": "[gold]Scroll[/gold]. (QQW) Gain 1 [gold]Intangible[/gold]. Next turn, Attack cards cost 99 and cannot be played.",
+
+  "INVOKER-ICE_WALL_CARD.title": "Ice Wall",
+  "INVOKER-ICE_WALL_CARD.description": "[gold]Scroll[/gold]. (QQE) Deal 4 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
+
+  "INVOKER-TORNADO_CARD.title": "Tornado",
+  "INVOKER-TORNADO_CARD.description": "[gold]Scroll[/gold]. (QWW) Deal 10 damage to ALL enemies. Draw 1 card.",
+
+  "INVOKER-DEAFENING_BLAST_CARD.title": "Deafening Blast",
+  "INVOKER-DEAFENING_BLAST_CARD.description": "[gold]Scroll[/gold]. (QWE) Deal 12 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
+
+  "INVOKER-E_MP_CARD.title": "EMP",
+  "INVOKER-E_MP_CARD.description": "[gold]Scroll[/gold]. (WWW) Deal 20 damage to ALL enemies.",
+
+  "INVOKER-ALACRITY_CARD.title": "Alacrity",
+  "INVOKER-ALACRITY_CARD.description": "[gold]Scroll[/gold]. (WWE) Draw 1 card. Gain 3 Strength until end of turn.",
+
+  "INVOKER-CHAOS_METEOR_CARD.title": "Chaos Meteor",
+  "INVOKER-CHAOS_METEOR_CARD.description": "[gold]Scroll[/gold]. (WEE) Deal 10 damage to an enemy. Then deal 5, 4, 3, 2, 1 damage to random enemies.",
+
+  "INVOKER-FORGE_SPIRIT_CARD.title": "Forge Spirit",
+  "INVOKER-FORGE_SPIRIT_CARD.description": "[gold]Scroll[/gold]. (QEE) Summon a Forge Spirit with 6 HP. At player turn start, it attacks a random enemy for 5 and applies 1 [gold]Vulnerable[/gold]. Loses 3 HP each player turn end.",
+
+  "INVOKER-SUN_STRIKE_CARD.title": "Sun Strike",
+  "INVOKER-SUN_STRIKE_CARD.description": "[gold]Scroll[/gold]. (EEE) Deal 25~38 damage to an enemy.",
+
+  "INVOKER-ICE_ARMOR_CARD.title": "Ice Armor",
+  "INVOKER-ICE_ARMOR_CARD.description": "Gain {Block:diff()} Block. If you have Quas orbs, gain 4 more.",
+
+  "INVOKER-ICE_SPIKE_CARD.title": "Ice Spike",
+  "INVOKER-ICE_SPIKE_CARD.description": "Deal {Damage:diff()} damage. Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+
+  "INVOKER-FROST_WIND_CARD.title": "Frost Wind",
+  "INVOKER-FROST_WIND_CARD.description": "Gain {Block:diff()} Block. Draw {Cards:diff()} card(s).",
+
+  "INVOKER-FREEZE_CARD.title": "Freeze",
+  "INVOKER-FREEZE_CARD.description": "Gain {Block:diff()} Block. [gold]Exhaust[/gold].",
+
+  "INVOKER-FROST_SHELL_CARD.title": "Frost Shell",
+  "INVOKER-FROST_SHELL_CARD.description": "Apply [INVOKER-FROST_SHELL]Frost Shell[/INVOKER-FROST_SHELL]: at the start of your turn, gain {Block:diff()} Block.",
+
+  "INVOKER-THUNDER_STRIKE_CARD.title": "Thunder Strike",
+  "INVOKER-THUNDER_STRIKE_CARD.description": "Deal {Damage:diff()} damage. If you have Wex orbs, also deal {Damage:diff()} to a random enemy.",
+
+  "INVOKER-CHAIN_LIGHTNING_CARD.title": "Chain Lightning",
+  "INVOKER-CHAIN_LIGHTNING_CARD.description": "Deal {Damage:diff()} damage to ALL enemies. Draw {Cards:diff()} card(s).",
+
+  "INVOKER-SWIFT_MIND_CARD.title": "Swift Mind",
+  "INVOKER-SWIFT_MIND_CARD.description": "Draw {Cards:diff()} cards.",
+
+  "INVOKER-WIND_STAB_CARD.title": "Wind Stab",
+  "INVOKER-WIND_STAB_CARD.description": "Deal {Damage:diff()} damage.",
+
+  "INVOKER-THUNDER_FIELD_CARD.title": "Thunder Field",
+  "INVOKER-THUNDER_FIELD_CARD.description": "Apply [INVOKER-THUNDER_FIELD]Thunder Field[/INVOKER-THUNDER_FIELD]: at the end of your turn, deal {Damage:diff()} damage to a random enemy.",
+
+  "INVOKER-FIREBALL_CARD.title": "Fireball",
+  "INVOKER-FIREBALL_CARD.description": "Deal {Damage:diff()} damage to ALL enemies. If you have Exort orbs, deal 3 more.",
+
+  "INVOKER-FLAME_BURST_CARD.title": "Flame Burst",
+  "INVOKER-FLAME_BURST_CARD.description": "Deal {Damage:diff()} damage. [gold]Exhaust[/gold].",
+
+  "INVOKER-SCORCH_CARD.title": "Scorch",
+  "INVOKER-SCORCH_CARD.description": "Deal {Damage:diff()} damage.",
+
+  "INVOKER-FLAME_SHIELD_CARD.title": "Flame Shield",
+  "INVOKER-FLAME_SHIELD_CARD.description": "Gain {Block:diff()} Block. Deal {Damage:diff()} damage to a random enemy.",
+
+  "INVOKER-BURNING_HEART_CARD.title": "Burning Heart",
+  "INVOKER-BURNING_HEART_CARD.description": "Apply [INVOKER-BURNING_HEART]Burning Heart[/INVOKER-BURNING_HEART]: at the end of each enemy turn, deal {Damage:diff()} damage to ALL enemies.",
+
+  "INVOKER-VOID_SURGE_CARD.title": "Void Surge",
+  "INVOKER-VOID_SURGE_CARD.description": "Deal {Damage:diff()} + 4 damage per orb in your queue.",
+
+  "INVOKER-ELEMENTAL_WARD_CARD.title": "Elemental Ward",
+  "INVOKER-ELEMENTAL_WARD_CARD.description": "Gain {Block:diff()} Block per distinct orb type you have (Quas / Wex / Exort).",
+
+  "INVOKER-ARCANE_RECALL_CARD.title": "Arcane Recall",
+  "INVOKER-ARCANE_RECALL_CARD.description": "[gold]Invoke[/gold] twice. [gold]Exhaust[/gold].",
+
+  "INVOKER-RUNIC_STRIKE_CARD.title": "Runic Strike",
+  "INVOKER-RUNIC_STRIKE_CARD.description": "Deal {Damage:diff()} damage. [gold]Invoke[/gold].",
+  "INVOKER-RUNIC_STRIKE_CARD.upgrade_description": "Deal {Damage:diff()} damage. [gold]Invoke[/gold].",
+
+  "INVOKER-CATALYST_CARD.title": "Catalyst",
+  "INVOKER-CATALYST_CARD.description": "Draw {Cards:diff()} cards. [gold]Invoke[/gold].",
+  "INVOKER-CATALYST_CARD.upgrade_description": "Draw {Cards:diff()} cards. [gold]Invoke[/gold].",
+
+  "INVOKER-SPELL_WEAVE_CARD.title": "Spell Weave",
+  "INVOKER-SPELL_WEAVE_CARD.description": "Gain {Block:diff()} Block. [gold]Invoke[/gold].",
+  "INVOKER-SPELL_WEAVE_CARD.upgrade_description": "Gain {Block:diff()} Block. [gold]Invoke[/gold]."
+}

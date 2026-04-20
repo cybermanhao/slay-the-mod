@@ -1,0 +1,22 @@
+{
+    "BOOK_STRIKE.title": "Page Strike",
+    "BOOK_STRIKE.description": "Deal {Damage} damage.",
+    
+    "QUICK_READ.title": "Quick Read",
+    "QUICK_READ.description": "Draw {Draw} cards.",
+    
+    "CHAPTER_RECALL.title": "Chapter Recall",
+    "CHAPTER_RECALL.description": "Deal {Damage} damage. Draw {Draw} card.",
+    
+    "KNOWLEDGE_SHIELD.title": "Knowledge Shield",
+    "KNOWLEDGE_SHIELD.description": "Gain {Block} Block.",
+    
+    "FINAL_CHAPTER.title": "Final Chapter",
+    "FINAL_CHAPTER.description": "Deal {Damage} damage. Exhaust your hand.",
+    
+    "ANCIENT_TOME.title": "Ancient Tome",
+    "ANCIENT_TOME.description": "At the start of each combat, draw 1 additional card.",
+    
+    "ENCHANTED_QUILL.title": "Enchanted Quill",
+    "ENCHANTED_QUILL.description": "Whenever you draw a card from your deck, gain 1 Strength."
+}

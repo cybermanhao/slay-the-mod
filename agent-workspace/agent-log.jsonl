@@ -1,0 +1,26 @@
+{"timestamp":"2026-03-22T10:00:00.000Z","level":"info","message":"Dashboard 初始化完成"}
+{"timestamp":"2026-03-22T10:00:01.000Z","level":"info","message":"cli-helper-mcp v2 启动，HTTP server :7842"}
+{"timestamp":"2026-03-22T10:00:02.000Z","level":"info","message":"sts2-mcp-server 连接就绪"}
+{"timestamp":"2026-03-22T10:00:03.000Z","level":"debug","message":"asset-workspace 目录检查通过"}
+{"timestamp":"2026-03-22T18:55:29.008Z","level":"info","message":"Dashboard 初始化完成，Gemini API 测试通过"}
+{"timestamp":"2026-03-22T21:18:18.118Z","level":"info","message":"开始生成角色设计表: invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:18:35.336Z","level":"success","message":"角色设计表生成完成: The Grand Invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:25:05.890Z","level":"info","message":"开始生成角色设计表: invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:25:17.028Z","level":"success","message":"角色设计表生成完成: The Invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:35:56.343Z","level":"info","message":"开始生成角色设计表: invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:36:11.477Z","level":"success","message":"角色设计表生成完成: Invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:40:20.280Z","level":"info","message":"开始生成角色设计表: invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T21:40:35.407Z","level":"success","message":"角色设计表生成完成: Invoker","tool":"generate_character_sheet"}
+{"timestamp":"2026-03-22T23:15:38.229Z","level":"info","message":"开始生成 Seedance 视频: invoker","tool":"generate_character_animation"}
+{"timestamp":"2026-03-22T23:43:16.219Z","level":"info","message":"开始生成 Seedance 视频: invoker","tool":"generate_character_animation"}
+{"timestamp":"2026-03-22T23:44:18.893Z","level":"info","message":"开始生成 Seedance 视频: invoker","tool":"generate_character_animation"}
+{"timestamp":"2026-03-22T23:47:31.314Z","level":"info","message":"开始生成 Seedance 视频: invoker","tool":"generate_character_animation"}
+{"timestamp":"2026-03-22T23:47:48.483Z","level":"info","message":"开始生成 Seedance 视频: invoker","tool":"generate_character_animation"}
+{"timestamp":"2026-03-23T01:17:38.911Z","level":"info","message":"开始构建 InvokerMod","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:17:38.911Z","level":"info","message":"dotnet build...","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:17:44.944Z","level":"success","message":"构建成功 (6032ms)","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:17:44.944Z","level":"info","message":"导出 PCK...","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:17:44.976Z","level":"error","message":"PCK 导出失败","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:18:43.404Z","level":"info","message":"开始构建 InvokerMod","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:18:43.404Z","level":"info","message":"导出 PCK...","tool":"build_and_deploy"}
+{"timestamp":"2026-03-23T01:18:43.437Z","level":"error","message":"PCK 导出失败","tool":"build_and_deploy"}

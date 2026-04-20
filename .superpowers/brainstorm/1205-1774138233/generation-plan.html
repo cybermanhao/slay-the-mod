@@ -1,0 +1,103 @@
+<h2>祈求者 · 资产生成方案选择</h2>
+<p class="subtitle">基于参考图 R.jpg 的三种实现路径</p>
+
+<div class="section">
+  <p class="label">参考图风格提炼（R.jpg）</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:4px">
+    <div style="background:#1a1208;border:1px solid #5a3a00;border-radius:8px;padding:10px 14px;flex:1;min-width:140px">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:4px">造型</div>
+      <div style="color:#ccc;font-size:0.85em">光头尖耳 · 巨型立领 · 大肩甲 · 紫色长袍</div>
+    </div>
+    <div style="background:#1a1208;border:1px solid #5a3a00;border-radius:8px;padding:10px 14px;flex:1;min-width:140px">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:4px">构图</div>
+      <div style="color:#ccc;font-size:0.85em">戏剧仰视 · 立领占下半 · 两侧光效 · 暗背景</div>
+    </div>
+    <div style="background:#1a1208;border:1px solid #5a3a00;border-radius:8px;padding:10px 14px;flex:1;min-width:140px">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:4px">画风</div>
+      <div style="color:#ccc;font-size:0.85em">半绘制插画 · 粗犷笔触 · 接近STS2扁平风</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">生成路径选择</p>
+  <div class="options">
+
+    <div class="option" data-choice="ai-image" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>AI 图像生成</h3>
+        <p>用 FLUX / Stable Diffusion + 参考图 LoRA，直接生成STS2风格的立绘。<br>
+        每张资产可多次迭代，挑最合适的。</p>
+        <div style="margin-top:8px">
+          <div style="color:#4ade80;font-size:0.82em">✓ 速度最快（分钟级）</div>
+          <div style="color:#4ade80;font-size:0.82em">✓ 可大量迭代，不满意重生成</div>
+          <div style="color:#4ade80;font-size:0.82em">✓ Claude Code 可以直接调用</div>
+          <div style="color:#f87171;font-size:0.82em">✗ 细节控制有限，需要后期调整</div>
+          <div style="color:#f87171;font-size:0.82em">✗ 风格一致性需要反复提示词调整</div>
+        </div>
+        <div style="margin-top:8px;background:#0f2a0f;border-radius:4px;padding:6px 10px;font-size:0.8em;color:#88cc88">
+          推荐模型：inference.sh FLUX Dev · Grok Imagine · Gemini 3 Pro Image
+        </div>
+      </div>
+    </div>
+
+    <div class="option" data-choice="manual-ref" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>裁剪 / 重绘参考图</h3>
+        <p>直接对 R.jpg 进行裁剪特写，用图像工具（Photoshop/GIMP）调整为STS2扁平风格并适配各分辨率。</p>
+        <div style="margin-top:8px">
+          <div style="color:#4ade80;font-size:0.82em">✓ 角色形象精确，与参考完全一致</div>
+          <div style="color:#4ade80;font-size:0.82em">✓ 无版权问题（自己处理）</div>
+          <div style="color:#f87171;font-size:0.82em">✗ 需要手动美术工作，耗时</div>
+          <div style="color:#f87171;font-size:0.82em">✗ 风格化处理难度较高</div>
+          <div style="color:#f87171;font-size:0.82em">✗ Claude 无法直接操作图像编辑器</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="option" data-choice="ai-plus-ref" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>AI 生成 + 参考图引导（推荐）</h3>
+        <p>用 R.jpg 作为风格参考/img2img，AI 生成STS2卡通扁平风版本，再针对各资产尺寸裁剪适配。</p>
+        <div style="margin-top:8px">
+          <div style="color:#4ade80;font-size:0.82em">✓ 最大程度保留参考图的造型识别度</div>
+          <div style="color:#4ade80;font-size:0.82em">✓ 风格可控（指定STS2扁平插画风）</div>
+          <div style="color:#4ade80;font-size:0.82em">✓ Claude 可自动化完成全流程</div>
+          <div style="color:#f87171;font-size:0.82em">✗ 需要多轮迭代找到满意结果</div>
+        </div>
+        <div style="margin-top:8px;background:#0f1f2a;border-radius:4px;padding:6px 10px;font-size:0.8em;color:#88aacc">
+          流程：R.jpg → AI img2img → STS2风格 → 裁剪出各资产
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="background:#0d0d1a;border:1px solid #2d2d4a;border-radius:8px;padding:12px 16px">
+  <p class="label" style="color:#888">全套资产清单（共需生成）</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div style="color:#ccc;font-size:0.85em">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:6px">选角界面</div>
+      <div>• char_select_invoker.png（立绘特写）</div>
+      <div>• char_select_invoker_locked.png（灰度锁定版）</div>
+    </div>
+    <div style="color:#ccc;font-size:0.85em">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:6px">游戏内UI</div>
+      <div>• character_icon_invoker.png（左上角小图标）</div>
+      <div>• character_icon_invoker_outline.png（描边版）</div>
+    </div>
+    <div style="color:#ccc;font-size:0.85em">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:6px">地图</div>
+      <div>• map_marker_invoker.png（位置标记）</div>
+    </div>
+    <div style="color:#ccc;font-size:0.85em">
+      <div style="color:#f0c040;font-weight:700;margin-bottom:6px">战斗立绘</div>
+      <div>• invoker_character.tscn（无球，全身姿态）</div>
+      <div style="color:#666;font-size:0.9em">※ 单独设计，需Godot场景</div>
+    </div>
+  </div>
+</div>

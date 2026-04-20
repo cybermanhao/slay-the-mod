@@ -1,0 +1,39 @@
+# Godot
+.godot/
+*.import
+
+# .NET
+bin/
+obj/
+*.dll
+*.pck
+*.sln
+*.csproj
+
+# Node
+node_modules/
+pnpm-lock.yaml
+
+# Env
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 游戏存档（不提交）
+%APPDATA%/SlayTheSpire2/
+
+# Tauri
+visualize/src-tauri/target/
+
+# Reference (外部资源，可重新获取)
+reference/
+
+# Nested git repos (不纳入本仓库管理)
+packages/sts2-mcp-server/
+

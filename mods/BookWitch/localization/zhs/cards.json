@@ -1,0 +1,22 @@
+{
+    "BOOK_STRIKE.title": "书页打击",
+    "BOOK_STRIKE.description": "造成 {Damage} 点伤害。",
+    
+    "QUICK_READ.title": "速读",
+    "QUICK_READ.description": "抽 {Draw} 张牌。",
+    
+    "CHAPTER_RECALL.title": "章节召回",
+    "CHAPTER_RECALL.description": "造成 {Damage} 点伤害。抽 {Draw} 张牌。",
+    
+    "KNOWLEDGE_SHIELD.title": "知识护盾",
+    "KNOWLEDGE_SHIELD.description": "获得 {Block} 点格挡。",
+    
+    "FINAL_CHAPTER.title": "终章",
+    "FINAL_CHAPTER.description": "造成 {Damage} 点伤害。消耗你手牌中的所有牌。",
+    
+    "ANCIENT_TOME.title": "古老之书",
+    "ANCIENT_TOME.description": "每场战斗开始时，额外抽1张牌。",
+    
+    "ENCHANTED_QUILL.title": "附魔羽毛笔",
+    "ENCHANTED_QUILL.description": "每当你从牌组抽牌时，获得1点力量。"
+}

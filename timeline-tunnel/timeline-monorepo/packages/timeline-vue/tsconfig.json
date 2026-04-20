@@ -1,0 +1,9 @@
+// tsconfig for timeline-vue
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

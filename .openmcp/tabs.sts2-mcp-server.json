@@ -1,0 +1,828 @@
+{
+  "clientId": "bd7b0f11-0f11-5b0f119444a-8b0f119444acb1e-acb1e18c",
+  "currentIndex": 0,
+  "tabs": [
+    {
+      "name": "交互测试",
+      "icon": "icon-robot",
+      "type": "blank",
+      "componentIndex": 3,
+      "storage": {
+        "activeNames": [
+          0
+        ],
+        "messages": [],
+        "chatMode": "single-chat",
+        "parallelChats": [],
+        "selectedModels": [],
+        "settings": {
+          "modelIndex": 14,
+          "enableTools": [
+            {
+              "name": "generate_card",
+              "description": "Generate C# code for a Slay the Spire 2 card using BaseLib",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "card": {
+                    "type": "object",
+                    "description": "Card data structure",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Unique card ID"
+                      },
+                      "name": {
+                        "type": "object",
+                        "description": "Card name in different languages",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "zh": {
+                            "type": "string"
+                          },
+                          "ja": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "en"
+                        ]
+                      },
+                      "description": {
+                        "type": "object",
+                        "description": "Card description in different languages",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "zh": {
+                            "type": "string"
+                          },
+                          "ja": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "en"
+                        ]
+                      },
+                      "upgradedDescription": {
+                        "type": "object",
+                        "description": "Upgraded card description"
+                      },
+                      "cost": {
+                        "type": "number",
+                        "description": "Energy cost"
+                      },
+                      "upgradedCost": {
+                        "type": "number"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "None",
+                          "Attack",
+                          "Skill",
+                          "Power",
+                          "Status",
+                          "Curse",
+                          "Quest"
+                        ],
+                        "description": "Card type"
+                      },
+                      "rarity": {
+                        "type": "string",
+                        "enum": [
+                          "None",
+                          "Basic",
+                          "Common",
+                          "Uncommon",
+                          "Rare",
+                          "Ancient",
+                          "Event",
+                          "Token",
+                          "Status",
+                          "Curse",
+                          "Quest",
+                          "Special"
+                        ],
+                        "description": "Card rarity"
+                      },
+                      "targetType": {
+                        "type": "string",
+                        "enum": [
+                          "None",
+                          "Self",
+                          "AnyEnemy",
+                          "AllEnemies",
+                          "RandomEnemy",
+                          "AnyPlayer",
+                          "AnyAlly",
+                          "AllAllies",
+                          "TargetedNoCreature",
+                          "Osty"
+                        ],
+                        "description": "Target type"
+                      },
+                      "keywords": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Card keywords"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Card tags"
+                      },
+                      "vars": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "description": "Dynamic variables"
+                      },
+                      "effects": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "description": "Card effects"
+                      },
+                      "upgraded": {
+                        "type": "boolean"
+                      },
+                      "starCost": {
+                        "type": "number"
+                      },
+                      "pool": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Card pools"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "description",
+                      "cost",
+                      "type",
+                      "rarity",
+                      "targetType",
+                      "keywords",
+                      "tags",
+                      "vars",
+                      "effects",
+                      "pool"
+                    ]
+                  },
+                  "namespace": {
+                    "type": "string",
+                    "description": "Namespace for the generated code"
+                  }
+                },
+                "required": [
+                  "card",
+                  "namespace"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "generate_relic",
+              "description": "Generate C# code for a Slay the Spire 2 relic using BaseLib",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "relic": {
+                    "type": "object",
+                    "description": "Relic data structure",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Unique relic ID"
+                      },
+                      "name": {
+                        "type": "object",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "zh": {
+                            "type": "string"
+                          },
+                          "ja": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "en"
+                        ]
+                      },
+                      "description": {
+                        "type": "object",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "zh": {
+                            "type": "string"
+                          },
+                          "ja": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "en"
+                        ]
+                      },
+                      "rarity": {
+                        "type": "string",
+                        "enum": [
+                          "Starter",
+                          "Common",
+                          "Uncommon",
+                          "Rare",
+                          "Boss",
+                          "Special"
+                        ]
+                      },
+                      "hooks": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "isStarter": {
+                        "type": "boolean"
+                      },
+                      "flavorText": {
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "description",
+                      "rarity",
+                      "hooks"
+                    ]
+                  },
+                  "namespace": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "relic",
+                  "namespace"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "generate_mod",
+              "description": "Generate complete STS2 mod project with cards, relics, and localization",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "project": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "author": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string",
+                        "enum": [
+                          "en",
+                          "zh",
+                          "ja"
+                        ]
+                      },
+                      "cards": {
+                        "type": "array"
+                      },
+                      "relics": {
+                        "type": "array"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "author",
+                      "version",
+                      "cards",
+                      "relics"
+                    ]
+                  },
+                  "outputDir": {
+                    "type": "string",
+                    "description": "Output directory for generated files"
+                  }
+                },
+                "required": [
+                  "project",
+                  "outputDir"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "write_file",
+              "description": "Write content to a file",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "File path to write to"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "File content"
+                  }
+                },
+                "required": [
+                  "path",
+                  "content"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "write_files",
+              "description": "Write multiple files at once",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "content"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "files"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "read_file",
+              "description": "Read content from a file",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "File path to read from"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "list_files",
+              "description": "List files in a directory",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "type": "string",
+                    "description": "Directory path to list"
+                  }
+                },
+                "required": [
+                  "directory"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "create_project_structure",
+              "description": "Create the standard STS2 mod directory structure",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "outputDir": {
+                    "type": "string",
+                    "description": "Base directory for the project"
+                  }
+                },
+                "required": [
+                  "outputDir"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "read_game_log",
+              "description": "Read Slay the Spire 2 game log with optional filtering by log level and keyword search",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "lines": {
+                    "type": "number",
+                    "description": "Number of lines from end of log (default: 100)"
+                  },
+                  "keyword": {
+                    "type": "string",
+                    "description": "Search keyword to filter log lines"
+                  },
+                  "logLevel": {
+                    "type": "string",
+                    "enum": [
+                      "INFO",
+                      "WARN",
+                      "ERROR",
+                      "DEBUG",
+                      "ALL"
+                    ],
+                    "description": "Filter by log level"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_hooks",
+              "description": "Get list of all available relic hooks in STS2",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "Optional search query"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_card_effects",
+              "description": "Get list of all available card effects with examples",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "Optional search query"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_templates",
+              "description": "Get code templates for cards and relics",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "card",
+                      "relic"
+                    ],
+                    "description": "Template type"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_knowledge",
+              "description": "Get comprehensive knowledge from reference files (hooks, abstracts, cards, characters)",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "hooks",
+                      "abstracts",
+                      "cards",
+                      "characters"
+                    ],
+                    "description": "Knowledge category"
+                  },
+                  "query": {
+                    "type": "string",
+                    "description": "Search query"
+                  },
+                  "refresh": {
+                    "type": "boolean",
+                    "description": "Force refresh cache"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "list_cards",
+              "description": "List all cards in a mod project with metadata",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "projectPath": {
+                    "type": "string",
+                    "description": "Path to mod project directory"
+                  }
+                },
+                "required": [
+                  "projectPath"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "build_and_deploy",
+              "description": "Build .NET project, export PCK via Godot headless, and deploy to Steam mods directory",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "projectPath": {
+                    "type": "string",
+                    "description": "Path to mod project directory"
+                  },
+                  "modId": {
+                    "type": "string",
+                    "description": "Mod ID (e.g., \"InvokerMod\")"
+                  },
+                  "options": {
+                    "type": "object",
+                    "properties": {
+                      "skipBuild": {
+                        "type": "boolean"
+                      },
+                      "skipExport": {
+                        "type": "boolean"
+                      },
+                      "skipDeploy": {
+                        "type": "boolean"
+                      },
+                      "clean": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "projectPath",
+                  "modId"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_project_info",
+              "description": "Get information about a mod project structure",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "projectPath": {
+                    "type": "string",
+                    "description": "Path to mod project directory"
+                  }
+                },
+                "required": [
+                  "projectPath"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "validate_project",
+              "description": "Validate project structure for STS2 mod",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "projectPath": {
+                    "type": "string",
+                    "description": "Path to mod project directory"
+                  }
+                },
+                "required": [
+                  "projectPath"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "read_tscn",
+              "description": "Read and parse a Godot tscn scene file",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "Path to tscn file"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "list_tscn_nodes",
+              "description": "List nodes in a tscn scene file with optional filtering",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "Path to tscn file"
+                  },
+                  "filter": {
+                    "type": "string",
+                    "description": "Filter by node name or type"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "add_tscn_node",
+              "description": "Add a new node to a tscn scene file",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "Path to tscn file"
+                  },
+                  "nodeName": {
+                    "type": "string",
+                    "description": "Name of the new node"
+                  },
+                  "nodeType": {
+                    "type": "string",
+                    "description": "Type of the new node (e.g., \"Button\", \"TextureRect\")"
+                  },
+                  "parentPath": {
+                    "type": "string",
+                    "description": "Parent node path (optional, defaults to root)"
+                  },
+                  "properties": {
+                    "type": "object",
+                    "description": "Node properties as key-value pairs"
+                  }
+                },
+                "required": [
+                  "path",
+                  "nodeName",
+                  "nodeType"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "set_tscn_property",
+              "description": "Set a property on a node in a tscn scene file",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "Path to tscn file"
+                  },
+                  "nodePath": {
+                    "type": "string",
+                    "description": "Node path (e.g., \"/root/MainMenu/Button\")"
+                  },
+                  "property": {
+                    "type": "string",
+                    "description": "Property name"
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "Property value"
+                  }
+                },
+                "required": [
+                  "path",
+                  "nodePath",
+                  "property",
+                  "value"
+                ]
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_game_state",
+              "description": "Get current game state from DevTool Mod (HP, hand, energy, enemies, etc.)",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Specific fields to retrieve: player, combat, hand, enemies, etc."
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_game_info",
+              "description": "Get game information (version, running state, loaded mods)",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "health",
+                      "mods",
+                      "version"
+                    ],
+                    "description": "Type of info to retrieve"
+                  }
+                }
+              },
+              "enabled": true
+            },
+            {
+              "name": "get_game_events",
+              "description": "Get recent game events (card played, damage, etc.)",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "description": "Number of events to return"
+                  },
+                  "offset": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Offset for pagination"
+                  },
+                  "types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Filter by event types: card_played, damage_taken, etc."
+                  }
+                }
+              },
+              "enabled": true
+            }
+          ],
+          "enableWebSearch": false,
+          "temperature": 0.6,
+          "contextLength": 100,
+          "systemPrompt": "",
+          "enableXmlWrapper": false,
+          "parallelToolCalls": true
+        }
+      }
+    }
+  ]
+}

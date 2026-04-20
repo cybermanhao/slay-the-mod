@@ -1,0 +1,16 @@
+{
+  "INVOKER-SCROLL.title": "卷轴",
+  "INVOKER-SCROLL.description": "此法术铭刻于卷轴之上。你最多携带 2 个[gold]卷轴[/gold]；当第3个生成时，最旧的将被[gold]耗竭[/gold]。[gold]保留[/gold]：回合结束时不弃牌。",
+
+  "INVOKER-INVOKE.title": "祈唤",
+  "INVOKER-INVOKE.description": "读取当前球槽（Q W E）的组合，生成对应技能牌加入手牌。",
+
+  "INVOKER-QUAS.title": "冰球",
+  "INVOKER-QUAS.description": "冰球。入槽时获得格挡。冰球越多，冰系技能效果越强。",
+
+  "INVOKER-WEX.title": "雷球",
+  "INVOKER-WEX.description": "雷球。入槽时对随机敌人造成伤害。驱动速度与闪电系技能。",
+
+  "INVOKER-EXORT.title": "炎球",
+  "INVOKER-EXORT.description": "炎球。入槽时对所有敌人造成伤害。强化毁灭性的火焰技能。"
+}

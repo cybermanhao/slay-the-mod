@@ -1,0 +1,15 @@
+{
+  "name": "@timeline/demo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@timeline/react": "workspace:*"
+  }
+}

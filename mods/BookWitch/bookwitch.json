@@ -1,0 +1,11 @@
+{
+  "id": "bookwitch",
+  "name": "BookWitch",
+  "author": "STS2ModAgent",
+  "version": "1.0.0",
+  "description": "Mod created with STS2 MCP Server",
+  "dependencies": ["BaseLib"],
+  "has_pck": true,
+  "has_dll": true,
+  "steamWorkshopId": null
+}

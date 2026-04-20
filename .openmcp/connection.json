@@ -1,0 +1,60 @@
+{
+  "items": [
+    [
+      {
+        "connectionType": "STDIO",
+        "command": "node",
+        "args": [
+          "C:/code/slay-the-mod/packages/sts2-mcp-server/dist/index.js"
+        ],
+        "url": "",
+        "cwd": "",
+        "oauth": "",
+        "clientName": "openmcp.connect.STDIO",
+        "clientVersion": "0.0.1",
+        "env": {
+          "HOME": "C:\\Users\\32467",
+          "LOGNAME": "32467",
+          "PATH": "C:\\ProgramData\\anaconda3;C:\\ProgramData\\anaconda3\\Library\\mingw-w64\\bin;C:\\ProgramData\\anaconda3\\Library\\usr\\bin;C:\\ProgramData\\anaconda3\\Library\\bin;C:\\ProgramData\\anaconda3\\Scripts;C:\\ProgramData\\anaconda3\\bin;C:\\ProgramData\\anaconda3\\condabin;c:\\Users\\32467\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin;C:\\Program Files (x86)\\Microsoft\\Edge\\Application;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs;C:\\Program Files\\Bandizip;C:\\ProgramData\\anaconda3\\Scripts;C:\\Program Files\\nodejs;C:\\Program Files\\nodejs;C:\\cmake-4.0.2-windows-x86_64\\cmake-4.0.2-windows-x86_64\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\32467\\AppData\\Local\\Programs\\Python\\Python313;C:\\Users\\32467\\AppData\\Local\\Programs\\Python\\Python313\\Scripts;C:\\Users\\32467\\AppData\\Local\\Programs\\Python\\Python313;C:\\Users\\32467\\AppData\\Local\\Programs\\Python\\Launcher;C:\\Users\\32467\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\32467\\AppData\\Local\\nvm;C:\\nvm4w\\nodejs;C:\\Users\\32467\\AppData\\Local\\Programs\\Ollama;C:\\Users\\32467\\.lmstudio\\bin;C:\\aria2-1.37.0-win-64bit-build1;C:\\Program Files\\dotnet;C:\\Program Files (x86)\\Tencent\\΢��web�����߹���\\dll;C:\\Users\\32467\\.local\\bin;C:\\Users\\32467\\.cargo\\bin;C:\\Program Files\\GitHub CLI;c:\\Users\\32467\\AppData\\Local\\Programs\\Trae CN\\bin;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.2\\bin;C:\\Users\\32467\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin;C:\\Users\\32467\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\32467\\AppData\\Local\\Microsoft\\WinGet\\Links;C:\\Users\\32467\\.dotnet\\tools",
+          "SHELL": "C:\\WINDOWS\\system32\\cmd.exe",
+          "TERM": "未设置 (Windows 默认终端)",
+          "USER": "32467",
+          "FFMPEG_PATH": "C:\\Users\\32467\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.exe",
+          "UV_PROJECT_ROOT": "C:\\code\\slay-the-mod\\packages\\sts2-mcp-server",
+          "UV_PATH": "C:\\ProgramData\\anaconda3\\Scripts\\uv.exe"
+        },
+        "serverInfo": {
+          "name": "sts2-mcp-server",
+          "version": "1.1.0"
+        },
+        "name": "sts2-mcp-server",
+        "version": "1.1.0"
+      }
+    ],
+    [
+      {
+        "connectionType": "STDIO",
+        "command": "node",
+        "args": [
+          "C:/code/slay-the-mod/packages/cli-helper-mcp/dist/index.js"
+        ],
+        "url": "",
+        "cwd": "",
+        "oauth": "",
+        "clientName": "openmcp.connect.STDIO",
+        "clientVersion": "0.0.1",
+        "env": {
+          "HOME": "C:\\Users\\32467",
+          "PATH": "C:\\ProgramData\\anaconda3\\Scripts;C:\\Program Files\\nodejs;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\Program Files\\Git\\cmd;C:\\Program Files\\dotnet;C:\\Users\\32467\\AppData\\Local\\Microsoft\\WinGet\\Links",
+          "USER": "32467"
+        },
+        "serverInfo": {
+          "name": "cli-helper-mcp",
+          "version": "1.0.0"
+        },
+        "name": "cli-helper-mcp",
+        "version": "1.0.0"
+      }
+    ]
+  ]
+}

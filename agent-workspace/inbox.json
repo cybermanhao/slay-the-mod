@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1774204053342-dzk47",
+    "timestamp": "2026-03-22T18:27:33.342Z",
+    "message": "如果你看到这条消息，说明inbox可以向agent发送了",
+    "read": true
+  },
+  {
+    "id": "1774204378423-68qm4",
+    "timestamp": "2026-03-22T18:32:58.423Z",
+    "message": "这是一条测试消息，用来验证 SessionStart hook",
+    "read": true
+  }
+]

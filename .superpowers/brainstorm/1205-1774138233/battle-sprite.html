@@ -1,0 +1,136 @@
+<h2>祈求者 · 战斗立绘规格</h2>
+<p class="subtitle">静态 Sprite2D PNG · 参考 Silent 画风</p>
+
+<div class="section">
+  <p class="label">STS2 战斗立绘画风特征（已验证）</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:4px">
+    <div style="background:#0a1a0a;border:1px solid #1a4a1a;border-radius:8px;padding:10px 12px">
+      <div style="color:#88cc44;font-weight:700;margin-bottom:6px">画风</div>
+      <div style="color:#ccc;font-size:0.82em;line-height:1.6">手绘数字插画<br>非扁平卡通<br>可见笔触纹理<br>半写实比例</div>
+    </div>
+    <div style="background:#0a1a0a;border:1px solid #1a4a1a;border-radius:8px;padding:10px 12px">
+      <div style="color:#88cc44;font-weight:700;margin-bottom:6px">构图</div>
+      <div style="color:#ccc;font-size:0.82em;line-height:1.6">全身像<br>透明背景(PNG)<br>戏剧性动态姿势<br>暗色打光</div>
+    </div>
+    <div style="background:#0a1a0a;border:1px solid #1a4a1a;border-radius:8px;padding:10px 12px">
+      <div style="color:#88cc44;font-weight:700;margin-bottom:6px">尺寸参考</div>
+      <div style="color:#ccc;font-size:0.82em;line-height:1.6">Silent ~600px高<br>场景中缩放显示<br>高分辨率原图<br>RGBA PNG</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">祈求者战斗立绘 · 姿势选择</p>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+
+    <!-- Pose A: R.jpg reference - arms spread wide -->
+    <div class="card" data-choice="arms-spread" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#0a0805;height:220px;position:relative;overflow:hidden">
+        <!-- Figure silhouette arms spread -->
+        <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:140px;height:200px">
+          <!-- Body -->
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:36px;height:130px;background:linear-gradient(to top,#3d1b00,#1a0a00);border-radius:4px"></div>
+          <!-- Purple robe sweep left -->
+          <div style="position:absolute;bottom:0;left:0;width:60px;height:160px;background:linear-gradient(135deg,#2d1b6e,#1a0a3d);border-radius:0 0 0 20px;clip-path:polygon(0% 100%,0% 20%,100% 60%,80% 100%)"></div>
+          <!-- Purple robe sweep right -->
+          <div style="position:absolute;bottom:0;right:0;width:55px;height:150px;background:linear-gradient(225deg,#2d1b6e,#1a0a3d);clip-path:polygon(100% 100%,100% 30%,0% 65%,20% 100%)"></div>
+          <!-- Gold collar -->
+          <div style="position:absolute;bottom:110px;left:50%;transform:translateX(-50%);width:40px;height:30px;background:linear-gradient(to top,#8b5a00,#f0c040);clip-path:polygon(0% 100%,10% 0%,50% 20%,90% 0%,100% 100%)"></div>
+          <!-- Head -->
+          <div style="position:absolute;bottom:145px;left:50%;transform:translateX(-50%);width:28px;height:34px;background:linear-gradient(to bottom,#f5e8d0,#e8cfa8);border-radius:50% 50% 45% 45%"></div>
+          <!-- Gold hair -->
+          <div style="position:absolute;bottom:148px;left:50%;transform:translateX(-70%);width:22px;height:40px;background:#d4a000;border-radius:50% 0 0 30%"></div>
+          <div style="position:absolute;bottom:148px;left:50%;transform:translateX(-30%);width:22px;height:40px;background:#d4a000;border-radius:0 50% 30% 0"></div>
+          <!-- Left arm spread -->
+          <div style="position:absolute;bottom:115px;left:-20px;width:50px;height:12px;background:linear-gradient(to left,#8b5a00,#f0c040);border-radius:6px;transform:rotate(-20deg)"></div>
+          <!-- Right arm spread -->
+          <div style="position:absolute;bottom:115px;right:-20px;width:50px;height:12px;background:linear-gradient(to right,#8b5a00,#f0c040);border-radius:6px;transform:rotate(20deg)"></div>
+          <!-- Left glow -->
+          <div style="position:absolute;bottom:108px;left:-28px;width:20px;height:20px;background:radial-gradient(circle,#9d6fff,transparent);border-radius:50%"></div>
+          <!-- Right glow blue -->
+          <div style="position:absolute;bottom:108px;right:-28px;width:20px;height:20px;background:radial-gradient(circle,#60d4f0,transparent);border-radius:50%"></div>
+        </div>
+        <div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;color:#888;font-size:0.75em">参考 R.jpg</div>
+      </div>
+      <div class="card-body">
+        <h3>A · 双臂展开</h3>
+        <p>双手张开，双侧元素光效（左紫右蓝），宽袍飘动。直接参考R.jpg姿势。<br><span style="color:#f0c040;font-size:0.8em">力量感 · 王者气场</span></p>
+      </div>
+    </div>
+
+    <!-- Pose B: One hand raised, casting -->
+    <div class="card" data-choice="one-hand-cast" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#080510;height:220px;position:relative;overflow:hidden">
+        <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:200px">
+          <!-- Body -->
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:32px;height:125px;background:linear-gradient(to top,#2d1b6e,#1a0a3d);border-radius:4px"></div>
+          <!-- Robe flowing back -->
+          <div style="position:absolute;bottom:0;right:-10px;width:70px;height:180px;background:linear-gradient(135deg,#2d1b6e80,#1a0a3d);clip-path:polygon(0% 20%,100% 0%,100% 100%,20% 100%)"></div>
+          <!-- Gold collar -->
+          <div style="position:absolute;bottom:108px;left:50%;transform:translateX(-50%);width:38px;height:28px;background:linear-gradient(to top,#8b5a00,#f0c040);clip-path:polygon(0% 100%,10% 0%,50% 20%,90% 0%,100% 100%)"></div>
+          <!-- Head -->
+          <div style="position:absolute;bottom:140px;left:50%;transform:translateX(-55%);width:28px;height:33px;background:linear-gradient(to bottom,#f5e8d0,#e8cfa8);border-radius:50% 50% 45% 45%"></div>
+          <!-- Gold hair -->
+          <div style="position:absolute;bottom:143px;left:24px;width:18px;height:36px;background:#c49000;border-radius:50% 0 0 30%;transform:rotate(-5deg)"></div>
+          <!-- One arm raised high -->
+          <div style="position:absolute;bottom:130px;right:5px;width:10px;height:50px;background:linear-gradient(to top,#8b5a00,#f0c040);border-radius:5px;transform:rotate(30deg)"></div>
+          <!-- Hand glow orb large -->
+          <div style="position:absolute;bottom:168px;right:-4px;width:28px;height:28px;background:radial-gradient(circle,#ffffff,#9d6fff,transparent);border-radius:50%;box-shadow:0 0 15px #6930c3"></div>
+          <!-- Other arm down -->
+          <div style="position:absolute;bottom:108px;left:2px;width:8px;height:35px;background:#8b5a00;border-radius:4px;transform:rotate(-15deg)"></div>
+        </div>
+        <div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;color:#888;font-size:0.75em">类似 Silent 持剑姿势</div>
+      </div>
+      <div class="card-body">
+        <h3>B · 单手持法 · 蓄力</h3>
+        <p>一手高举凝聚奥术能量，宽袍从身后飘动，侧3/4视角。专注感，像Silent持匕首。<br><span style="color:#f0c040;font-size:0.8em">精准感 · 施法专注</span></p>
+      </div>
+    </div>
+
+    <!-- Pose C: Floating/levitating -->
+    <div class="card" data-choice="levitate" onclick="toggleSelect(this)">
+      <div class="card-image" style="background:#050010;height:220px;position:relative;overflow:hidden">
+        <!-- Aura glow behind -->
+        <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:100px;height:140px;background:radial-gradient(ellipse,rgba(157,111,255,0.15),transparent);border-radius:50%"></div>
+        <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:200px">
+          <!-- Robe flowing down like levitating -->
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:100px;background:linear-gradient(to bottom,#2d1b6e,#1a0a3d);clip-path:polygon(20% 0%,80% 0%,100% 100%,0% 100%);border-radius:0 0 10px 10px"></div>
+          <!-- Body -->
+          <div style="position:absolute;bottom:90px;left:50%;transform:translateX(-50%);width:32px;height:70px;background:linear-gradient(to top,#2d1b6e,#1a1010);border-radius:4px"></div>
+          <!-- Gold collar large -->
+          <div style="position:absolute;bottom:152px;left:50%;transform:translateX(-50%);width:44px;height:32px;background:linear-gradient(to top,#8b5a00,#f0c040);clip-path:polygon(0% 100%,5% 0%,50% 25%,95% 0%,100% 100%)"></div>
+          <!-- Head slightly raised -->
+          <div style="position:absolute;bottom:185px;left:50%;transform:translateX(-50%);width:28px;height:33px;background:linear-gradient(to bottom,#f5e8d0,#e8cfa8);border-radius:50% 50% 45% 45%"></div>
+          <!-- Hair golden flowing up -->
+          <div style="position:absolute;bottom:188px;left:20px;width:16px;height:30px;background:linear-gradient(to top,#c49000,#f0d040);border-radius:30% 0 0 50%;transform:rotate(-20deg)"></div>
+          <div style="position:absolute;bottom:188px;right:20px;width:16px;height:30px;background:linear-gradient(to top,#c49000,#f0d040);border-radius:0 30% 50% 0;transform:rotate(20deg)"></div>
+          <!-- Both arms angled down/sideways casting -->
+          <div style="position:absolute;bottom:135px;left:-10px;width:35px;height:10px;background:#8b5a00;border-radius:5px;transform:rotate(30deg)"></div>
+          <div style="position:absolute;bottom:135px;right:-10px;width:35px;height:10px;background:#8b5a00;border-radius:5px;transform:rotate(-30deg)"></div>
+          <!-- Rune circle at feet -->
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:60px;height:15px;background:radial-gradient(ellipse,rgba(157,111,255,0.4),transparent);border-radius:50%"></div>
+          <!-- Purple aura glow -->
+          <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:90px;height:90px;background:radial-gradient(circle,rgba(157,111,255,0.2),transparent);border-radius:50%"></div>
+        </div>
+        <div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;color:#888;font-size:0.75em">悬浮·法师专属姿态</div>
+      </div>
+      <div class="card-body">
+        <h3>C · 悬浮施法</h3>
+        <p>身体微微悬浮，长袍垂落，脚下奥术符文圈，双臂向两侧引导元素。最能体现法师/祈求者的超凡脱俗。<br><span style="color:#f0c040;font-size:0.8em">超凡感 · 元素掌控</span></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="background:#0f0f0f;border:1px solid #333;border-radius:8px;padding:12px 14px">
+  <p class="label" style="color:#666">战斗立绘技术规格（固定）</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.83em;color:#aaa">
+    <div>• 格式：PNG，透明背景（RGBA）</div>
+    <div>• 方式：AI生成 → 手动精修背景</div>
+    <div>• 画风：手绘数字插画，参考Silent风格</div>
+    <div>• 颜色：金色甲 + 紫袍 + 暗背景</div>
+    <div>• 元素球：<b style="color:#ff9">不出现</b>，可有元素光效</div>
+    <div>• 嵌入：Sprite2D，场景中缩放显示</div>
+  </div>
+</div>

@@ -1,0 +1,178 @@
+.preview-panel {
+  width: 320px;
+  min-width: 320px;
+  background: #16213e;
+  border-left: 1px solid #2d2d44;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.preview-panel h3 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.preview-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* STS2 Card Style */
+.card-preview {
+  width: 200px;
+  height: 280px;
+  background: linear-gradient(180deg, #2a2a3e 0%, #1a1a28 100%);
+  border-radius: 12px;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+}
+
+.card-preview.attack {
+  border: 2px solid #ff6b6b;
+}
+
+.card-preview.skill {
+  border: 2px solid #4ecdc4;
+}
+
+.card-preview.power {
+  border: 2px solid #ffd93d;
+}
+
+.card-preview.status,
+.card-preview.curse {
+  border: 2px solid #666;
+}
+
+.card-cost-badge {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #4ecdc4, #2eb8ae);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);
+}
+
+.card-image {
+  width: 100%;
+  height: 120px;
+  background: #1a1a28;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  opacity: 0.3;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #eaeaea;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.card-type {
+  font-size: 10px;
+  color: #a0a0a0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  flex: 1;
+  font-size: 11px;
+  color: #c0c0c0;
+  text-align: center;
+  line-height: 1.4;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.keyword-highlight {
+  color: #ffd93d;
+  cursor: pointer;
+  border-bottom: 1px dashed #ffd93d;
+}
+
+.keyword-highlight:hover {
+  color: #ffec8b;
+}
+
+.keyword-tooltip {
+  position: fixed;
+  transform: translate(-50%, -100%);
+  background: #2a2a3e;
+  border: 1px solid #ffd93d;
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 1000;
+  max-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.keyword-tooltip strong {
+  display: block;
+  color: #ffd93d;
+  margin-bottom: 4px;
+}
+
+.keyword-tooltip p {
+  margin: 0;
+  font-size: 11px;
+  color: #a0a0a0;
+}
+
+.card-rarity {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #1a1a28;
+  padding: 2px 8px;
+  border-radius: 10px;
+}

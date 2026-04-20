@@ -1,0 +1,29 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "skills_paths": [
+      "C:/Users/32467/.claude/skills"
+    ],
+    "debug": true
+  },
+  "mcp": {
+    "sts2": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["C:/code/slay-the-mod/packages/sts2-mcp-server/dist/index.js"]
+    }
+  },
+  "lsp": {
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"]
+    },
+    "javascript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"]
+    },
+    "python": {
+      "command": "C:/ProgramData/anaconda3/Scripts/pylsp.exe"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "invoker",
+  "displayName": "The Grand Invoker",
+  "lore": "A master of ancient elemental magic, The Grand Invoker once commanded the very forces of creation. Banished from his home for wielding power deemed too dangerous, he now wanders the Spire, seeking forgotten knowledge to reclaim his lost dominion. His presence twists the very fabric of reality, weaving raw elements into devastating spells.",
+  "theme": "Arcane Elemental Mastery, Forbidden Knowledge, Aristocratic Power",
+  "appearance": {
+    "body": "Tall, slender, and elegantly built, conveying an air of aristocratic grace and potent, contained power. Lean physique beneath voluminous robes.",
+    "clothing": "Opulent, dark robes of deep indigo and rich purple, trimmed with intricate golden embroidery and flowing white/silver silk accents. High collar, broad shoulders, and long, sweeping sleeves. The fabric appears heavy and luxurious, with deep folds catching dramatic light.",
+    "accessories": "Three distinct elemental orbs (one fiery red-orange, one icy blue-white, one crackling electric yellow-cyan) perpetually orbit him, glowing intensely. Golden pauldrons or shoulder accents integrated into the robes. A subtle, ornate arcane focus or staff may be held.",
+    "face": "Sharp, angular features with a high nose and prominent cheekbones, conveying an intelligent and aloof expression. Intense, glowing eyes (perhaps a subtle arcane glow in the pupils). Long, straight, flowing white/silver hair cascades past his shoulders, styled with a regal sweep. A faint, knowing smirk.",
+    "silhouette": "Distinctive, tall and elegant. The flowing robes create a wide, dramatic base, tapering upwards to broad, ornate shoulders. The orbiting elemental orbs create a dynamic, ethereal aura around his upper body, making his silhouette instantly recognizable and powerful. Strong, clean lines with sharp angles."
+  },
+  "colorPalette": {
+    "primary": "Deep royal purples, rich midnight blues, and dark teals for robes. Earthy golds and dark browns for accents and embroidery.",
+    "secondary": "Vibrant fiery reds and oranges for fire orb/effects, electric blues and cyans for ice/lightning orb/effects, bright yellows for lightning/general arcane energy.",
+    "accent": "Intense flashes of pure white, bright yellow, and glowing cyan for spell impact and orb energy core.",
+    "glow": "Luminous yellows, fiery oranges, and electric cyans/blues for elemental orbs, spell effects, and subtle arcane energy radiating from the Invoker himself."
+  },
+  "artStyle": {
+    "viewAngle": "3/4 front-facing view, slightly low angle, emphasizing height and power.",
+    "lighting": "Dramatic and high-contrast, with a strong, single directional light source from above-left, creating deep, sharp shadows under folds of clothing and facial features. Elemental orbs exhibit strong self-illumination, casting localized colored light onto his robes and face. Intense glowing highlights on metallic accents and energy effects.",
+    "background": "solid black background",
+    "renderStyle": "painterly, STS2 style, 2D illustration, dark fantasy",
+    "avoidList": [
+      "text",
+      "words",
+      "UI elements",
+      "card frames",
+      "multiple characters"
+    ]
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "description": "The Invoker stands tall and regal, robes gently swaying as if by an unseen breeze. His three elemental orbs slowly orbit him in a mesmerizing, controlled dance, each pulsing with subtle energy. His head is held high, eyes scanning with a contained power. Subtle shifts in weight or hand gestures, maintaining a commanding presence.",
+      "duration": 3,
+      "fps": 24,
+      "loop": true,
+      "seedancePrompt": "A regal, male, pale-skinned elven character with long flowing white/platinum blonde hair and intensely glowing white eyes. He wears opulent, dark robes of deep indigo and rich purple, trimmed with intricate golden embroidery and flowing white/silver silk accents, featuring a high collar, broad shoulders, and long, sweeping sleeves. Golden pauldrons are integrated. Three elemental orbs (fiery red-orange, icy blue-white, electric yellow-cyan) perpetually orbit him, glowing intensely. Dramatic, high-contrast lighting from above-left casts sharp shadows. The Invoker stands tall, robes gently swaying as if by an unseen breeze. The elemental orbs slowly orbit him in a mesmerizing dance, each pulsing with subtle energy. His head is held high, maintaining a commanding presence with subtle weight shifts. 3/4 front-facing view, slightly low angle, static camera, single character centered in frame. Solid black background. 2D animated illustration, painterly, STS2 game character, dark fantasy. 3s, seamless loop."
+    },
+    {
+      "name": "attack",
+      "description": "The Invoker raises a hand dramatically, channeling raw elemental power. The three orbiting orbs rapidly converge and then burst outwards in a focused beam or projectile of combined elemental energy (e.g., a fiery meteor, an icy shard storm, or a lightning blast). His robes billow violently, hair whips around, and his face contorts with intense focus and power. Strong glowing effects emanate from his hand and the launched spell. After the release, he returns to a slightly more poised, ready stance.",
+      "duration": 1.2,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A powerful male mage, the Grand Invoker, with long, straight platinum blonde hair and pale skin, his eyes glowing intensely white. He wears opulent, dark robes of deep indigo and rich purple, trimmed with intricate golden embroidery and flowing white/silver silk accents, featuring a high collar, broad shoulders, and golden pauldrons. Three intensely glowing elemental orbs (fiery red-orange, icy blue-white, electric yellow-cyan) orbit him. Dramatic high-contrast lighting from above-left, 3/4 front-facing view. The Invoker raises a hand dramatically, channeling raw power. The orbiting orbs rapidly converge, then burst outwards as a focused beam of combined fiery meteor and icy shard energy. His robes billow violently, hair whips around, and his face contorts with intense focus. Strong glowing effects emanate from his hand and the launched spell. He then returns to a poised, ready stance. Static camera, single character centered, solid black background. 2D animated illustration, painterly, STS2 game character style. Smooth motion, ends still."
+    },
+    {
+      "name": "hit",
+      "description": "The Invoker recoils sharply from an impact, a brief flash of pain crossing his face. His body jerks back, robes momentarily flaring, and the elemental orbs briefly flicker or wobble out of their perfect orbit before quickly snapping back into place. A subtle, bright impact flash appears where the hit connects, quickly fading.",
+      "duration": 0.5,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration, painterly, STS2 game character style, dark fantasy. The Grand Invoker, a powerful male figure with long white hair, pale skin, and intensely glowing white eyes, is centered in a 3/4 front-facing, slightly low-angle view. He wears opulent dark indigo and rich purple robes, trimmed with intricate golden embroidery and white/silver silk accents, featuring broad shoulders, a high collar, and sweeping sleeves. Three intensely glowing elemental orbs (fiery red-orange, icy blue-white, crackling electric yellow-cyan) orbit him. The lighting is dramatic and high-contrast, from above-left. The Invoker recoils sharply from an impact, a brief flash of pain crossing his face. His body jerks back, robes momentarily flaring, and the elemental orbs briefly flicker out of orbit before quickly snapping back. A subtle, bright impact flash appears where the hit connects, quickly fading. Solid black background. Smooth motion, ends still."
+    },
+    {
+      "name": "death",
+      "description": "The Invoker stumbles forward, his form wavering. The elemental orbs lose their cohesion, flaring brightly one last time before dissipating into wisps of colored smoke. He collapses dramatically to one knee, then falls prone, his body fading slightly as if his arcane essence is departing. Robes settle around him, losing their vibrant color, becoming muted and dark.",
+      "duration": 2,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A male character, The Grand Invoker, with long flowing blonde hair and glowing white eyes. He wears opulent, high-collared robes of deep indigo and rich purple, trimmed with intricate golden embroidery and broad golden pauldrons. Three intensely glowing elemental orbs (fiery red-orange, icy blue-white, crackling electric yellow-cyan) orbit him. He stumbles forward, his form wavering. The elemental orbs flare brightly, then dissipate into colored smoke. He collapses dramatically to one knee, then falls prone. His body fades slightly, and his robes mute to dark, desaturated tones. Static camera, single character centered. Solid black background. 2D animated illustration, painterly, STS2 game character, dark fantasy, dramatic high-contrast lighting from above-left, strong self-illumination from orbs. Smooth motion, ends still."
+    }
+  ],
+  "referenceImagePrompt": "Slay the Spire 2 style character art: The Grand Invoker, a tall, elegant, aristocratic wizard. 3/4 front-facing view, slightly low angle, against a solid black background. He wears opulent dark indigo and rich purple robes with intricate golden embroidery and flowing white/silver silk accents. Long, straight, flowing white/silver hair cascades past his shoulders. Sharp, angular features with an intense, glowing gaze. Three distinct elemental orbs (fiery red-orange, icy blue-white, crackling electric yellow-cyan) orbit him, casting localized colored light onto his robes. Dramatic, high-contrast lighting from above-left, creating deep, sharp shadows and intense glowing highlights on metallic accents and elemental effects. Highly stylized, geometric, and angular rendering with distinct, solid blocks of vibrant, contrasting colors. Bold, clean outlines and a cell-shaded aesthetic. No fine textures, emphasis on strong forms and vibrant energy effects. Dark fantasy, painterly 2D illustration."
+}

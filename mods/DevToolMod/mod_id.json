@@ -1,0 +1,10 @@
+{
+  "id": "DevToolMod",
+  "name": "DevToolMod",
+  "author": "DevTool Team",
+  "description": "Development tool mod for debugging and inspecting game state via HTTP API",
+  "version": "0.1.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": []
+}

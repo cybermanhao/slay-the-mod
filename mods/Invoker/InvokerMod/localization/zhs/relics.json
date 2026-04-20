@@ -1,0 +1,21 @@
+{
+  "INVOKER-QUAS_COMMAND_STONE.title": "寒霜命石",
+  "INVOKER-QUAS_COMMAND_STONE.description": "战斗开始时槽位为QQQ。每回合开始，选择注入一个[blue]冰魂[/blue]/[yellow]雷魂[/yellow]/[red]炎魂[/red]球。强化：急速冷却、幽灵漫步、寒冰之墙。",
+  "INVOKER-QUAS_COMMAND_STONE.flavor": "凝结的冰霜精华。",
+
+  "INVOKER-WEX_COMMAND_STONE.title": "风暴命石",
+  "INVOKER-WEX_COMMAND_STONE.description": "战斗开始时槽位为WWW。每回合开始，选择注入一个[blue]冰魂[/blue]/[yellow]雷魂[/yellow]/[red]炎魂[/red]球。强化：强袭飓风、电磁脉冲、灵动迅捷。",
+  "INVOKER-WEX_COMMAND_STONE.flavor": "封印在黑曜石中的闪电。",
+
+  "INVOKER-EXORT_COMMAND_STONE.title": "烈焰命石",
+  "INVOKER-EXORT_COMMAND_STONE.description": "战斗开始时槽位为EEE。每回合开始，选择注入一个[blue]冰魂[/blue]/[yellow]雷魂[/yellow]/[red]炎魂[/red]球。强化：熔炉精灵、混沌陨石、阳炎之击。",
+  "INVOKER-EXORT_COMMAND_STONE.flavor": "永不熄灭的纯粹火焰。",
+
+  "INVOKER-AGHANIMS_SCEPTER.title": "阿哈利姆的神杖",
+  "INVOKER-AGHANIMS_SCEPTER.description": "打出元素祈求时，加入2张对应技能牌而非1张。",
+  "INVOKER-AGHANIMS_SCEPTER.flavor": "神杖散发着奥术的共鸣。",
+
+  "INVOKER-AGHANIMS_FRAGMENT.title": "魔晶",
+  "INVOKER-AGHANIMS_FRAGMENT.description": "每回合开始时，25%概率将1张随机祈求者技能牌加入手牌。",
+  "INVOKER-AGHANIMS_FRAGMENT.flavor": "神杖力量的碎片。"
+}

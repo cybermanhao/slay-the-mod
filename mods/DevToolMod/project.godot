@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DevToolMod"
+config/description="Development tool mod for debugging and inspecting game state via HTTP API"
+run/main_scene="res://ModEntry.tscn"
+config/features=PackedStringArray("4.5", "Forward Plus")
+
+[display]
+
+display/window/size/viewport_width=1280
+display/window/size/viewport_height=720
+display/window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="forward_plus"

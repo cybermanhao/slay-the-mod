@@ -1,0 +1,12 @@
+{
+  "STS2MODAGENT_BOOKSTRIKE.title": "书本打击",
+  "STS2MODAGENT_BOOKSTRIKE.description": "造成6点伤害。",
+  "STS2MODAGENT_QUICKREAD.title": "快速阅读",
+  "STS2MODAGENT_QUICKREAD.description": "抽1张牌。",
+  "STS2MODAGENT_CHAPTERRECALL.title": "章节召回",
+  "STS2MODAGENT_CHAPTERRECALL.description": "将抽牌堆一张牌放入手中。",
+  "STS2MODAGENT_KNOWLEDGESHIELD.title": "知识护盾",
+  "STS2MODAGENT_KNOWLEDGESHIELD.description": "获得5点格挡。",
+  "STS2MODAGENT_FINALCHAPTER.title": "最终章节",
+  "STS2MODAGENT_FINALCHAPTER.description": "造成15点伤害。消耗。"
+}

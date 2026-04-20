@@ -1,0 +1,12 @@
+{
+  "STS2MODAGENT_BOOKSTRIKE.title": "Book Strike",
+  "STS2MODAGENT_BOOKSTRIKE.description": "Deal 6 damage.",
+  "STS2MODAGENT_QUICKREAD.title": "Quick Read",
+  "STS2MODAGENT_QUICKREAD.description": "Draw 1 card.",
+  "STS2MODAGENT_CHAPTERRECALL.title": "Chapter Recall",
+  "STS2MODAGENT_CHAPTERRECALL.description": "Put a card from your draw pile into your hand.",
+  "STS2MODAGENT_KNOWLEDGESHIELD.title": "Knowledge Shield",
+  "STS2MODAGENT_KNOWLEDGESHIELD.description": "Gain 5 Block.",
+  "STS2MODAGENT_FINALCHAPTER.title": "Final Chapter",
+  "STS2MODAGENT_FINALCHAPTER.description": "Deal 15 damage. Exhaust."
+}

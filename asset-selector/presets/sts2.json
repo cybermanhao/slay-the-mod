@@ -1,0 +1,34 @@
+{
+  "name": "sts2",
+  "description": "Slay the Spire 2 Asset Selector",
+  "assetTypes": [
+    {
+      "id": "battle-sprite",
+      "label": "战斗立绘",
+      "width": 896,
+      "height": 1200,
+      "aspectRatio": "3:4"
+    },
+    {
+      "id": "char-select",
+      "label": "选角头像",
+      "width": 848,
+      "height": 1264,
+      "aspectRatio": "2:3"
+    },
+    {
+      "id": "icon",
+      "label": "角色图标",
+      "width": 88,
+      "height": 88,
+      "aspectRatio": "1:1"
+    },
+    {
+      "id": "marker",
+      "label": "地图标记",
+      "width": 49,
+      "height": 64,
+      "aspectRatio": "1:1"
+    }
+  ]
+}

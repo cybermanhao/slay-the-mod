@@ -1,0 +1,16 @@
+{
+  "INVOKER-SCROLL.title": "Scroll",
+  "INVOKER-SCROLL.description": "This spell is inscribed onto a Scroll. You may only carry 2 [gold]Scrolls[/gold] at once; when a 3rd is created, the oldest is [gold]Exhausted[/gold]. [gold]Retain[/gold]: not discarded at end of turn.",
+
+  "INVOKER-INVOKE.title": "Invoke",
+  "INVOKER-INVOKE.description": "Read the current orb lineup (Q W E) and generate the matching spell card.",
+
+  "INVOKER-QUAS.title": "Quas",
+  "INVOKER-QUAS.description": "Ice Soul orb. When channeled, grants Block. The more Quas orbs you have, the stronger ice spells become.",
+
+  "INVOKER-WEX.title": "Wex",
+  "INVOKER-WEX.description": "Storm Soul orb. When channeled, deals damage to a random enemy. Fuels speed and lightning spells.",
+
+  "INVOKER-EXORT.title": "Exort",
+  "INVOKER-EXORT.description": "Fire Soul orb. When channeled, deals damage to all enemies. Powers devastating fire spells."
+}

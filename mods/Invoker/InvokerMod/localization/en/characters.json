@@ -1,0 +1,17 @@
+{
+  "INVOKER-INVOKER_CHARACTER.aromaPrinciple": "[sine][blue]...Three elements converge...[/blue][/sine]",
+  "INVOKER-INVOKER_CHARACTER.banter.alive.endTurnPing": "Invoke!",
+  "INVOKER-INVOKER_CHARACTER.banter.dead.endTurnPing": "...",
+  "INVOKER-INVOKER_CHARACTER.cardsModifierDescription": "Invoker cards now appear in rewards and shops.",
+  "INVOKER-INVOKER_CHARACTER.cardsModifierTitle": "Invoker Cards",
+  "INVOKER-INVOKER_CHARACTER.description": "A master of the arcane arts who wields three elemental forces.\n[gold]Invoke[/gold] the power of [blue]Quas[/blue], [yellow]Wex[/yellow], and [red]Exort[/red] to summon devastating spells.",
+  "INVOKER-INVOKER_CHARACTER.eventDeathPrevention": "Not yet... I still have more spells to cast.",
+  "INVOKER-INVOKER_CHARACTER.goldMonologue": "[sine]Gold... useful for scrolls and components...[/sine]",
+  "INVOKER-INVOKER_CHARACTER.possessiveAdjective": "his",
+  "INVOKER-INVOKER_CHARACTER.pronounObject": "him",
+  "INVOKER-INVOKER_CHARACTER.pronounPossessive": "his",
+  "INVOKER-INVOKER_CHARACTER.pronounSubject": "he",
+  "INVOKER-INVOKER_CHARACTER.title": "Invoker",
+  "INVOKER-INVOKER_CHARACTER.titleObject": "Invoker",
+  "INVOKER-INVOKER_CHARACTER.unlockText": "Complete a run with [pink]{Prerequisite}[/pink] to unlock this character."
+}

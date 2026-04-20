@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "sts2-mcp": {
+      "command": "node",
+      "args": ["C:/code/slay-the-mod/packages/sts2-mcp-server/dist/index.js"],
+      "env": {
+        "FFMPEG_PATH": "C:\\Users\\32467\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.exe",
+        "UV_PROJECT_ROOT": "C:\\code\\slay-the-mod\\packages\\sts2-mcp-server",
+        "UV_PATH": "C:\\ProgramData\\anaconda3\\Scripts\\uv.exe"
+      }
+    },
+    "cli-helper": {
+      "command": "node",
+      "args": ["C:/code/slay-the-mod/packages/cli-helper-mcp/dist/index.js"]
+    },
+    "sts2-agent": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "C:/code/slay-the-mod/reference/STS2-Agent/mcp_server",
+        "sts2-mcp-server"
+      ]
+    }
+  }
+}

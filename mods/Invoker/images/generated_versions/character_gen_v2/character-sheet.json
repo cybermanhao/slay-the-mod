@@ -1,0 +1,67 @@
+{
+  "id": "invoker",
+  "displayName": "The Invoker",
+  "lore": "Hailing from a forgotten academy of elemental arts, the Invoker is a master of interwoven magic. His pursuit of perfect spellcraft led him to ancient, forbidden knowledge, allowing him to command the very fabric of creation. Now, adrift in the Spire's chaotic realms, he seeks to harness its raw energy to further his arcane dominion, seeing all obstacles as mere components for his next grand invocation.",
+  "theme": "Arcane Manipulation, Elemental Mastery, Aristocratic Power, Intellectual Dominance",
+  "appearance": {
+    "body": "Tall, slender, and elegantly poised, conveying an air of intellectual superiority and formidable magical power. His posture is upright and commanding, suggesting deep confidence in his abilities.",
+    "clothing": "Ornate, flowing robes of deep, desaturated indigo and dark crimson, intricately embroidered with glowing golden and silver arcane symbols along the hems, cuffs, and collar. The fabric appears rich and heavy, with sharp, angular folds creating dramatic shadows. A high, stiff collar frames his neck.",
+    "accessories": "Three distinct elemental orbs (a swirling ice-blue 'Quas', a crackling electric-purple 'Wex', and a fiery orange-red 'Exort') constantly orbit him in a dynamic, ethereal dance. He carries no staff, as his power emanates directly from his being and the orbs.",
+    "face": "Sharp, aristocratic features with a stern, intelligent gaze. His eyes glow with a subtle, electric blue energy, hinting at his immense power. Long, flowing white-silver hair cascades dramatically, styled with sharp, clean lines that complement his angular facial structure.",
+    "silhouette": "An imposing and elegant silhouette, dominated by the wide, flowing robes that create a powerful, almost geometric shape. The orbiting elemental orbs add dynamic points of light and motion, making his form instantly recognizable and visually distinct against the dark background."
+  },
+  "colorPalette": {
+    "primary": "Deep, desaturated cool tones (dark indigo, deep violet, muted crimson) for robes and foundational shadows.",
+    "secondary": "Earthy and metallic tones (rich golds, polished silvers, muted bronzes) for intricate embroidery, hair, and skin undertones.",
+    "accent": "Vibrant, glowing hues (electric blue for Wex, fiery orange/yellow for Exort, stark white/pale ice-blue for Quas, intense purple for magical effects) for elemental orbs, spell effects, and eye glow.",
+    "glow": "Pure white or highly saturated, glowing versions of accent colors (e.g., pure electric blue, bright molten orange), applied with sharp edges to emphasize light sources and magical energy bursts."
+  },
+  "artStyle": {
+    "viewAngle": "3/4 front-facing view",
+    "lighting": "Dramatic and high-contrast, emanating directly from the elemental orbs and central spell effects. Light sources are strong and directional, casting hard-edged shadows across his robes and features, creating stark transitions between illuminated and dark areas. Glowing elements (orbs, eyes) provide primary illumination.",
+    "background": "solid black background",
+    "renderStyle": "painterly, STS2 style, 2D illustration, dark fantasy",
+    "avoidList": [
+      "text",
+      "words",
+      "UI elements",
+      "card frames",
+      "multiple characters"
+    ]
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "description": "The Invoker stands tall and regal. His robes subtly ripple as if stirred by an unseen breeze. The three elemental orbs (Quas, Wex, Exort) slowly and smoothly orbit his body, each emitting a soft, pulsating glow that subtly illuminates parts of his robes. His glowing eyes occasionally blink, and his head might shift slightly, maintaining a watchful, contemplative expression. Subtle magical particles drift around him.",
+      "duration": 2.5,
+      "fps": 24,
+      "loop": true,
+      "seedancePrompt": "A regal male Invoker with long, flowing white hair and glowing blue eyes, framed by a high collar. He wears ornate, flowing robes of deep desaturated indigo and dark crimson, intricately embroidered with glowing golden and silver arcane symbols. Three elemental orbs—a swirling ice-blue Quas, a crackling electric-purple Wex, and a fiery orange-red Exort—slowly orbit his body, each pulsating with light that subtly illuminates his robes. His robes subtly ripple, his eyes occasionally blink, and his head shifts slightly. Subtle magical particles drift around him. Static camera, centered, solid black background. 2D animated illustration, painterly, STS2 game character style. Seamless loop."
+    },
+    {
+      "name": "attack",
+      "description": "The Invoker raises a hand, and the three elemental orbs rapidly converge and coalesce in front of him, intensifying their glow dramatically. A powerful, focused burst of multi-colored arcane energy (combining blue, orange, and purple hues) erupts from his hand towards the viewer, accompanied by sharp, angular light flares and crackling effects. His robes billow violently, and his expression becomes intensely focused and determined. The light from the spell illuminates him brightly, casting deep, dynamic shadows.",
+      "duration": 1.2,
+      "fps": 30,
+      "loop": false,
+      "seedancePrompt": "A powerful male sorcerer with long, flowing white hair and glowing blue eyes stands in a 3/4 front-facing view against a solid black background. He wears ornate, flowing robes of deep, desaturated indigo and dark crimson, intricately embroidered with glowing golden and silver arcane symbols. Three elemental orbs—a swirling ice-blue, a crackling electric-purple, and a fiery orange-red—orbit him. He raises his right hand, and the three orbs rapidly converge and coalesce in front of him, intensifying their glow dramatically. A powerful, focused burst of multi-colored arcane energy (blue, orange, purple) erupts from his hand towards the viewer, with sharp light flares and crackling effects. His robes billow violently, and his expression is intensely focused. The spell illuminates him brightly, casting deep, dynamic shadows. 2D animated illustration, painterly, STS2 style, dark fantasy, dramatic high-contrast lighting. smooth motion, ends still."
+    },
+    {
+      "name": "hit",
+      "description": "The Invoker flinches sharply, recoiling slightly from an impact. His robes ripple and momentarily lose their elegant composure. The elemental orbs orbiting him briefly waver or flicker, losing some intensity before quickly regaining their steady rhythm. A momentary flash of pain or surprise crosses his face, but quickly resolves back to a stern resolve. The impact point on his body shows a brief, localized accent color highlight.",
+      "duration": 0.6,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration in STS2 style, painterly, dark fantasy. A powerful male sorcerer, The Invoker, stands centered against a solid black background. He has long, flowing silver-white hair and glowing electric blue eyes with lightning effects. He wears ornate, flowing robes of deep indigo and dark crimson, intricately embroidered with golden arcane symbols and featuring a high, stiff collar with a prominent blue chest gem. Three elemental orbs—a swirling ice-blue 'Quas', a crackling electric-purple 'Wex', and a fiery orange-red 'Exort'—orbit dynamically around him. The Invoker flinches sharply, recoiling from an impact. His robes ripple, and the elemental orbs briefly waver and dim before quickly regaining intensity. A momentary flash of surprise crosses his face, resolving to stern resolve. A localized accent highlight appears at the impact point. Smooth motion, ends still."
+    },
+    {
+      "name": "death",
+      "description": "The Invoker stumbles forward, his elegant posture breaking. His glowing eyes dim and fade. The three elemental orbs briefly flare intensely before dissipating into wisps of colored smoke and light, one by one. His body collapses to the ground, robes settling around him in a heap, losing all form and volume. The light leaves his form, leaving only deep shadows and the last faint traces of magical energy dissipating into the solid black background.",
+      "duration": 2,
+      "fps": 24,
+      "loop": false,
+      "seedancePrompt": "A 2D animated illustration in STS2 style, painterly, dark fantasy. A powerful male wizard, The Invoker, with long flowing white hair and initially glowing blue eyes, centered in a 3/4 front-facing view against a solid black background. He wears ornate, flowing robes of deep desaturated indigo and dark crimson, intricately embroidered with glowing golden and silver arcane symbols along the hems, cuffs, and collar, featuring a high, stiff collar and heavy fabric with sharp, angular folds. Three distinct elemental orbs – an ice-blue 'Quas', an electric-purple 'Wex', and a fiery orange-red 'Exort' – orbit him dynamically. The character stumbles forward, his elegant posture breaking as his glowing eyes dim and fade. The three elemental orbs briefly flare intensely, then dissipate one by one into wisps of colored smoke and light. His body collapses to the ground, robes settling around him in a formless heap. All light leaves his form, leaving only deep shadows and the last faint traces of magical energy dissipating into the solid black background. Static camera, single character. Smooth motion, ends still."
+    }
+  ],
+  "referenceImagePrompt": "Slay the Spire 2 style character portrait of Invoker from Dota 2. Tall, elegant, aristocratic wizard with long flowing white-silver hair and sharp features. Wears ornate, dark indigo and crimson robes with intricate glowing golden and silver arcane embroidery. Three elemental orbs (ice-blue Quas, electric-purple Wex, fiery orange-red Exort) orbit him, casting dramatic, high-contrast light. His eyes glow with electric blue energy. 3/4 front-facing view against a solid black background. Painterly 2D illustration, dramatic lighting, sharp edges, bold outlines, hard-edged cell shading, minimal gradients. Dynamic composition, robust and simplified design with exaggerated features. Focus on powerful arcane presence and elemental mastery. Utilize deep desaturated cool tones, rich golds, and vibrant glowing accents for magical effects."
+}

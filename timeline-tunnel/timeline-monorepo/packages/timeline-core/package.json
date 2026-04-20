@@ -1,0 +1,17 @@
+{
+  "name": "@timeline/core",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc --declaration --emitDeclarationOnly false --outDir dist src/index.ts"
+  },
+  "license": "MIT"
+}
