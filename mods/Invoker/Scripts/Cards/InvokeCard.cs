@@ -19,19 +19,17 @@ public class InvokeCard : CustomCardModel
     public override string PortraitPath => "res://images/invoker/cards/invoke.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
 
-    private bool _upgraded;
-
     public InvokeCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
         await InvokeCmd.Execute(ctx, this);
-        if (_upgraded)
+        if (CurrentUpgradeLevel > 0)
         {
-            var copy = Owner.Creature.CombatState.CreateCard(ModelDb.Card<InvokeCard>(), Owner);
+            var copy = CombatState!.CreateCard(ModelDb.Card<InvokeCard>(), Owner);
             await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, addedByPlayer: true);
         }
     }
 
-    protected override void OnUpgrade() => _upgraded = true;
+    protected override void OnUpgrade() { }
 }

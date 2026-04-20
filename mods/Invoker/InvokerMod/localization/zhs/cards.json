@@ -13,46 +13,57 @@
 
   "INVOKER-SUMMON_ORB_CARD.title": "召唤冰球",
   "INVOKER-SUMMON_ORB_CARD.description": "每回合一次。召唤一个[blue]冰球[/blue]。获得 8 + 4×（当前冰球数）点格挡。",
+  "INVOKER-SUMMON_ORB_CARD.upgrade_description": "每回合一次。召唤一个[blue]冰球[/blue]。获得 8 + 4×（当前冰球数）点格挡。",
 
   "INVOKER-SUMMON_WEX_CARD.title": "召唤雷球",
   "INVOKER-SUMMON_WEX_CARD.description": "每回合一次。召唤一个[yellow]雷球[/yellow]。对随机敌人造成5点伤害。",
+  "INVOKER-SUMMON_WEX_CARD.upgrade_description": "每回合一次。召唤一个[yellow]雷球[/yellow]。对随机敌人造成5点伤害。",
 
   "INVOKER-SUMMON_EXORT_CARD.title": "召唤炎球",
   "INVOKER-SUMMON_EXORT_CARD.description": "每回合一次。召唤一个[red]炎球[/red]。对所有敌人造成3点伤害。",
+  "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "每回合一次。召唤一个[red]炎球[/red]。对所有敌人造成3点伤害。",
 
   "INVOKER-INVOKE_CARD.title": "元素祈唤",
   "INVOKER-INVOKE_CARD.description": "根据当前元素球的组合进行一次[gold]祈唤[/gold]。",
   "INVOKER-INVOKE_CARD.upgrade_description": "[gold]祈唤[/gold]。将1张未升级的元素祈唤加入手牌。",
 
   "INVOKER-COLD_SNAP_CARD.title": "急速冷却",
-  "INVOKER-COLD_SNAP_CARD.description": "[gold]卷轴[/gold]。(QQQ) 对目标施加[gold]急速冷却[/gold]：每次受到伤害时，力量-1。玩家回合结束时消失。",
+  "INVOKER-COLD_SNAP_CARD.description": "[gold]卷轴[/gold]。(QQQ) 对目标施加[gold]急速冷却[/gold]：每次受到伤害时，失去力量。玩家回合结束时消失。","INVOKER-COLD_SNAP_CARD.upgrade_description": "[gold]卷轴[/gold]。(QQQ) 对目标施加[gold]急速冷却[/gold]：每次受到伤害时，失去力量。玩家回合结束时消失。",
 
   "INVOKER-GHOST_WALK_CARD.title": "幽灵漫步",
   "INVOKER-GHOST_WALK_CARD.description": "[gold]卷轴[/gold]。(QQW) 获得1层[gold]无实体[/gold]。下回合攻击牌费用变为99，无法打出。",
+  "INVOKER-GHOST_WALK_CARD.upgrade_description": "[gold]卷轴[/gold]。(QQW) 获得1层[gold]无实体[/gold]。下回合攻击牌费用变为99，无法打出。",
 
   "INVOKER-ICE_WALL_CARD.title": "寒冰之墙",
   "INVOKER-ICE_WALL_CARD.description": "[gold]卷轴[/gold]。(QQE) 对所有敌人造成4点伤害并施加1层[gold]虚弱[/gold]。",
+  "INVOKER-ICE_WALL_CARD.upgrade_description": "[gold]卷轴[/gold]。(QQE) 对所有敌人造成4点伤害并施加1层[gold]虚弱[/gold]。",
 
   "INVOKER-TORNADO_CARD.title": "强袭飓风",
   "INVOKER-TORNADO_CARD.description": "[gold]卷轴[/gold]。(QWW) 对所有敌人造成10点伤害。抽1张牌。",
+  "INVOKER-TORNADO_CARD.upgrade_description": "[gold]卷轴[/gold]。(QWW) 对所有敌人造成10点伤害。抽1张牌。",
 
   "INVOKER-DEAFENING_BLAST_CARD.title": "超震声波",
   "INVOKER-DEAFENING_BLAST_CARD.description": "[gold]卷轴[/gold]。(QWE) 对所有敌人造成12点伤害并施加1层[gold]虚弱[/gold]。",
+  "INVOKER-DEAFENING_BLAST_CARD.upgrade_description": "[gold]卷轴[/gold]。(QWE) 对所有敌人造成12点伤害并施加1层[gold]虚弱[/gold]。",
 
   "INVOKER-E_MP_CARD.title": "电磁脉冲",
   "INVOKER-E_MP_CARD.description": "[gold]卷轴[/gold]。(WWW) 对所有敌人造成20点伤害。",
+  "INVOKER-E_MP_CARD.upgrade_description": "[gold]卷轴[/gold]。(WWW) 对所有敌人造成20点伤害。",
 
   "INVOKER-ALACRITY_CARD.title": "灵动迅捷",
   "INVOKER-ALACRITY_CARD.description": "[gold]卷轴[/gold]。(WWE) 抽1张牌。本回合力量+3。",
+  "INVOKER-ALACRITY_CARD.upgrade_description": "[gold]卷轴[/gold]。(WWE) 抽1张牌。本回合力量+3。",
 
   "INVOKER-CHAOS_METEOR_CARD.title": "混沌陨石",
   "INVOKER-CHAOS_METEOR_CARD.description": "[gold]卷轴[/gold]。(WEE) 对目标造成10点伤害，然后对随机敌人依次造成5、4、3、2、1点伤害。",
+  "INVOKER-CHAOS_METEOR_CARD.upgrade_description": "[gold]卷轴[/gold]。(WEE) 对目标造成10点伤害，然后对随机敌人依次造成5、4、3、2、1点伤害。",
 
   "INVOKER-FORGE_SPIRIT_CARD.title": "熔炉精灵",
-  "INVOKER-FORGE_SPIRIT_CARD.description": "[gold]卷轴[/gold]。(QEE) 召唤一个拥有6点HP的熔炉精灵。每回合玩家回合开始时，攻击随机敌人5点并施加1层[gold]脆弱[/gold]。每回合玩家回合结束时损失3点HP。",
+  "INVOKER-FORGE_SPIRIT_CARD.description": "[gold]卷轴[/gold]。(QEE) 召唤一个熔炉精灵。每回合玩家回合开始时，攻击随机敌人并施加[gold]脆弱[/gold]。每回合玩家回合结束时损失HP。",
+  "INVOKER-FORGE_SPIRIT_CARD.upgrade_description": "[gold]卷轴[/gold]。(QEE) 召唤一个熔炉精灵。每回合玩家回合开始时，攻击随机敌人并施加[gold]脆弱[/gold]。每回合玩家回合结束时损失HP。",
 
   "INVOKER-SUN_STRIKE_CARD.title": "阳炎冲击",
-  "INVOKER-SUN_STRIKE_CARD.description": "[gold]卷轴[/gold]。(EEE) 对目标造成25~38点伤害。",
+  "INVOKER-SUN_STRIKE_CARD.description": "[gold]卷轴[/gold]。(EEE) 对目标造成{Damage}点伤害。","INVOKER-SUN_STRIKE_CARD.upgrade_description": "[gold]卷轴[/gold]。(EEE) 对目标造成{Damage}点伤害。",
 
   "INVOKER-ICE_ARMOR_CARD.title": "冰甲",
   "INVOKER-ICE_ARMOR_CARD.description": "获得{Block:diff()}点格挡。若有冰球，额外获得4点格挡。",

@@ -1,7 +1,7 @@
 {
   "COLD_SNAP_POWER.title": "急速冷却",
-  "COLD_SNAP_POWER.description": "每次受到伤害时，力量-1。玩家回合结束时消失。",
-  "COLD_SNAP_POWER.smartDescription": "每次受到伤害时，力量-1。共[blue]{Amount}[/blue]层。",
+  "COLD_SNAP_POWER.description": "每次受到伤害时，失去力量。玩家回合结束时消失。",
+  "COLD_SNAP_POWER.smartDescription": "每次受到伤害时，失去[blue]{Amount}[/blue]点力量。玩家回合结束时消失。",
 
   "GHOST_WALK_POWER.title": "幽灵漫步",
   "GHOST_WALK_POWER.description": "下一个玩家回合中，攻击牌费用变为99，无法打出。",

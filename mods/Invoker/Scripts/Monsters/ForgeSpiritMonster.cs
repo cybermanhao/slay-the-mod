@@ -12,6 +12,7 @@ namespace Invoker.Scripts.Monsters;
 public sealed class ForgeSpiritMonster : MonsterModel
 {
     public int InitialHp { get; set; } = 6;
+    public int DecayPerTurn { get; set; } = 3;
 
     public override int MinInitialHp => InitialHp;
     public override int MaxInitialHp => InitialHp;

@@ -1,7 +1,7 @@
 {
   "COLD_SNAP_POWER.title": "Cold Snap",
-  "COLD_SNAP_POWER.description": "Each time this creature takes damage, lose 1 Strength. Expires at player turn end.",
-  "COLD_SNAP_POWER.smartDescription": "Each time this creature takes damage, lose 1 Strength. [blue]{Amount}[/blue] stacks.",
+  "COLD_SNAP_POWER.description": "Each time this creature takes damage, lose Strength. Expires at player turn end.",
+  "COLD_SNAP_POWER.smartDescription": "Each time this creature takes damage, lose [blue]{Amount}[/blue] Strength. Expires at player turn end.",
 
   "GHOST_WALK_POWER.title": "Ghost Walk",
   "GHOST_WALK_POWER.description": "Next player turn, Attack cards cost 99 and cannot be played.",

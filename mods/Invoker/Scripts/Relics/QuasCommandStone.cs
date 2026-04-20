@@ -34,13 +34,13 @@ public class QuasCommandStone : CustomRelicModel
         await OrbCmd.Channel<QuasOrb>(ctx, Owner);
         await OrbCmd.Channel<QuasOrb>(ctx, Owner);
         await OrbCmd.Channel<QuasOrb>(ctx, Owner);
-        TurnSummonTracker.Reset();
+        TurnSummonTracker.Reset(null);
     }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
     {
         if (player != Owner) return;
-        TurnSummonTracker.Reset();
+        TurnSummonTracker.Reset(player.Creature.CombatState);
         Flash();
         await CommandStoneHelper.ChooseOrb(ctx, Owner);
     }

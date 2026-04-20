@@ -51,7 +51,6 @@ public class AghanimsFragment : CustomRelicModel
             return;
 
         Flash();
-        var card = Owner.Creature.CombatState.CreateCard(canonical, Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+        await InvokeCmd.AddSpellToHand(Owner.Creature.CombatState!, canonical, Owner);
     }
 }

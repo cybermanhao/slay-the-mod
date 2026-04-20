@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Invoker.Scripts.Powers;
 
 /// <summary>
-/// 急速冷却 — 每次受到伤害时，该敌人力量 -1。玩家回合结束时移除。
+/// 急速冷却 — 每次受到攻击伤害时，该敌人力量 -Amount。玩家回合结束时移除。
 /// </summary>
 public class ColdSnapPower : PowerModel
 {
@@ -24,8 +24,9 @@ public class ColdSnapPower : PowerModel
     {
         if (target != Owner) return;
         if (result.TotalDamage <= 0) return;
+        if (!props.IsPoweredAttack()) return;
         Flash();
-        await PowerCmd.Apply<StrengthPower>(Owner, -1m, dealer, cardSource);
+        await PowerCmd.Apply<StrengthPower>(Owner, -Amount, dealer, cardSource);
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext ctx, CombatSide side)

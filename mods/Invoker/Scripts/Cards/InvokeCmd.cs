@@ -1,7 +1,9 @@
 using Invoker.Scripts.Orbs;
 using Invoker.Scripts.Relics;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using System.Linq;
@@ -36,20 +38,27 @@ public static class InvokeCmd
         int copies = owner.Relics.Any(r => r is AghanimsScepter) ? 2 : 1;
         for (int i = 0; i < copies; i++)
         {
-            // Scroll slot FIFO: enforce a max of 2 spell cards in hand.
-            // Before adding, if there are already 2+ SpellCardBase cards in hand,
-            // exhaust the oldest one (first in the hand list).
-            var hand = PileType.Hand.GetPile(owner);
-            var scrollsInHand = hand.Cards.OfType<SpellCardBase>().ToList();
-            if (scrollsInHand.Count >= 2)
-            {
-                var oldest = scrollsInHand.First();
-                await CardPileCmd.Add(oldest, PileType.Exhaust);
-            }
-
-            var card = source.CombatState!.CreateCard(canonical, owner);
-            CardCmd.ApplyKeyword(card, CardKeyword.Retain);
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+            await AddSpellToHand(source.CombatState!, canonical, owner);
         }
+    }
+
+    /// <summary>
+    /// Adds a single spell card to hand with Retain and scroll-slot FIFO enforcement.
+    /// Shared logic used by InvokeCmd.Execute and Aghanim's Fragment.
+    /// </summary>
+    public static async Task AddSpellToHand(CombatState combatState, CardModel canonical, Player owner)
+    {
+        // Scroll slot FIFO: enforce a max of 2 spell cards in hand.
+        var hand = PileType.Hand.GetPile(owner);
+        var scrollsInHand = hand.Cards.OfType<SpellCardBase>().ToList();
+        if (scrollsInHand.Count >= 2)
+        {
+            var oldest = scrollsInHand.First();
+            await CardCmd.Exhaust(new BlockingPlayerChoiceContext(), oldest);
+        }
+
+        var card = combatState.CreateCard(canonical, owner);
+        CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
     }
 }

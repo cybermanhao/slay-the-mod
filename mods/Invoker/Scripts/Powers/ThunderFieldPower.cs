@@ -21,7 +21,7 @@ public class ThunderFieldPower : PowerModel
     {
         if (side == CombatSide.Enemy) return;
         Flash();
-        var target = Owner.Player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+        var target = Owner.Player!.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
         if (target != null)
             await CreatureCmd.Damage(ctx, target, Amount, ValueProp.Unpowered, Owner, null);
     }

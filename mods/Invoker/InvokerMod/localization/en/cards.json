@@ -13,46 +13,59 @@
 
   "INVOKER-SUMMON_ORB_CARD.title": "Summon Quas",
   "INVOKER-SUMMON_ORB_CARD.description": "Once per turn. Channel a [blue]Quas[/blue] orb. Gain 8 + 4× (current Quas count) Block.",
+  "INVOKER-SUMMON_ORB_CARD.upgrade_description": "Once per turn. Channel a [blue]Quas[/blue] orb. Gain 8 + 4× (current Quas count) Block.",
 
   "INVOKER-SUMMON_WEX_CARD.title": "Summon Wex",
   "INVOKER-SUMMON_WEX_CARD.description": "Once per turn. Channel a [yellow]Wex[/yellow] orb. Deal 5 damage to a random enemy.",
+  "INVOKER-SUMMON_WEX_CARD.upgrade_description": "Once per turn. Channel a [yellow]Wex[/yellow] orb. Deal 5 damage to a random enemy.",
 
   "INVOKER-SUMMON_EXORT_CARD.title": "Summon Exort",
   "INVOKER-SUMMON_EXORT_CARD.description": "Once per turn. Channel an [red]Exort[/red] orb. Deal 3 damage to ALL enemies.",
+  "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "Once per turn. Channel an [red]Exort[/red] orb. Deal 3 damage to ALL enemies.",
 
   "INVOKER-INVOKE_CARD.title": "Invoke",
   "INVOKER-INVOKE_CARD.description": "Perform an [gold]Invoke[/gold] based on your current orb combination.",
   "INVOKER-INVOKE_CARD.upgrade_description": "[gold]Invoke[/gold]. Add 1 unupgraded Invoke to your hand.",
 
   "INVOKER-COLD_SNAP_CARD.title": "Cold Snap",
-  "INVOKER-COLD_SNAP_CARD.description": "[gold]Scroll[/gold]. (QQQ) Apply [gold]Cold Snap[/gold] to an enemy: each time it takes damage, lose 1 Strength. Expires at player turn end.",
+  "INVOKER-COLD_SNAP_CARD.description": "[gold]Scroll[/gold]. (QQQ) Apply [gold]Cold Snap[/gold] to an enemy: each time it takes damage, lose Strength. Expires at player turn end.",
+  "INVOKER-COLD_SNAP_CARD.upgrade_description": "[gold]Scroll[/gold]. (QQQ) Apply [gold]Cold Snap[/gold] to an enemy: each time it takes damage, lose Strength. Expires at player turn end.",
 
   "INVOKER-GHOST_WALK_CARD.title": "Ghost Walk",
   "INVOKER-GHOST_WALK_CARD.description": "[gold]Scroll[/gold]. (QQW) Gain 1 [gold]Intangible[/gold]. Next turn, Attack cards cost 99 and cannot be played.",
+  "INVOKER-GHOST_WALK_CARD.upgrade_description": "[gold]Scroll[/gold]. (QQW) Gain 1 [gold]Intangible[/gold]. Next turn, Attack cards cost 99 and cannot be played.",
 
   "INVOKER-ICE_WALL_CARD.title": "Ice Wall",
   "INVOKER-ICE_WALL_CARD.description": "[gold]Scroll[/gold]. (QQE) Deal 4 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
+  "INVOKER-ICE_WALL_CARD.upgrade_description": "[gold]Scroll[/gold]. (QQE) Deal 4 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
 
   "INVOKER-TORNADO_CARD.title": "Tornado",
   "INVOKER-TORNADO_CARD.description": "[gold]Scroll[/gold]. (QWW) Deal 10 damage to ALL enemies. Draw 1 card.",
+  "INVOKER-TORNADO_CARD.upgrade_description": "[gold]Scroll[/gold]. (QWW) Deal 10 damage to ALL enemies. Draw 1 card.",
 
   "INVOKER-DEAFENING_BLAST_CARD.title": "Deafening Blast",
   "INVOKER-DEAFENING_BLAST_CARD.description": "[gold]Scroll[/gold]. (QWE) Deal 12 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
+  "INVOKER-DEAFENING_BLAST_CARD.upgrade_description": "[gold]Scroll[/gold]. (QWE) Deal 12 damage to ALL enemies. Apply 1 [gold]Weak[/gold] to ALL enemies.",
 
   "INVOKER-E_MP_CARD.title": "EMP",
   "INVOKER-E_MP_CARD.description": "[gold]Scroll[/gold]. (WWW) Deal 20 damage to ALL enemies.",
+  "INVOKER-E_MP_CARD.upgrade_description": "[gold]Scroll[/gold]. (WWW) Deal 20 damage to ALL enemies.",
 
   "INVOKER-ALACRITY_CARD.title": "Alacrity",
   "INVOKER-ALACRITY_CARD.description": "[gold]Scroll[/gold]. (WWE) Draw 1 card. Gain 3 Strength until end of turn.",
+  "INVOKER-ALACRITY_CARD.upgrade_description": "[gold]Scroll[/gold]. (WWE) Draw 1 card. Gain 3 Strength until end of turn.",
 
   "INVOKER-CHAOS_METEOR_CARD.title": "Chaos Meteor",
   "INVOKER-CHAOS_METEOR_CARD.description": "[gold]Scroll[/gold]. (WEE) Deal 10 damage to an enemy. Then deal 5, 4, 3, 2, 1 damage to random enemies.",
+  "INVOKER-CHAOS_METEOR_CARD.upgrade_description": "[gold]Scroll[/gold]. (WEE) Deal 10 damage to an enemy. Then deal 5, 4, 3, 2, 1 damage to random enemies.",
 
   "INVOKER-FORGE_SPIRIT_CARD.title": "Forge Spirit",
-  "INVOKER-FORGE_SPIRIT_CARD.description": "[gold]Scroll[/gold]. (QEE) Summon a Forge Spirit with 6 HP. At player turn start, it attacks a random enemy for 5 and applies 1 [gold]Vulnerable[/gold]. Loses 3 HP each player turn end.",
+  "INVOKER-FORGE_SPIRIT_CARD.description": "[gold]Scroll[/gold]. (QEE) Summon a Forge Spirit. At player turn start, it attacks a random enemy and applies [gold]Vulnerable[/gold]. Loses HP each player turn end.",
+  "INVOKER-FORGE_SPIRIT_CARD.upgrade_description": "[gold]Scroll[/gold]. (QEE) Summon a Forge Spirit. At player turn start, it attacks a random enemy and applies [gold]Vulnerable[/gold]. Loses HP each player turn end.",
 
   "INVOKER-SUN_STRIKE_CARD.title": "Sun Strike",
-  "INVOKER-SUN_STRIKE_CARD.description": "[gold]Scroll[/gold]. (EEE) Deal 25~38 damage to an enemy.",
+  "INVOKER-SUN_STRIKE_CARD.description": "[gold]Scroll[/gold]. (EEE) Deal {Damage} damage to an enemy.",
+  "INVOKER-SUN_STRIKE_CARD.upgrade_description": "[gold]Scroll[/gold]. (EEE) Deal {Damage} damage to an enemy.",
 
   "INVOKER-ICE_ARMOR_CARD.title": "Ice Armor",
   "INVOKER-ICE_ARMOR_CARD.description": "Gain {Block:diff()} Block. If you have Quas orbs, gain 4 more.",
