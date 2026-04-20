@@ -1,157 +1,366 @@
-# STS2 核心机制探索
+# STS2 技术机制参考 — Invoker Mod 专用
 
-## 卡牌关键词
+> 本文档记录 Invoker Mod 开发中涉及的 STS2 + BaseLib 关键技术点，供后续维护和扩展参考。
 
-| 关键词 | 描述 | 代码使用 |
-|--------|------|----------|
-| **Exhaust** | 打出后移除直到战斗结束 | `AddKeyword(CardKeyword.Exhaust)` |
-| **Ethereal** | 回合结束若在手牌中则消耗 | 系统自动处理 |
-| **Innate** | 每次战斗开始时在手牌中 | 系统自动处理 |
-| **Retain** | 保留的卡牌不会在回合结束时丢弃 | `AddKeyword(CardKeyword.Retain)` |
-| **Sly** | 在回合结束前从手牌丢弃则免费触发 | 系统自动处理 |
-| **Eternal** | 不能从牌组中移除或转化 | 系统自动处理 |
-| **Unplayable** | 无法打出的卡牌 | 系统自动处理 |
+---
 
-## 卡牌关键词实现示例
+## 目录
+
+1. [自定义关键词注册](#自定义关键词注册)
+2. [DynamicVar 系统](#dynamicvar-系统)
+3. [卡牌生命周期钩子](#卡牌生命周期钩子)
+4. [Power 系统](#power-系统)
+5. [费用修改机制](#费用修改机制)
+6. [宠物（Pet）系统](#宠物pet系统)
+7. [球（Orb）系统](#球orb系统)
+8. [Harmony Patch](#harmony-patch)
+9. [常用 API 速查](#常用-api-速查)
+
+---
+
+## 自定义关键词注册
+
+BaseLib 提供 `[CustomEnum]` 属性自动注册自定义 `CardKeyword`：
 
 ```csharp
-// 添加关键词
-public class MyCard : CustomCardModel
+public static class InvokerKeywords
 {
-    public MyCard() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    [CustomEnum]
+    public static CardKeyword Scroll;   // ID: INVOKER-SCROLL
+
+    [CustomEnum]
+    public static CardKeyword Invoke;   // ID: INVOKER-INVOKE
+}
+```
+
+- 内部 ID 格式：`INVOKER-{fieldName}`（大写）
+- 本地化 key：`INVOKER-SCROLL.title` / `INVOKER-SCROLL.description`
+- 注册时机：`Entry.Init()` 中 `ScriptManagerBridge.LookupScriptsInAssembly()` 自动扫描
+
+---
+
+## DynamicVar 系统
+
+### 定义 CanonicalVars
+
+```csharp
+protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [new DamageVar(10m, ValueProp.Move), new CardsVar(1)];
+```
+
+### 内置变量类型
+
+| 类型 | 用途 | 访问方式 |
+|------|------|----------|
+| `DamageVar` | 伤害数值 | `DynamicVars.Damage` |
+| `BlockVar` | 格挡数值 | `DynamicVars.Block` |
+| `CardsVar` | 抽牌数量 | `DynamicVars.Cards` |
+| `PowerVar<T>` | Power 层数 | `DynamicVars.Vulnerable` / `DynamicVars.Weak` 等 |
+
+### 自定义键值变量
+
+```csharp
+protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [new DynamicVar("SpiritHp", 6m)];
+
+// 访问
+int hp = (int)DynamicVars["SpiritHp"].BaseValue;
+
+// 升级
+protected override void OnUpgrade() => DynamicVars["SpiritHp"].UpgradeValueBy(6);
+```
+
+### 升级语义
+
+```csharp
+// 增加基础值（永久）
+DynamicVars.Damage.UpgradeValueBy(4m);
+
+// 减少费用（永久）
+EnergyCost.UpgradeBy(-1);
+
+// 本战斗内费用修改
+EnergyCost.SetThisCombat(0);
+
+// 本回合内费用修改
+EnergyCost.SetThisTurn(0);
+```
+
+---
+
+## 卡牌生命周期钩子
+
+### 打出时
+
+```csharp
+protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+{
+    // ctx: 玩家选择上下文
+    // cardPlay: 包含目标等信息
+}
+```
+
+### 进入战斗时
+
+```csharp
+public override Task AfterCardEnteredCombat(CardModel card)
+{
+    // 可用于根据状态动态修改费用等
+    if (card == this && IsEnhanced())
+        EnergyCost.SetThisCombat(0);
+    return Task.CompletedTask;
+}
+```
+
+### 升级时
+
+```csharp
+protected override void OnUpgrade()
+{
+    // 修改 DynamicVars 或添加关键词
+}
+```
+
+---
+
+## Power 系统
+
+### 基础结构
+
+```csharp
+public class MyPower : PowerModel
+{
+    public override PowerType Type => PowerType.Buff;      // Buff / Debuff
+    public override PowerStackType StackType => PowerStackType.Counter; // Single / Counter
+    public override bool ShouldReceiveCombatHooks => true;  // 必须设为 true 才能接收钩子
+
+    // 回合结束触发
+    public override async Task AfterTurnEnd(PlayerChoiceContext ctx, CombatSide side)
     {
-        AddKeyword(CardKeyword.Exhaust);      // 消耗
-        AddKeyword(CardKeyword.Retain);     // 保留
-        AddKeyword(CardKeyword.Innate);     // 固有
+        if (side != CombatSide.Player) return;
+        await PowerCmd.Remove(this);  // 自我移除
     }
 }
 ```
 
-## 战斗状态效果
-
-| 效果 | 描述 |
-|------|------|
-| **Vulnerable** | 受到的伤害+50% |
-| **Weak** | 造成的伤害-25% |
-| **Frail** | 受到的伤害+25% |
-| **Regenerate** | 每回合回复生命 |
-| **Plated Armor** | 每回合获得护甲 |
-
-## Hover 提示系统 (Tooltip)
-
-游戏使用 `IHoverTip` 接口实现悬停提示。
-
-### 核心接口
+### 伤害加成钩子
 
 ```csharp
-public interface IHoverTip
+public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 {
-    string Id { get; }
-    bool IsSmart { get; }
-    bool IsDebuff { get; }
-    bool IsInstanced { get; }
-    AbstractModel? CanonicalModel { get; }
+    if (Owner != dealer) return 0m;
+    if (!props.HasFlag(ValueProp.Move) || props.HasFlag(ValueProp.Unpowered)) return 0m;
+    return Amount;
 }
 ```
 
-### HoverTipFactory 工厂类
-
-| 方法 | 用途 |
-|------|------|
-| `FromKeyword(CardKeyword)` | 从关键词创建提示 |
-| `FromPower<T>()` | 从 Power 创建提示 |
-| `FromCard<T>()` | 从卡牌创建提示 |
-| `FromRelic<T>()` | 从遗物创建提示 |
-| `FromOrb<T>()` | 从球创建提示 |
-| `Static(StaticHoverTip, vars)` | 创建静态提示 |
-
-### StaticHoverTip 枚举 (内置静态提示)
-
-| 值 | 用途 |
-|----|------|
-| Channeling | 充能 |
-| Evoke | 触发 |
-| Block | 护甲 |
-| Energy | 能量 |
-| Stun | 眩晕 |
-| SummonStatic/Dynamic | 召唤 |
-| Transform |  transform |
-| CardReward | 卡牌奖励 |
-
-### 关键词 Hover 提示生成
+### 费用修改钩子
 
 ```csharp
-// CardKeywordExtensions.cs
-public static LocString GetTitle(this CardKeyword keyword)
-    => new LocString("card_keywords", keyword.GetLocKeyPrefix() + ".title");
-
-public static LocString GetDescription(this CardKeyword keyword)
-    => new LocString("card_keywords", keyword.GetLocKeyPrefix() + ".description");
+public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+{
+    modifiedCost = originalCost;
+    if (card.Type != CardType.Attack) return false;
+    modifiedCost = 99;
+    return true;
+}
 ```
 
-本地化路径: `LocString("card_keywords", "exhaust.title")`
+### 内部数据存储
 
-### 悬停显示机制 (你说的"递归解释")
-
-Creature 类的 `HoverTips` 属性收集所有 powers 的 hover tips：
+用于 Power 需要存储额外状态（非 Amount）的场景：
 
 ```csharp
-public IEnumerable<IHoverTip> HoverTips
+public class ForgeSpiritPower : PowerModel
 {
-    get
+    private class Data { public int DecayPerTurn; }
+
+    protected override object InitInternalData() => new Data();
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        List<IHoverTip> list = new List<IHoverTip>();
-        foreach (var power in Powers)
-        {
-            IEnumerable<IHoverTip> hoverTips = power.HoverTips;
-            foreach (IHoverTip item in hoverTips)
-                list.Add(item);
-        }
-        return IHoverTip.RemoveDupes(list); // 去重
+        GetInternalData<Data>().DecayPerTurn = 3;
+        return Task.CompletedTask;
     }
 }
 ```
 
-**递归解释**: 当 hover 显示卡牌/power 时，系统会收集所有相关 IHoverTip 并合并显示。如：
-- 一张卡有关键词 "Exhaust" → 显示 Exhaust 的 hover
-- 一个生物有 power "Vulnerable" → 显示 Vulnerable 的 hover
-- 多个同类去重，保留最相关的
+---
 
-## 待探索机制
+## 费用修改机制
 
-### 1. 费用相关
-- [ ] 0 cost 机制
-- [ ] X cost（可变费用）
-- [ ] 能量获取/消耗
+### 三种费用修改方式对比
 
-### 2. 目标相关
-- [ ] SingleEnemy / AllEnemies / RandomEnemy
-- [ ] Self 目标
-- [ ] 条件目标
+| 方式 | 方法 | 持续时间 | 适用场景 |
+|------|------|----------|----------|
+| **永久升级** | `EnergyCost.UpgradeBy(n)` | 永久 | `OnUpgrade()` 中修改基础费用 |
+| **本战斗** | `EnergyCost.SetThisCombat(n)` | 当前战斗 | 增强效果（如 Cold Snap 石头增强变 0费） |
+| **本回合** | `EnergyCost.SetThisTurn(n)` | 当前回合 | 临时减费（不推荐与 Retain 共用） |
 
-### 3. 抽牌相关
-- [ ] Drawpile 操作
-- [ ] Discardpile 操作
-- [ ] Exhaustpile 操作
+### 注意事项
 
-### 4. 遗物触发
-- [ ] OnBattleStart
-- [ ] OnCardPlayed
-- [ ] OnTurnStart / OnTurnEnd
-- [ ] OnAttacked / OnDamaged
+- `SetThisTurn(0)` 在 Retain 牌上会导致**下回合费用恢复为原值**，与玩家预期不符
+- `SetThisCombat(0)` 配合 Retain 可以让牌在整个战斗中保持 0费
 
-### 5. 特殊机制
-- [ ] Block（护甲）
-- [ ] Artifact（免疫负面效果）
-- [ ] Lock（锁定效果）
-- [ ] Powers 堆叠
+---
 
-## 优先级探索计划
+## 宠物（Pet）系统
 
-| 优先级 | 机制 | 理由 |
-|--------|------|------|
-| P1 | **Retain** | Invoker 的 Invoke 卡需要保留在手牌 |
-| P2 | **Exhaust** | 很多法术需要消耗 |
-| P3 | **Innate** | 核心机制 |
-| P4 | **Vulnerable/Weak** | 最常用的战斗效果 |
-| P5 | **能量机制** | 卡牌费用系统 |
+### 创建宠物
+
+```csharp
+// 1. 创建 MonsterModel（ToMutable 获取可变副本）
+var spirit = (ForgeSpiritMonster)ModelDb.Monster<ForgeSpiritMonster>().ToMutable();
+spirit.InitialHp = hp;
+
+// 2. 在战斗中创建 Creature
+var pet = CombatState!.CreateCreature(spirit, Owner.Creature.Side, null);
+
+// 3. 添加为玩家的宠物
+await PlayerCmd.AddPet(pet, Owner);
+
+// 4. （可选）添加 DieForYouPower 让宠物替主人承伤
+await PowerCmd.Apply<DieForYouPower>(pet, 1, Owner.Creature, this);
+```
+
+### 宠物行为驱动
+
+宠物的行为通过挂在它自己身上的 `PowerModel` 实现（如 `ForgeSpiritPower`）：
+
+```csharp
+public override async Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
+{
+    // Owner 是宠物 Creature，PetOwner 是玩家
+    if (Owner.PetOwner != player) return;
+    if (!Owner.IsAlive) return;
+    // ... 执行攻击等逻辑
+}
+```
+
+---
+
+## 球（Orb）系统
+
+### 自定义 Orb
+
+```csharp
+public class QuasOrb : OrbModel
+{
+    public override decimal PassiveVal => 0m;   // 被动数值（展示用）
+    public override decimal EvokeVal => 0m;     // 触发数值（展示用）
+    public override Color DarkenedColor => new Color(0.2f, 0.5f, 0.9f);
+
+    public override Task Passive(PlayerChoiceContext choiceContext, Creature? target)
+        => Task.CompletedTask;  // 回合结束触发（当前为空）
+
+    public override Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
+        => Task.FromResult((IEnumerable<Creature>)Array.Empty<Creature>());  // 被挤出时触发（当前为空）
+}
+```
+
+### Channel 球
+
+```csharp
+await OrbCmd.Channel<QuasOrb>(ctx, owner);
+```
+
+### 读取当前球队列
+
+```csharp
+var orbs = owner.PlayerCombatState!.OrbQueue.Orbs;
+int q = orbs.Count(o => o is QuasOrb);
+int w = orbs.Count(o => o is WexOrb);
+int e = orbs.Count(o => o is ExortOrb);
+```
+
+---
+
+## Harmony Patch
+
+### Entry 初始化
+
+```csharp
+public static void Init()
+{
+    ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);
+    new Harmony("com.invoker.mod").PatchAll(typeof(Entry).Assembly);
+}
+```
+
+当前项目中没有显式定义 Harmony Patch 类（所有逻辑通过 BaseLib 的抽象类和 STS2 钩子实现）。
+
+---
+
+## 常用 API 速查
+
+### 伤害
+
+```csharp
+// 单体伤害
+await DamageCmd.Attack(dmg).FromCard(this).Targeting(target).Execute(ctx);
+
+// AOE 伤害
+await DamageCmd.Attack(dmg).FromCard(this).TargetingAllOpponents(combatState).Execute(ctx);
+
+// 随机目标伤害
+await DamageCmd.Attack(dmg).FromCard(this).TargetingRandomOpponents(combatState).Execute(ctx);
+
+// 多目标伤害（如 BurningHeartPower）
+await CreatureCmd.Damage(ctx, enemies, amount, ValueProp.Unpowered, Owner, null);
+```
+
+### 格挡
+
+```csharp
+await CreatureCmd.GainBlock(Owner.Creature, amount, ValueProp.Move, cardPlay);
+```
+
+### Power
+
+```csharp
+// 施加 Power
+await PowerCmd.Apply<WeakPower>(target, 1, Owner.Creature, this);
+
+// 移除自身
+await PowerCmd.Remove(this);
+```
+
+### 抽牌
+
+```csharp
+await CardPileCmd.Draw(ctx, count, Owner);
+```
+
+### 生成卡牌到手牌
+
+```csharp
+var card = combatState.CreateCard(canonical, owner);
+CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+```
+
+### Exhaust 卡牌
+
+```csharp
+await CardCmd.Exhaust(new BlockingPlayerChoiceContext(), card);
+```
+
+### 选择界面
+
+```csharp
+var choices = new List<CardModel> { card1, card2, card3 };
+var chosen = await CardSelectCmd.FromChooseACardScreen(ctx, choices, owner, canSkip: false);
+```
+
+---
+
+## 命名约定
+
+| 类型 | 命名模式 | 示例 |
+|------|----------|------|
+| 卡牌类 | `{Name}Card` | `ColdSnapCard`, `SummonOrbCard` |
+| Power 类 | `{Name}Power` | `ColdSnapPower`, `GhostWalkPower` |
+| 遗物类 | `{Name}` | `AghanimsScepter`, `QuasCommandStone` |
+| Monster 类 | `{Name}Monster` | `ForgeSpiritMonster` |
+| 本地化 key | `INVOKER-{UPPER_SNAKE}.title` | `INVOKER-COLD_SNAP_CARD.title` |
+| Power 本地化 key | `{UPPER_SNAKE}_POWER.title` | `COLD_SNAP_POWER.title` |
