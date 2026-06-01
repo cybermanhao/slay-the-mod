@@ -13,6 +13,9 @@ public partial class DevToolModNode : Node
     {
         GD.Print("[DevToolMod] Starting DevToolMod v0.1.0...");
 
+        // Must be called before HTTP server starts — captures game main thread context
+        GameThread.Initialize();
+
         _server = new DevToolHttpServer();
         AddChild(_server);
         _server.Start(DefaultPort);

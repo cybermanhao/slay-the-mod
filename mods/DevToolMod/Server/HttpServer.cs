@@ -2,7 +2,6 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Godot;
 using DevToolMod.Game;
 using DevToolMod.Console;
@@ -17,9 +16,10 @@ public partial class DevToolHttpServer : Node
     private readonly GameStateService _gameState = new();
     private readonly ConsoleService _console = new();
 
-    public DevToolHttpServer()
+    private static readonly JsonSerializerOptions JsonOpts = new()
     {
-    }
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    };
 
     public void Start(int port)
     {
@@ -34,11 +34,11 @@ public partial class DevToolHttpServer : Node
             _listener.Start();
             _isRunning = true;
             GD.Print($"[DevToolMod] HTTP Server listening on port {port}");
-            _ = AcceptRequestsAsync();
+            _ = AcceptLoopAsync();
         }
         catch (Exception ex)
         {
-            GD.PrintErr($"[DevToolMod] Server error: {ex.Message}");
+            GD.PrintErr($"[DevToolMod] Server start error: {ex.Message}");
         }
     }
 
@@ -49,241 +49,220 @@ public partial class DevToolHttpServer : Node
         _listener = null;
     }
 
-    private async Task AcceptRequestsAsync()
+    private async Task AcceptLoopAsync()
     {
         while (_isRunning && _listener != null)
         {
             try
             {
-                var context = await _listener.GetContextAsync();
-                _ = HandleRequestAsync(context);
+                var ctx = await _listener.GetContextAsync();
+                // Handle each request concurrently — but all game access goes via GameThread
+                _ = HandleRequestAsync(ctx);
             }
-            catch (Exception ex) when (_isRunning)
+            catch when (!_isRunning) { break; }
+            catch (Exception ex)
             {
-                GD.PrintErr($"[DevToolMod] Request error: {ex.Message}");
+                GD.PrintErr($"[DevToolMod] Accept error: {ex.Message}");
             }
-            catch { }
         }
     }
 
-    private async Task HandleRequestAsync(HttpListenerContext context)
+    private async Task HandleRequestAsync(HttpListenerContext ctx)
     {
-        var response = context.Response;
-        string responseText = "";
+        var req = ctx.Request;
+        var res = ctx.Response;
+        res.ContentType = "application/json; charset=utf-8";
 
+        string body;
+        int statusCode;
         try
         {
-            var path = context.Request.Url?.AbsolutePath ?? "/";
-            var method = context.Request.HttpMethod;
-            GD.Print($"[DevToolMod] {method} {path}");
-
-            var (statusCode, json) = RouteRequest(path, context.Request.QueryString, context.Request);
-            response.StatusCode = statusCode;
-            responseText = json;
-            response.ContentType = "application/json; charset=utf-8";
+            GD.Print($"[DevToolMod] {req.HttpMethod} {req.Url?.AbsolutePath}");
+            (statusCode, body) = await RouteAsync(req);
         }
         catch (Exception ex)
         {
-            GD.PrintErr($"[DevToolMod] Handler error: {ex}");
-            response.StatusCode = 500;
-            responseText = CreateError("internal_error", ex.Message);
+            GD.PrintErr($"[DevToolMod] Unhandled: {ex.Message}");
+            statusCode = 500;
+            body = Error("internal_error", ex.Message);
         }
 
-        var buffer = Encoding.UTF8.GetBytes(responseText);
-        response.ContentLength64 = buffer.Length;
-        await response.OutputStream.WriteAsync(buffer);
-        response.Close();
+        try
+        {
+            res.StatusCode = statusCode;
+            var buf = Encoding.UTF8.GetBytes(body);
+            res.ContentLength64 = buf.Length;
+            await res.OutputStream.WriteAsync(buf);
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"[DevToolMod] Write response error: {ex.Message}");
+        }
+        finally
+        {
+            res.Close();
+        }
     }
 
-    private (int, string) RouteRequest(string path, NameValueCollection query, HttpListenerRequest request)
+    // ---------------------------------------------------------------------------
+    // Router — all game-data paths go through GameThread.InvokeAsync
+    // ---------------------------------------------------------------------------
+
+    private async Task<(int, string)> RouteAsync(HttpListenerRequest req)
     {
+        var path = req.Url?.AbsolutePath ?? "/";
+        var method = req.HttpMethod;
+        var query = req.QueryString;
+
         return path switch
         {
             "/" or "/health" => HandleHealth(),
-            "/state" => HandleState(),
-            "/actions" => HandleActions(),
-            "/scene_tree" => HandleSceneTree(query),
-            "/console" => HandleConsole(query, request),
-            "/screenshot" => HandleScreenshot(),
-            _ when path.StartsWith("/node/") => HandleFindNode(path.Substring(6)),
-            _ => (404, CreateError("not_found", $"Unknown endpoint: {path}"))
+
+            "/state" => (200, Json(await GameThread.InvokeAsync(() => _gameState.BuildStatePayload()))),
+
+            "/actions" => (200, Json(await GameThread.InvokeAsync(() =>
+                new { actions = _gameState.BuildStatePayload().AvailableActions }))),
+
+            "/screenshot" => await GameThread.InvokeAsync(HandleScreenshot),
+
+            "/scene_tree" => await GameThread.InvokeAsync(() => HandleSceneTree(query)),
+
+            "/console" => await HandleConsoleAsync(query, req),
+
+            "/action" when method == "POST" => await HandleActionAsync(req),
+
+            _ when path.StartsWith("/node/") =>
+                await GameThread.InvokeAsync(() => HandleFindNode(path[6..])),
+
+            _ => (404, Error("not_found", $"Unknown endpoint: {path}"))
         };
     }
 
-    private (int, string) HandleHealth()
+    // ---------------------------------------------------------------------------
+    // Individual handlers — game-data handlers run on game thread
+    // ---------------------------------------------------------------------------
+
+    private (int, string) HandleHealth() => (200, Json(new
     {
-        return (200, JsonSerializer.Serialize(new
-        {
-            ok = true,
-            service = "DevToolMod",
-            version = "0.1.0",
-            endpoints = new[] { "/health", "/state", "/actions", "/scene_tree", "/console", "/screenshot", "/node/<path>" }
-        }));
-    }
+        ok = true,
+        service = "DevToolMod",
+        version = "0.1.0",
+        endpoints = new[] { "/health", "/state", "/actions", "/screenshot", "/scene_tree", "/console", "/action", "/node/<path>" }
+    }));
 
-    private (int, string) HandleState()
-    {
-        try
-        {
-            var state = _gameState.BuildStatePayload();
-            return (200, JsonSerializer.Serialize(state));
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"[DevToolMod] State error: {ex}");
-            return (500, CreateError("state_error", ex.Message));
-        }
-    }
-
-    private (int, string) HandleActions()
-    {
-        try
-        {
-            var state = _gameState.BuildStatePayload();
-            return (200, JsonSerializer.Serialize(new { actions = state.AvailableActions }));
-        }
-        catch (Exception ex)
-        {
-            return (500, CreateError("actions_error", ex.Message));
-        }
-    }
-
-    private (int, string) HandleConsole(NameValueCollection query, HttpListenerRequest request)
-    {
-        try
-        {
-            string? cmd = query["cmd"];
-            if (string.IsNullOrWhiteSpace(cmd))
-            {
-                // Read command from request body for POST
-                if (request.HttpMethod == "POST")
-                {
-                    using var reader = new StreamReader(request.InputStream, request.ContentEncoding);
-                    var body = reader.ReadToEndAsync().GetAwaiter().GetResult();
-                    var json = JsonSerializer.Deserialize<Dictionary<string, string>>(body);
-                    json?.TryGetValue("cmd", out cmd);
-                }
-            }
-
-            if (string.IsNullOrWhiteSpace(cmd))
-            {
-                // List available commands
-                var commands = _console.GetAvailableCommands();
-                return (200, JsonSerializer.Serialize(new { commands }));
-            }
-
-            var result = _console.ExecuteCommand(cmd);
-            return (200, JsonSerializer.Serialize(new { success = result.Success, message = result.Message }));
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"[DevToolMod] Console error: {ex}");
-            return (500, CreateError("console_error", ex.Message));
-        }
-    }
-
-    private (int, string) HandleSceneTree(NameValueCollection query)
-    {
-        try
-        {
-            var tree = GetTree();
-            if (tree?.Root == null)
-                return (500, CreateError("no_root", "Could not get scene root"));
-
-            var path = query["path"];
-            var depthStr = query["depth"];
-            var maxDepth = int.TryParse(depthStr, out var d) ? d : 2;
-
-            Node target = tree.Root;
-            if (!string.IsNullOrEmpty(path))
-            {
-                target = FindNodeByPath(tree.Root, path) ?? tree.Root;
-            }
-
-            var data = SceneTreeSerializer.Serialize(target, maxDepth);
-            return (200, JsonSerializer.Serialize(data));
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"[DevToolMod] SceneTree error: {ex}");
-            return (500, CreateError("scene_tree_error", ex.Message));
-        }
-    }
-
-    private (int, string) HandleFindNode(string nodePath)
-    {
-        try
-        {
-            var tree = GetTree();
-            if (tree?.Root == null)
-                return (500, CreateError("no_root", "Could not get scene root"));
-
-            var node = FindNodeByPath(tree.Root, nodePath);
-            if (node == null)
-                return (404, CreateError("node_not_found", $"Node not found: {nodePath}"));
-
-            var data = SceneTreeSerializer.Serialize(node, 2);
-            return (200, JsonSerializer.Serialize(data));
-        }
-        catch (Exception ex)
-        {
-            return (500, CreateError("find_node_error", ex.Message));
-        }
-    }
-
+    // Runs on game thread via GameThread.InvokeAsync
     private (int, string) HandleScreenshot()
     {
-        try
-        {
-            var tree = GetTree();
-            if (tree?.Root == null)
-                return (500, CreateError("no_root", "Could not get scene root"));
+        var viewport = GetTree()?.Root?.GetViewport();
+        if (viewport == null)
+            return (500, Error("no_viewport", "Could not get viewport"));
 
-            var viewport = tree.Root.GetViewport();
-            if (viewport == null)
-                return (500, CreateError("no_viewport", "Could not get viewport"));
+        var image = viewport.GetTexture().GetImage();
+        if (image == null)
+            return (500, Error("no_image", "Could not capture screenshot"));
 
-            var image = viewport.GetTexture().GetImage();
-            if (image == null)
-                return (500, CreateError("no_image", "Could not capture screenshot"));
-
-            var pngData = image.SavePngToBuffer();
-            return (200, Convert.ToBase64String(pngData));
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"[DevToolMod] Screenshot error: {ex}");
-            return (500, CreateError("screenshot_error", ex.Message));
-        }
+        var png = image.SavePngToBuffer();
+        return (200, Json(new { format = "png", data = Convert.ToBase64String(png) }));
     }
 
-    private Node? FindNodeByPath(Node root, string path)
+    // Runs on game thread
+    private (int, string) HandleSceneTree(NameValueCollection query)
+    {
+        var tree = GetTree();
+        if (tree?.Root == null)
+            return (500, Error("no_root", "Could not get scene root"));
+
+        var path = query["path"];
+        var maxDepth = int.TryParse(query["depth"], out var d) ? d : 2;
+
+        Node target = tree.Root;
+        if (!string.IsNullOrEmpty(path))
+            target = FindNodeByPath(tree.Root, path) ?? tree.Root;
+
+        return (200, Json(SceneTreeSerializer.Serialize(target, maxDepth)));
+    }
+
+    // Runs on game thread
+    private (int, string) HandleFindNode(string nodePath)
+    {
+        var tree = GetTree();
+        if (tree?.Root == null)
+            return (500, Error("no_root", "Could not get scene root"));
+
+        var node = FindNodeByPath(tree.Root, nodePath);
+        if (node == null)
+            return (404, Error("node_not_found", $"Node not found: {nodePath}"));
+
+        return (200, Json(SceneTreeSerializer.Serialize(node, 2)));
+    }
+
+    // Console: read body on HTTP thread, then dispatch command to game thread
+    private async Task<(int, string)> HandleConsoleAsync(NameValueCollection query, HttpListenerRequest req)
+    {
+        string? cmd = query["cmd"];
+
+        if (string.IsNullOrWhiteSpace(cmd) && req.HttpMethod == "POST")
+        {
+            using var reader = new StreamReader(req.InputStream, req.ContentEncoding);
+            var rawBody = await reader.ReadToEndAsync();
+            try
+            {
+                var parsed = JsonSerializer.Deserialize<Dictionary<string, string>>(rawBody);
+                parsed?.TryGetValue("cmd", out cmd);
+            }
+            catch { /* ignore parse errors */ }
+        }
+
+        if (string.IsNullOrWhiteSpace(cmd))
+            return (200, Json(new { commands = _console.GetAvailableCommands() }));
+
+        // Execute on game thread — no blocking, no deadlock
+        var result = await GameThread.InvokeAsync(() => _console.ExecuteCommandAsync(cmd));
+        return (200, Json(new { success = result.Success, message = result.Message }));
+    }
+
+    // Action: read body on HTTP thread, then dispatch to game thread
+    private async Task<(int, string)> HandleActionAsync(HttpListenerRequest req)
+    {
+        string rawBody;
+        using (var reader = new StreamReader(req.InputStream, req.ContentEncoding))
+            rawBody = await reader.ReadToEndAsync();
+
+        ActionRequest? actionReq;
+        try { actionReq = JsonSerializer.Deserialize<ActionRequest>(rawBody, JsonOpts); }
+        catch (Exception ex) { return (400, Error("invalid_json", ex.Message)); }
+
+        if (string.IsNullOrWhiteSpace(actionReq?.action))
+            return (400, Error("invalid_request", "Request body must contain 'action' field"));
+
+        var result = await GameThread.InvokeAsync(() => ActionService.ExecuteAsync(actionReq));
+        return (200, Json(result));
+    }
+
+    // ---------------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------------
+
+    private static string Json<T>(T value) =>
+        JsonSerializer.Serialize(value, JsonOpts);
+
+    private static string Error(string code, string message) =>
+        JsonSerializer.Serialize(new { ok = false, error = new { code, message } });
+
+    private static Node? FindNodeByPath(Node root, string path)
     {
         if (string.IsNullOrEmpty(path)) return root;
-
-        var parts = path.Split('/');
         var current = root;
-
-        foreach (var part in parts)
+        foreach (var part in path.Split('/'))
         {
-            if (current == null) return null;
-            var found = false;
+            Node? found = null;
             foreach (var child in current.GetChildren())
             {
-                if (child.Name == part)
-                {
-                    current = child;
-                    found = true;
-                    break;
-                }
+                if (child.Name == part) { found = child; break; }
             }
-            if (!found) return null;
+            if (found == null) return null;
+            current = found;
         }
         return current;
-    }
-
-    private static string CreateError(string code, string message)
-    {
-        return JsonSerializer.Serialize(new { ok = false, error = new { code, message } });
     }
 }
