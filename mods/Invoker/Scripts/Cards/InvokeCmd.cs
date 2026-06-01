@@ -62,4 +62,31 @@ public static class InvokeCmd
         if (ethereal)  CardCmd.ApplyKeyword(card, CardKeyword.Ethereal);
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, owner);
     }
+
+    /// <summary>
+    /// Shows Quas/Wex/Exort choice screen, then channels the chosen orb <paramref name="count"/> times.
+    /// Follows the same choice pattern as SummonCard.
+    /// </summary>
+    public static async Task ChannelChosenOrb(PlayerChoiceContext ctx, CardModel source, int count = 1)
+    {
+        var combat = (CombatState)source.CombatState!;
+        var choices = new List<CardModel>
+        {
+            combat.CreateCard(ModelDb.Card<SummonQuasCard>(), source.Owner),
+            combat.CreateCard(ModelDb.Card<SummonWexCard>(), source.Owner),
+            combat.CreateCard(ModelDb.Card<SummonExortCard>(), source.Owner),
+        };
+        var chosen = await CardSelectCmd.FromChooseACardScreen(ctx, choices, source.Owner, canSkip: false);
+        if (chosen == null) { Entry.Log.Warn("ChannelChosenOrb: no card chosen"); return; }
+
+        for (int i = 0; i < count; i++)
+        {
+            if (chosen is SummonQuasCard)
+                await OrbCmd.Channel<QuasOrb>(ctx, source.Owner);
+            else if (chosen is SummonWexCard)
+                await OrbCmd.Channel<WexOrb>(ctx, source.Owner);
+            else if (chosen is SummonExortCard)
+                await OrbCmd.Channel<ExortOrb>(ctx, source.Owner);
+        }
+    }
 }

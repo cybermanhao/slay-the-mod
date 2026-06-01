@@ -23,6 +23,18 @@
   "INVOKER-SUMMON_EXORT_CARD.description": "[gold]Switch Orb (Exort)[/gold]. Once per turn. Deal {Damage} damage to ALL enemies.",
   "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "[gold]Switch Orb (Exort)[/gold]. Once per turn. Deal {Damage} damage to ALL enemies.",
 
+  "INVOKER-FLAME_STRIKE_CARD.title": "Flame Strike",
+  "INVOKER-FLAME_STRIKE_CARD.description": "Deal {Damage} damage. [gold]Switch Orb (Exort)[/gold].",
+  "INVOKER-FLAME_STRIKE_CARD.upgrade_description": "Deal {Damage} damage. [gold]Switch Orb (Exort)[/gold].",
+
+  "INVOKER-SWIFT_THUNDER_CARD.title": "Swift Thunder",
+  "INVOKER-SWIFT_THUNDER_CARD.description": "Draw {Cards} cards. [gold]Switch Orb (Wex)[/gold].",
+  "INVOKER-SWIFT_THUNDER_CARD.upgrade_description": "Draw {Cards} cards. [gold]Switch Orb (Wex)[/gold]. (0 cost)",
+
+  "INVOKER-ICE_SHIELD_CARD.title": "Ice Shield",
+  "INVOKER-ICE_SHIELD_CARD.description": "Gain {Block} Block. [gold]Switch Orb (Quas)[/gold].",
+  "INVOKER-ICE_SHIELD_CARD.upgrade_description": "Gain {Block} Block. [gold]Switch Orb (Quas)[/gold].",
+
   "INVOKER-INVOKE_CARD.title": "Invoke",
   "INVOKER-INVOKE_CARD.description": "Perform an [gold]Invoke[/gold] based on your current orb combination.",
   "INVOKER-INVOKE_CARD.upgrade_description": "[gold]Invoke[/gold]. Add 1 unupgraded Invoke to your hand.",

@@ -23,6 +23,18 @@
   "INVOKER-SUMMON_EXORT_CARD.description": "[gold]切球（炎）[/gold]。每回合一次。对所有敌人造成 {Damage} 点伤害。",
   "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "[gold]切球（炎）[/gold]。每回合一次。对所有敌人造成 {Damage} 点伤害。",
 
+  "INVOKER-FLAME_STRIKE_CARD.title": "烈焰打击",
+  "INVOKER-FLAME_STRIKE_CARD.description": "造成 {Damage} 点伤害。[gold]切球（炎）[/gold]。",
+  "INVOKER-FLAME_STRIKE_CARD.upgrade_description": "造成 {Damage} 点伤害。[gold]切球（炎）[/gold]。",
+
+  "INVOKER-SWIFT_THUNDER_CARD.title": "雷思敏捷",
+  "INVOKER-SWIFT_THUNDER_CARD.description": "抽 {Cards} 张牌。[gold]切球（雷）[/gold]。",
+  "INVOKER-SWIFT_THUNDER_CARD.upgrade_description": "抽 {Cards} 张牌。[gold]切球（雷）[/gold]。（费用→0）",
+
+  "INVOKER-ICE_SHIELD_CARD.title": "寒冰护盾",
+  "INVOKER-ICE_SHIELD_CARD.description": "获得 {Block} 点格挡。[gold]切球（冰）[/gold]。",
+  "INVOKER-ICE_SHIELD_CARD.upgrade_description": "获得 {Block} 点格挡。[gold]切球（冰）[/gold]。",
+
   "INVOKER-INVOKE_CARD.title": "元素祈唤",
   "INVOKER-INVOKE_CARD.description": "根据当前元素球的组合进行一次[gold]祈唤[/gold]。",
   "INVOKER-INVOKE_CARD.upgrade_description": "[gold]祈唤[/gold]。将1张未升级的元素祈唤加入手牌。",
