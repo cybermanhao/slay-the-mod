@@ -41,5 +41,9 @@
 
   "INVOKER-INVOKER_POWER.title": "祈唤者",
   "INVOKER-INVOKER_POWER.description": "祈唤者角色能力。",
-  "INVOKER-INVOKER_POWER.smartDescription": "祈唤者角色能力。"
+  "INVOKER-INVOKER_POWER.smartDescription": "祈唤者角色能力。",
+
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.title": "元素共鸣",
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.description": "每回合开始，将一张虚无的祈唤加入手牌。",
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.smartDescription": "每回合开始，将一张虚无的[gold]祈唤[/gold]加入手牌。"
 }

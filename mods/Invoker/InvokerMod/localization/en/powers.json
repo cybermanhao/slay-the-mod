@@ -33,5 +33,9 @@
 
   "INVOKER-INVOKER_POWER.title": "Invoker",
   "INVOKER-INVOKER_POWER.description": "Invoker character power.",
-  "INVOKER-INVOKER_POWER.smartDescription": "Invoker character power."
+  "INVOKER-INVOKER_POWER.smartDescription": "Invoker character power.",
+
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.title": "Elemental Resonance",
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.description": "At the start of each turn, add an Ethereal Invoke to your hand.",
+  "INVOKER-ELEMENTAL_RESONANCE_POWER.smartDescription": "At the start of each turn, add an Ethereal [gold]Invoke[/gold] to your hand."
 }

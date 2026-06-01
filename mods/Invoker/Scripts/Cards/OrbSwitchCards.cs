@@ -200,3 +200,28 @@ public class OrbInvokeCard : InvokerCard
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }
+
+// ═══════════════════════════════════════════════════
+// 稀有 — 能力牌
+// ═══════════════════════════════════════════════════
+
+/// <summary>
+/// 元素共鸣 — Rare Power: 每回合开始，将一张虚无「祈唤」加入手牌。
+/// 升级后该祈唤费用变为 0。Amount: 1=普通, 0=升级(free)。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class ElementalResonanceCard : InvokerCard
+{
+    protected override string ImageFileName => "invoke";
+    private bool _upgraded = false;
+
+    public ElementalResonanceCard() : base(1, CardType.Power, CardRarity.Rare, TargetType.None) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        int amount = _upgraded ? 0 : 1;
+        await CommonActions.Apply<ElementalResonancePower>(Owner.Creature, this, amount);
+    }
+
+    protected override void OnUpgrade() => _upgraded = true;
+}

@@ -167,5 +167,9 @@
 
   "INVOKER-ORB_INVOKE_CARD.title": "Orb Invoke",
   "INVOKER-ORB_INVOKE_CARD.description": "Choose an orb. [gold]Switch Orb[/gold]. [gold]Invoke[/gold]. Draw 1 card.",
-  "INVOKER-ORB_INVOKE_CARD.upgrade_description": "Choose an orb. [gold]Switch Orb[/gold]. [gold]Invoke[/gold]. Draw 1 card. (0 cost)"
+  "INVOKER-ORB_INVOKE_CARD.upgrade_description": "Choose an orb. [gold]Switch Orb[/gold]. [gold]Invoke[/gold]. Draw 1 card. (0 cost)",
+
+  "INVOKER-ELEMENTAL_RESONANCE_CARD.title": "Elemental Resonance",
+  "INVOKER-ELEMENTAL_RESONANCE_CARD.description": "Each turn start, add an Ethereal [gold]Invoke[/gold] to your hand.",
+  "INVOKER-ELEMENTAL_RESONANCE_CARD.upgrade_description": "Each turn start, add a free Ethereal [gold]Invoke[/gold] to your hand."
 }
