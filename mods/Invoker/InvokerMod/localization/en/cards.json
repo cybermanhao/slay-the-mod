@@ -143,5 +143,17 @@
 
   "INVOKER-SPELL_WEAVE_CARD.title": "Spell Weave",
   "INVOKER-SPELL_WEAVE_CARD.description": "Gain {Block:diff()} Block. [gold]Invoke[/gold].",
-  "INVOKER-SPELL_WEAVE_CARD.upgrade_description": "Gain {Block:diff()} Block. [gold]Invoke[/gold]."
+  "INVOKER-SPELL_WEAVE_CARD.upgrade_description": "Gain {Block:diff()} Block. [gold]Invoke[/gold].",
+
+  "INVOKER-QUAS_INVOKE_CARD.title": "Quas Invoke",
+  "INVOKER-QUAS_INVOKE_CARD.description": "[gold]Switch Orb (Quas)[/gold]. [gold]Invoke[/gold].",
+  "INVOKER-QUAS_INVOKE_CARD.upgrade_description": "[gold]Switch Orb (Quas)[/gold]. [gold]Invoke[/gold]. (0 cost)",
+
+  "INVOKER-WEX_INVOKE_CARD.title": "Wex Invoke",
+  "INVOKER-WEX_INVOKE_CARD.description": "Deal {Damage} damage. [gold]Switch Orb (Wex)[/gold]. [gold]Invoke[/gold].",
+  "INVOKER-WEX_INVOKE_CARD.upgrade_description": "Deal {Damage} damage. [gold]Switch Orb (Wex)[/gold]. [gold]Invoke[/gold].",
+
+  "INVOKER-EXORT_INVOKE_CARD.title": "Exort Invoke",
+  "INVOKER-EXORT_INVOKE_CARD.description": "Deal {Damage} damage to ALL enemies. [gold]Switch Orb (Exort)[/gold]. [gold]Invoke[/gold].",
+  "INVOKER-EXORT_INVOKE_CARD.upgrade_description": "Deal {Damage} damage to ALL enemies. [gold]Switch Orb (Exort)[/gold]. [gold]Invoke[/gold]."
 }

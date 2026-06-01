@@ -73,3 +73,69 @@ public class IceShieldCard : InvokerCard
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(4m);
 }
+
+// ═══════════════════════════════════════════════════
+// 普通/罕见 — 固定切球 + Invoke
+// ═══════════════════════════════════════════════════
+
+/// <summary>
+/// 冰脉祈唤 — Common Skill: 切入一个 Quas，进行一次祈唤。
+/// 切球在祈唤之前，使新队列状态参与 Invoke。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class QuasInvokeCard : InvokerCard
+{
+    protected override string ImageFileName => "invoke";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
+    public QuasInvokeCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await OrbCmd.Channel<QuasOrb>(ctx, Owner);
+        await InvokeCmd.Execute(ctx, this);
+    }
+
+    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+}
+
+/// <summary>
+/// 雷鸣祈唤 — Uncommon Attack: 造成 5 伤害，切入一个 Wex，进行一次祈唤。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class WexInvokeCard : InvokerCard
+{
+    protected override string ImageFileName => "thunder_strike";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
+    public WexInvokeCard() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target!).Execute(ctx);
+        await OrbCmd.Channel<WexOrb>(ctx, Owner);
+        await InvokeCmd.Execute(ctx, this);
+    }
+
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);
+}
+
+/// <summary>
+/// 炎核祈唤 — Uncommon Skill: 对所有敌人造成 4 伤害，切入一个 Exort，进行一次祈唤。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class ExortInvokeCard : InvokerCard
+{
+    protected override string ImageFileName => "fireball";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
+    public ExortInvokeCard() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.None) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState!).Execute(ctx);
+        await OrbCmd.Channel<ExortOrb>(ctx, Owner);
+        await InvokeCmd.Execute(ctx, this);
+    }
+
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+}
