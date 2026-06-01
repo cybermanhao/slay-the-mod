@@ -2,6 +2,9 @@
   "INVOKER-SCROLL.title": "卷轴",
   "INVOKER-SCROLL.description": "此法术铭刻于卷轴之上。你最多携带 2 个[gold]卷轴[/gold]；当第3个生成时，最旧的将被[gold]耗竭[/gold]。[gold]保留[/gold]：回合结束时不弃牌。",
 
+  "INVOKER-SWITCH_ORB.title": "切球",
+  "INVOKER-SWITCH_ORB.description": "将一个新元素球注入球槽队列。若球槽已满，最旧的球将被移出。切球改变当前元素组合，影响[gold]祈唤[/gold]出的法术。",
+
   "INVOKER-INVOKE.title": "祈唤",
   "INVOKER-INVOKE.description": "读取当前球槽（Q W E）的组合，生成对应技能牌加入手牌。",
 

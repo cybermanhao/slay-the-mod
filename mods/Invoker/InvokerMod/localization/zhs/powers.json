@@ -1,29 +1,45 @@
 {
-  "COLD_SNAP_POWER.title": "急速冷却",
-  "COLD_SNAP_POWER.description": "每次受到伤害时，失去力量。玩家回合结束时消失。",
-  "COLD_SNAP_POWER.smartDescription": "每次受到伤害时，失去[blue]{Amount}[/blue]点力量。玩家回合结束时消失。",
+  "INVOKER-COLD_SNAP_POWER.title": "急速冷却",
+  "INVOKER-COLD_SNAP_POWER.description": "每次受到伤害时，叠加1层冻结。玩家回合结束时消失。",
+  "INVOKER-COLD_SNAP_POWER.smartDescription": "每次受到伤害时，叠加[blue]{Amount}[/blue]层[gold]冻结[/gold]。玩家回合结束时消失。",
 
-  "GHOST_WALK_POWER.title": "幽灵漫步",
-  "GHOST_WALK_POWER.description": "下一个玩家回合中，攻击牌费用变为99，无法打出。",
-  "GHOST_WALK_POWER.smartDescription": "下一个玩家回合中，攻击牌费用变为99，无法打出。",
+  "INVOKER-GHOST_WALK_POWER.title": "幻影束缚",
+  "INVOKER-GHOST_WALK_POWER.description": "处于幻影状态：本回合结束前无法打出攻击牌。",
+  "INVOKER-GHOST_WALK_POWER.smartDescription": "处于幻影状态：本回合结束前无法打出攻击牌。",
 
-  "TEMP_STRENGTH_POWER.title": "临时力量",
-  "TEMP_STRENGTH_POWER.description": "攻击伤害提升。回合结束时消失。",
-  "TEMP_STRENGTH_POWER.smartDescription": "攻击伤害+[blue]{Amount}[/blue]。回合结束时消失。",
+  "INVOKER-FROZEN_POWER.title": "冻结",
+  "INVOKER-FROZEN_POWER.description": "每次攻击造成的伤害降低。每个敌方回合末-1层。",
+  "INVOKER-FROZEN_POWER.smartDescription": "每次攻击造成的伤害减少[blue]{Amount}[/blue]点。每个敌方回合末-1层。",
 
-  "FORGE_SPIRIT_POWER.title": "熔炉精灵",
-  "FORGE_SPIRIT_POWER.description": "每回合玩家回合开始时，对随机敌人造成5点伤害并施加1层脆弱。每回合玩家回合结束时损失HP。",
-  "FORGE_SPIRIT_POWER.smartDescription": "每回合玩家回合开始时，对随机敌人造成5点伤害并施加1层[gold]脆弱[/gold]。剩余[blue]{Amount}[/blue]点HP。",
+  "INVOKER-BURN_POWER.title": "灼伤",
+  "INVOKER-BURN_POWER.description": "每个敌方回合结束时受到等同于层数的伤害，然后层数-1。",
+  "INVOKER-BURN_POWER.smartDescription": "每个敌方回合结束时受到[blue]{Amount}[/blue]点伤害，然后层数-1。",
 
-  "FROST_SHELL_POWER.title": "冰甲",
-  "FROST_SHELL_POWER.description": "每回合开始时，获得格挡。",
-  "FROST_SHELL_POWER.smartDescription": "每回合开始时，获得[blue]{Amount}[/blue]点格挡。",
+  "INVOKER-TEMP_STRENGTH_POWER.title": "临时力量",
+  "INVOKER-TEMP_STRENGTH_POWER.description": "攻击伤害提升。回合结束时消失。",
+  "INVOKER-TEMP_STRENGTH_POWER.smartDescription": "攻击伤害+[blue]{Amount}[/blue]。回合结束时消失。",
 
-  "THUNDER_FIELD_POWER.title": "雷场",
-  "THUNDER_FIELD_POWER.description": "每回合结束时，对随机敌人造成伤害。",
-  "THUNDER_FIELD_POWER.smartDescription": "每回合结束时，对随机敌人造成[blue]{Amount}[/blue]点伤害。",
+  "INVOKER-FORGE_SPIRIT_POWER.title": "熔炉精灵",
+  "INVOKER-FORGE_SPIRIT_POWER.description": "每玩家回合结束时，对随机敌人造成5点伤害并施加1层灼痕。回合耗尽后消亡。",
+  "INVOKER-FORGE_SPIRIT_POWER.smartDescription": "每玩家回合结束时，对随机敌人造成5点伤害并施加1层[gold]灼痕[/gold]。剩余[blue]{Amount}[/blue]回合。",
 
-  "BURNING_HEART_POWER.title": "烈焰之心",
-  "BURNING_HEART_POWER.description": "每回合敌方回合结束时，对所有敌人造成伤害。",
-  "BURNING_HEART_POWER.smartDescription": "每回合敌方回合结束时，对所有敌人造成[blue]{Amount}[/blue]点伤害。"
+  "INVOKER-SCORCHED_POWER.title": "灼痕",
+  "INVOKER-SCORCHED_POWER.description": "受到的所有攻击伤害额外增加。",
+  "INVOKER-SCORCHED_POWER.smartDescription": "受到的所有攻击伤害额外增加[blue]{Amount}[/blue]点。",
+
+  "INVOKER-FROST_SHELL_POWER.title": "冰甲护盾",
+  "INVOKER-FROST_SHELL_POWER.description": "每回合开始时，获得格挡。",
+  "INVOKER-FROST_SHELL_POWER.smartDescription": "每回合开始时，获得[blue]{Amount}[/blue]点格挡。",
+
+  "INVOKER-THUNDER_FIELD_POWER.title": "雷场",
+  "INVOKER-THUNDER_FIELD_POWER.description": "每回合结束时，对随机敌人造成伤害。",
+  "INVOKER-THUNDER_FIELD_POWER.smartDescription": "每回合结束时，对随机敌人造成[blue]{Amount}[/blue]点伤害。",
+
+  "INVOKER-BURNING_HEART_POWER.title": "烈焰之心",
+  "INVOKER-BURNING_HEART_POWER.description": "每回合敌方回合结束时，对所有敌人造成伤害。",
+  "INVOKER-BURNING_HEART_POWER.smartDescription": "每回合敌方回合结束时，对所有敌人造成[blue]{Amount}[/blue]点伤害。",
+
+  "INVOKER-INVOKER_POWER.title": "祈唤者",
+  "INVOKER-INVOKER_POWER.description": "祈唤者角色能力。",
+  "INVOKER-INVOKER_POWER.smartDescription": "祈唤者角色能力。"
 }

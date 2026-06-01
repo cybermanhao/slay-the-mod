@@ -2,6 +2,9 @@
   "INVOKER-SCROLL.title": "Scroll",
   "INVOKER-SCROLL.description": "This spell is inscribed onto a Scroll. You may only carry 2 [gold]Scrolls[/gold] at once; when a 3rd is created, the oldest is [gold]Exhausted[/gold]. [gold]Retain[/gold]: not discarded at end of turn.",
 
+  "INVOKER-SWITCH_ORB.title": "Switch Orb",
+  "INVOKER-SWITCH_ORB.description": "Channel a new elemental orb into the queue. If full, the oldest orb is displaced. Switching orbs changes your element combination, affecting what [gold]Invoke[/gold] produces.",
+
   "INVOKER-INVOKE.title": "Invoke",
   "INVOKER-INVOKE.description": "Read the current orb lineup (Q W E) and generate the matching spell card.",
 

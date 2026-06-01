@@ -1,29 +1,37 @@
 {
-  "COLD_SNAP_POWER.title": "Cold Snap",
-  "COLD_SNAP_POWER.description": "Each time this creature takes damage, lose Strength. Expires at player turn end.",
-  "COLD_SNAP_POWER.smartDescription": "Each time this creature takes damage, lose [blue]{Amount}[/blue] Strength. Expires at player turn end.",
+  "INVOKER-COLD_SNAP_POWER.title": "Cold Snap",
+  "INVOKER-COLD_SNAP_POWER.description": "Each time this creature takes damage, lose Strength. Expires at player turn end.",
+  "INVOKER-COLD_SNAP_POWER.smartDescription": "Each time this creature takes damage, lose [blue]{Amount}[/blue] Strength. Expires at player turn end.",
 
-  "GHOST_WALK_POWER.title": "Ghost Walk",
-  "GHOST_WALK_POWER.description": "Next player turn, Attack cards cost 99 and cannot be played.",
-  "GHOST_WALK_POWER.smartDescription": "Next player turn, Attack cards cost 99 and cannot be played.",
+  "INVOKER-GHOST_WALK_POWER.title": "Ghost Walk",
+  "INVOKER-GHOST_WALK_POWER.description": "Next player turn, Attack cards cost 99 and cannot be played.",
+  "INVOKER-GHOST_WALK_POWER.smartDescription": "Next player turn, Attack cards cost 99 and cannot be played.",
 
-  "TEMP_STRENGTH_POWER.title": "Temporary Strength",
-  "TEMP_STRENGTH_POWER.description": "Attack damage increased. Expires at end of turn.",
-  "TEMP_STRENGTH_POWER.smartDescription": "Attack damage +[blue]{Amount}[/blue]. Expires at end of turn.",
+  "INVOKER-TEMP_STRENGTH_POWER.title": "Temporary Strength",
+  "INVOKER-TEMP_STRENGTH_POWER.description": "Attack damage increased. Expires at end of turn.",
+  "INVOKER-TEMP_STRENGTH_POWER.smartDescription": "Attack damage +[blue]{Amount}[/blue]. Expires at end of turn.",
 
-  "FORGE_SPIRIT_POWER.title": "Forge Spirit",
-  "FORGE_SPIRIT_POWER.description": "At player turn start, deal 5 damage to a random enemy and apply 1 Vulnerable. Loses HP each player turn end.",
-  "FORGE_SPIRIT_POWER.smartDescription": "At player turn start, deal 5 damage to a random enemy and apply 1 [gold]Vulnerable[/gold]. [blue]{Amount}[/blue] HP remaining.",
+  "INVOKER-FORGE_SPIRIT_POWER.title": "Forge Spirit",
+  "INVOKER-FORGE_SPIRIT_POWER.description": "At player turn end, deal 5 damage to a random enemy and apply 1 Scorched. Expires after turns.",
+  "INVOKER-FORGE_SPIRIT_POWER.smartDescription": "At player turn end, deal 5 damage and apply 1 [gold]Scorched[/gold]. [blue]{Amount}[/blue] turns remaining.",
 
-  "FROST_SHELL_POWER.title": "Frost Shell",
-  "FROST_SHELL_POWER.description": "At the start of your turn, gain Block.",
-  "FROST_SHELL_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] Block.",
+  "INVOKER-SCORCHED_POWER.title": "Scorched",
+  "INVOKER-SCORCHED_POWER.description": "Takes extra damage from all attacks.",
+  "INVOKER-SCORCHED_POWER.smartDescription": "Takes [blue]{Amount}[/blue] extra damage from all attacks.",
 
-  "THUNDER_FIELD_POWER.title": "Thunder Field",
-  "THUNDER_FIELD_POWER.description": "At the end of your turn, deal damage to a random enemy.",
-  "THUNDER_FIELD_POWER.smartDescription": "At the end of your turn, deal [blue]{Amount}[/blue] damage to a random enemy.",
+  "INVOKER-FROST_SHELL_POWER.title": "Frost Shell",
+  "INVOKER-FROST_SHELL_POWER.description": "At the start of your turn, gain Block.",
+  "INVOKER-FROST_SHELL_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] Block.",
 
-  "BURNING_HEART_POWER.title": "Burning Heart",
-  "BURNING_HEART_POWER.description": "At the end of each enemy turn, deal damage to ALL enemies.",
-  "BURNING_HEART_POWER.smartDescription": "At the end of each enemy turn, deal [blue]{Amount}[/blue] damage to ALL enemies."
+  "INVOKER-THUNDER_FIELD_POWER.title": "Thunder Field",
+  "INVOKER-THUNDER_FIELD_POWER.description": "At the end of your turn, deal damage to a random enemy.",
+  "INVOKER-THUNDER_FIELD_POWER.smartDescription": "At the end of your turn, deal [blue]{Amount}[/blue] damage to a random enemy.",
+
+  "INVOKER-BURNING_HEART_POWER.title": "Burning Heart",
+  "INVOKER-BURNING_HEART_POWER.description": "At the end of each enemy turn, deal damage to ALL enemies.",
+  "INVOKER-BURNING_HEART_POWER.smartDescription": "At the end of each enemy turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
+
+  "INVOKER-INVOKER_POWER.title": "Invoker",
+  "INVOKER-INVOKER_POWER.description": "Invoker character power.",
+  "INVOKER-INVOKER_POWER.smartDescription": "Invoker character power."
 }

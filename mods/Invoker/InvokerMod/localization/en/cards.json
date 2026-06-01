@@ -7,21 +7,21 @@
   "INVOKER-DEFEND_INVOKER_CARD.description": "Gain {Block} Block.",
   "INVOKER-DEFEND_INVOKER_CARD.upgrade_description": "Gain {Block} Block.",
 
-  "INVOKER-SUMMON_CARD.title": "Summon Orb",
-  "INVOKER-SUMMON_CARD.description": "Choose Ice, Lightning, or Fire. Channel that orb and gain its effect.",
-  "INVOKER-SUMMON_CARD.upgrade_description": "Choose Ice, Lightning, or Fire. Channel that orb and gain its effect. [gold]Retain[/gold].",
+  "INVOKER-SUMMON_CARD.title": "Channel Orb",
+  "INVOKER-SUMMON_CARD.description": "[gold]Switch Orb[/gold]. Choose one orb to channel.",
+  "INVOKER-SUMMON_CARD.upgrade_description": "[gold]Switch Orb[/gold]. Choose one orb to channel. [gold]Retain[/gold].",
 
-  "INVOKER-SUMMON_ORB_CARD.title": "Summon Quas",
-  "INVOKER-SUMMON_ORB_CARD.description": "Once per turn. Channel a [blue]Quas[/blue] orb. Gain 8 + 4× (current Quas count) Block.",
-  "INVOKER-SUMMON_ORB_CARD.upgrade_description": "Once per turn. Channel a [blue]Quas[/blue] orb. Gain 8 + 4× (current Quas count) Block.",
+  "INVOKER-SUMMON_QUAS_CARD.title": "Channel Quas",
+  "INVOKER-SUMMON_QUAS_CARD.description": "[gold]Switch Orb (Quas)[/gold]. Once per turn. Gain {Block} + 4× (current Quas count) Block.",
+  "INVOKER-SUMMON_QUAS_CARD.upgrade_description": "[gold]Switch Orb (Quas)[/gold]. Once per turn. Gain {Block} + 4× (current Quas count) Block.",
 
-  "INVOKER-SUMMON_WEX_CARD.title": "Summon Wex",
-  "INVOKER-SUMMON_WEX_CARD.description": "Once per turn. Channel a [yellow]Wex[/yellow] orb. Deal 5 damage to a random enemy.",
-  "INVOKER-SUMMON_WEX_CARD.upgrade_description": "Once per turn. Channel a [yellow]Wex[/yellow] orb. Deal 5 damage to a random enemy.",
+  "INVOKER-SUMMON_WEX_CARD.title": "Channel Wex",
+  "INVOKER-SUMMON_WEX_CARD.description": "[gold]Switch Orb (Wex)[/gold]. Once per turn. Deal {Damage} damage to a random enemy.",
+  "INVOKER-SUMMON_WEX_CARD.upgrade_description": "[gold]Switch Orb (Wex)[/gold]. Once per turn. Deal {Damage} damage to a random enemy.",
 
-  "INVOKER-SUMMON_EXORT_CARD.title": "Summon Exort",
-  "INVOKER-SUMMON_EXORT_CARD.description": "Once per turn. Channel an [red]Exort[/red] orb. Deal 3 damage to ALL enemies.",
-  "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "Once per turn. Channel an [red]Exort[/red] orb. Deal 3 damage to ALL enemies.",
+  "INVOKER-SUMMON_EXORT_CARD.title": "Channel Exort",
+  "INVOKER-SUMMON_EXORT_CARD.description": "[gold]Switch Orb (Exort)[/gold]. Once per turn. Deal {Damage} damage to ALL enemies.",
+  "INVOKER-SUMMON_EXORT_CARD.upgrade_description": "[gold]Switch Orb (Exort)[/gold]. Once per turn. Deal {Damage} damage to ALL enemies.",
 
   "INVOKER-INVOKE_CARD.title": "Invoke",
   "INVOKER-INVOKE_CARD.description": "Perform an [gold]Invoke[/gold] based on your current orb combination.",

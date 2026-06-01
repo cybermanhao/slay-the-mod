@@ -2,10 +2,10 @@
   "id": "InvokerMod",
   "pck_name": "InvokerMod",
   "name": "InvokerMod",
-  "author": "YourName",
+  "author": "InvokerMod",
   "description": "祈求者（Invoker）- Dota 2风格的球系技术验证Mod",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": ["BaseLib"]
+  "dependencies": [{"id": "BaseLib", "min_version": "v0.1.0"}]
 }
