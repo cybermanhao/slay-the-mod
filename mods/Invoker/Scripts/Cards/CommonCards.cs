@@ -20,9 +20,8 @@ namespace Invoker.Scripts.Cards;
 // ═══════════════════════════════════════════════════
 
 [Pool(typeof(InvokerCardPool))]
-public class StrikeInvokerCard : CustomCardModel
+public class StrikeInvokerCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/strike_invoker.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
     public StrikeInvokerCard() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy) { }
 
@@ -35,9 +34,8 @@ public class StrikeInvokerCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class DefendInvokerCard : CustomCardModel
+public class DefendInvokerCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/defend_invoker.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, ValueProp.Move)];
     public DefendInvokerCard() : base(1, CardType.Skill, CardRarity.Basic, TargetType.None) { }
 
@@ -54,9 +52,8 @@ public class DefendInvokerCard : CustomCardModel
 // ═══════════════════════════════════════════════════
 
 [Pool(typeof(InvokerCardPool))]
-public class IceArmorCard : CustomCardModel
+public class IceArmorCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/ice_armor.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10m, ValueProp.Move)];
     public IceArmorCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
 
@@ -72,9 +69,8 @@ public class IceArmorCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class IceSpikeCard : CustomCardModel
+public class IceSpikeCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/ice_spike.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(8m, ValueProp.Move), new PowerVar<VulnerablePower>(1m)];
     public IceSpikeCard() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
@@ -82,7 +78,7 @@ public class IceSpikeCard : CustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target!).Execute(ctx);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target!, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await CommonActions.Apply<VulnerablePower>(cardPlay.Target!, this, DynamicVars.Vulnerable.BaseValue);
     }
 
     protected override void OnUpgrade()
@@ -93,9 +89,8 @@ public class IceSpikeCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class FrostWindCard : CustomCardModel
+public class FrostWindCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/frost_wind.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new BlockVar(8m, ValueProp.Move), new CardsVar(1)];
     public FrostWindCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
@@ -114,9 +109,8 @@ public class FrostWindCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class FreezeCard : CustomCardModel
+public class FreezeCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/freeze.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(20m, ValueProp.Move)];
     public FreezeCard() : base(2, CardType.Skill, CardRarity.Common, TargetType.None) { }
@@ -130,14 +124,13 @@ public class FreezeCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class FrostShellCard : CustomCardModel
+public class FrostShellCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/frost_shell.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(3m, ValueProp.Unpowered)];
     public FrostShellCard() : base(1, CardType.Power, CardRarity.Common, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
-        => await PowerCmd.Apply<FrostShellPower>(Owner.Creature, (int)DynamicVars.Block.BaseValue, Owner.Creature, this);
+        => await CommonActions.Apply<FrostShellPower>(Owner.Creature, this, (int)DynamicVars.Block.BaseValue);
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(2m);
 }
@@ -147,9 +140,8 @@ public class FrostShellCard : CustomCardModel
 // ═══════════════════════════════════════════════════
 
 [Pool(typeof(InvokerCardPool))]
-public class ThunderStrikeCard : CustomCardModel
+public class ThunderStrikeCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/thunder_strike.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
     public ThunderStrikeCard() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
 
@@ -165,9 +157,8 @@ public class ThunderStrikeCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class ChainLightningCard : CustomCardModel
+public class ChainLightningCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/chain_lightning.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(6m, ValueProp.Move), new CardsVar(1)];
     public ChainLightningCard() : base(2, CardType.Attack, CardRarity.Common, TargetType.AllEnemies) { }
@@ -186,9 +177,8 @@ public class ChainLightningCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class SwiftMindCard : CustomCardModel
+public class SwiftMindCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/swift_mind.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
     public SwiftMindCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
 
@@ -199,9 +189,8 @@ public class SwiftMindCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class WindStabCard : CustomCardModel
+public class WindStabCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/wind_stab.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
     public WindStabCard() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
 
@@ -212,14 +201,13 @@ public class WindStabCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class ThunderFieldCard : CustomCardModel
+public class ThunderFieldCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/thunder_field.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1m, ValueProp.Unpowered)];
     public ThunderFieldCard() : base(1, CardType.Power, CardRarity.Common, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
-        => await PowerCmd.Apply<ThunderFieldPower>(Owner.Creature, (int)DynamicVars.Damage.BaseValue, Owner.Creature, this);
+        => await CommonActions.Apply<ThunderFieldPower>(Owner.Creature, this, (int)DynamicVars.Damage.BaseValue);
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1m);
 }
@@ -229,9 +217,8 @@ public class ThunderFieldCard : CustomCardModel
 // ═══════════════════════════════════════════════════
 
 [Pool(typeof(InvokerCardPool))]
-public class FireballCard : CustomCardModel
+public class FireballCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/fireball.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
     public FireballCard() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies) { }
 
@@ -247,9 +234,8 @@ public class FireballCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class FlameBurstCard : CustomCardModel
+public class FlameBurstCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/flame_burst.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(20m, ValueProp.Move)];
     public FlameBurstCard() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
@@ -261,9 +247,8 @@ public class FlameBurstCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class ScorchCard : CustomCardModel
+public class ScorchCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/scorch.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
     public ScorchCard() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
 
@@ -274,9 +259,8 @@ public class ScorchCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class FlameShieldCard : CustomCardModel
+public class FlameShieldCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/flame_shield.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new BlockVar(8m, ValueProp.Move), new DamageVar(4m, ValueProp.Move)];
     public FlameShieldCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
@@ -291,14 +275,13 @@ public class FlameShieldCard : CustomCardModel
 }
 
 [Pool(typeof(InvokerCardPool))]
-public class BurningHeartCard : CustomCardModel
+public class BurningHeartCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/burning_heart.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2m, ValueProp.Unpowered)];
     public BurningHeartCard() : base(1, CardType.Power, CardRarity.Common, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
-        => await PowerCmd.Apply<BurningHeartPower>(Owner.Creature, (int)DynamicVars.Damage.BaseValue, Owner.Creature, this);
+        => await CommonActions.Apply<BurningHeartPower>(Owner.Creature, this, (int)DynamicVars.Damage.BaseValue);
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1m);
 }
@@ -311,7 +294,7 @@ public class BurningHeartCard : CustomCardModel
 /// Void Surge: 2-cost Attack — Deal 8 + 4×(total orbs) damage. Good with full queue.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class VoidSurgeCard : CustomCardModel
+public class VoidSurgeCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/sun_strike.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
@@ -331,7 +314,7 @@ public class VoidSurgeCard : CustomCardModel
 /// Elemental Ward: 1-cost Skill — Gain 8 Block per distinct orb type (Quas/Wex/Exort).
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class ElementalWardCard : CustomCardModel
+public class ElementalWardCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/freeze.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8m, ValueProp.Move)];
@@ -343,8 +326,8 @@ public class ElementalWardCard : CustomCardModel
         int types = (orbs.Any(o => o is QuasOrb) ? 1 : 0)
                   + (orbs.Any(o => o is WexOrb) ? 1 : 0)
                   + (orbs.Any(o => o is ExortOrb) ? 1 : 0);
-        decimal block = DynamicVars.Block.BaseValue * Math.Max(1, types);
-        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
+        if (types == 0) return;
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue * types, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(4m);
@@ -354,7 +337,7 @@ public class ElementalWardCard : CustomCardModel
 /// Arcane Recall: 0-cost Skill — Invoke twice. Exhaust.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class ArcaneRecallCard : CustomCardModel
+public class ArcaneRecallCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/invoke.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke, CardKeyword.Exhaust];
@@ -378,7 +361,7 @@ public class ArcaneRecallCard : CustomCardModel
 /// Runic Strike: 1-cost Attack — Deal damage, then Invoke.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class RunicStrikeCard : CustomCardModel
+public class RunicStrikeCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/thunder_strike.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
@@ -398,7 +381,7 @@ public class RunicStrikeCard : CustomCardModel
 /// Catalyst: 1-cost Skill — Draw 2 cards, then Invoke.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class CatalystCard : CustomCardModel
+public class CatalystCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/swift_mind.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
@@ -418,7 +401,7 @@ public class CatalystCard : CustomCardModel
 /// Spell Weave: 1-cost Skill — Gain Block, then Invoke.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class SpellWeaveCard : CustomCardModel
+public class SpellWeaveCard : InvokerCard
 {
     public override string PortraitPath => "res://images/invoker/cards/ghost_walk.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];

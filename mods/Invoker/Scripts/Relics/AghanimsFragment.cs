@@ -1,28 +1,26 @@
-using BaseLib.Abstracts;
 using BaseLib.Utils;
 using Invoker.Scripts.Cards;
+using MegaCrit.Sts2.Core.Combat;
 using Invoker.Scripts.Pools;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 
+using MegaCrit.Sts2.Core.Entities.Relics;
+
 namespace Invoker.Scripts.Relics;
 
 /// <summary>
-/// Aghanim's Fragment (Shard) — Uncommon relic.
+/// Aghanim's Fragment (Shard) �?Uncommon relic.
 /// At the start of each player turn, 25% chance to add a random Invoker spell card to hand.
 /// This random card is not affected by Aghanim's Scepter.
 /// </summary>
 [Pool(typeof(InvokerRelicPool))]
-public class AghanimsFragment : CustomRelicModel
+public class AghanimsFragment : InvokerRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
-    public override string PackedIconPath => $"res://images/invoker/relics/{Id.Entry.ToLowerInvariant()}.png";
-    protected override string PackedIconOutlinePath => PackedIconPath;
-    protected override string BigIconPath => PackedIconPath;
 
     private static CardModel[]? _spellPool;
 
@@ -51,6 +49,6 @@ public class AghanimsFragment : CustomRelicModel
             return;
 
         Flash();
-        await InvokeCmd.AddSpellToHand(Owner.Creature.CombatState!, canonical, Owner);
+        await InvokeCmd.AddSpellToHand((CombatState)Owner.Creature.CombatState!, canonical, Owner);
     }
 }

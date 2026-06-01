@@ -1,10 +1,13 @@
 using Invoker.Scripts.Cards;
 using Invoker.Scripts.Orbs;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+
+using MegaCrit.Sts2.Core.Entities.Relics;
 
 namespace Invoker.Scripts.Relics;
 
@@ -21,7 +24,7 @@ public static class CommandStoneHelper
         var ctx = new BlockingPlayerChoiceContext();
         var choices = new List<CardModel>
         {
-            ModelDb.Card<SummonOrbCard>(),
+            ModelDb.Card<SummonQuasCard>(),
             ModelDb.Card<SummonWexCard>(),
             ModelDb.Card<SummonExortCard>(),
         };
@@ -31,26 +34,12 @@ public static class CommandStoneHelper
     }
 
     /// <summary>
-    /// Called each turn start: choose 1 orb to channel.
+    /// Called each turn start: add an Ethereal SummonCard to hand.
+    /// The player plays it manually to choose and channel an orb.
     /// </summary>
-    public static async Task ChooseOrb(PlayerChoiceContext ctx, Player owner)
+    public static async Task AddSummonCardToHand(PlayerChoiceContext ctx, Player owner)
     {
         var combat = owner.Creature.CombatState!;
-        var choices = new List<CardModel>
-        {
-            combat.CreateCard(ModelDb.Card<SummonOrbCard>(), owner),
-            combat.CreateCard(ModelDb.Card<SummonWexCard>(), owner),
-            combat.CreateCard(ModelDb.Card<SummonExortCard>(), owner),
-        };
-
-        var chosen = await CardSelectCmd.FromChooseACardScreen(ctx, choices, owner, canSkip: false);
-
-        var blockCtx = new BlockingPlayerChoiceContext();
-        if (chosen is SummonOrbCard)
-            await OrbCmd.Channel<QuasOrb>(blockCtx, owner);
-        else if (chosen is SummonWexCard)
-            await OrbCmd.Channel<WexOrb>(blockCtx, owner);
-        else if (chosen is SummonExortCard)
-            await OrbCmd.Channel<ExortOrb>(blockCtx, owner);
+        await InvokeCmd.AddSpellToHand((CombatState)combat, ModelDb.Card<SummonCard>(), owner, ethereal: true);
     }
 }

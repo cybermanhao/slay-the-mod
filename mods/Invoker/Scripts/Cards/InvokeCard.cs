@@ -14,9 +14,8 @@ namespace Invoker.Scripts.Cards;
 /// With Aghanim's Scepter, adds 2 copies. See InvokeCmd for reusable logic.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class InvokeCard : CustomCardModel
+public class InvokeCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/invoke.png";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
 
     public InvokeCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None) { }
@@ -27,7 +26,7 @@ public class InvokeCard : CustomCardModel
         if (CurrentUpgradeLevel > 0)
         {
             var copy = CombatState!.CreateCard(ModelDb.Card<InvokeCard>(), Owner);
-            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, Owner);
         }
     }
 
