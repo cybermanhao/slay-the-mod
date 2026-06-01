@@ -1,26 +1,33 @@
-using Invoker.Scripts.Cards;
 using MegaCrit.Sts2.Core.Combat;
 
+namespace Invoker.Scripts.Cards;
+
 /// <summary>
-/// Tracks which orb types the player has already summoned this turn via SummonOrbCard.
+/// Tracks which orb types the player has already summoned this turn via SummonQuasCard.
 /// Automatically resets when the combat round changes, and can be explicitly reset
 /// by relics (e.g. Command Stones) at combat start / turn start.
 /// </summary>
 public static class TurnSummonTracker
 {
     private static readonly HashSet<OrbSummonType> _summonedThisTurn = new();
-    private static CombatState? _lastCombat;
-    private static int _lastRound = -1;
+    private static WeakReference<CombatState>? _combatRef;
+    private static int _round = -1;
 
     public static bool HasSummoned(OrbSummonType type, CombatState combatState)
     {
-        int round = combatState.RoundNumber;
-        if (combatState != _lastCombat || round != _lastRound)
+        int currentRound = combatState.RoundNumber;
+
+        // Reset on: new combat, old combat GC'd, or round changed
+        if (_combatRef == null
+            || !_combatRef.TryGetTarget(out var lastCombat)
+            || lastCombat != combatState
+            || currentRound != _round)
         {
             _summonedThisTurn.Clear();
-            _lastCombat = combatState;
-            _lastRound = round;
+            _combatRef = new WeakReference<CombatState>(combatState);
+            _round = currentRound;
         }
+
         return _summonedThisTurn.Contains(type);
     }
 
@@ -29,8 +36,16 @@ public static class TurnSummonTracker
     public static void Reset(CombatState? combatState = null)
     {
         _summonedThisTurn.Clear();
-        _lastCombat = combatState;
-        _lastRound = combatState?.RoundNumber ?? 0;
+        if (combatState != null)
+        {
+            _combatRef = new WeakReference<CombatState>(combatState);
+            _round = combatState.RoundNumber;
+        }
+        else
+        {
+            _combatRef = null;
+            _round = -1;
+        }
     }
 }
 

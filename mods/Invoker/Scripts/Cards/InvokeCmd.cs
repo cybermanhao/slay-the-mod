@@ -38,15 +38,15 @@ public static class InvokeCmd
         int copies = owner.Relics.Any(r => r is AghanimsScepter) ? 2 : 1;
         for (int i = 0; i < copies; i++)
         {
-            await AddSpellToHand(source.CombatState!, canonical, owner);
+            await AddSpellToHand((CombatState)source.CombatState!, canonical, owner);
         }
     }
 
     /// <summary>
     /// Adds a single spell card to hand with Retain and scroll-slot FIFO enforcement.
-    /// Shared logic used by InvokeCmd.Execute and Aghanim's Fragment.
+    /// Pass ethereal=true for Command Stone generated summon cards (they vanish at turn end if unplayed).
     /// </summary>
-    public static async Task AddSpellToHand(CombatState combatState, CardModel canonical, Player owner)
+    public static async Task AddSpellToHand(CombatState combatState, CardModel canonical, Player owner, bool ethereal = false)
     {
         // Scroll slot FIFO: enforce a max of 2 spell cards in hand.
         var hand = PileType.Hand.GetPile(owner);
@@ -58,7 +58,8 @@ public static class InvokeCmd
         }
 
         var card = combatState.CreateCard(canonical, owner);
-        CardCmd.ApplyKeyword(card, CardKeyword.Retain);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+        if (!ethereal) CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        if (ethereal)  CardCmd.ApplyKeyword(card, CardKeyword.Ethereal);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, owner);
     }
 }

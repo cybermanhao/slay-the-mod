@@ -19,18 +19,18 @@ namespace Invoker.Scripts.Cards;
 /// Once per turn per orb type.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class SummonOrbCard : CustomCardModel
+public class SummonQuasCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/summon_quas.png";
+    protected override string ImageFileName => "summon_quas";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8m, ValueProp.Move)];
 
-    public SummonOrbCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None)
+    public SummonQuasCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var combatState = CombatState!;
+        var combatState = (CombatState)CombatState!;
         if (TurnSummonTracker.HasSummoned(OrbSummonType.Quas, combatState))
             return;
 
@@ -65,9 +65,8 @@ public class SummonOrbCard : CustomCardModel
 /// Once per turn per orb type.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class SummonWexCard : CustomCardModel
+public class SummonWexCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/summon_wex.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
 
     public SummonWexCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None)
@@ -76,7 +75,7 @@ public class SummonWexCard : CustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var combatState = CombatState!;
+        var combatState = (CombatState)CombatState!;
         if (TurnSummonTracker.HasSummoned(OrbSummonType.Wex, combatState))
             return;
 
@@ -107,9 +106,8 @@ public class SummonWexCard : CustomCardModel
 /// Once per turn per orb type.
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class SummonExortCard : CustomCardModel
+public class SummonExortCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/summon_exort.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
 
     public SummonExortCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.AllEnemies)
@@ -118,7 +116,7 @@ public class SummonExortCard : CustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var combatState = CombatState!;
+        var combatState = (CombatState)CombatState!;
         if (TurnSummonTracker.HasSummoned(OrbSummonType.Exort, combatState))
             return;
 
@@ -148,9 +146,9 @@ public class SummonExortCard : CustomCardModel
 /// 三合一召唤牌 — 打出时选择冰/雷/火，执行对应效果。
 /// </summary>
 [Pool(typeof(InvokerCardPool))]
-public class SummonCard : CustomCardModel
+public class SummonCard : InvokerCard
 {
-    public override string PortraitPath => "res://images/invoker/cards/summon_quas.png";
+    protected override string ImageFileName => "summon_quas";
 
     public SummonCard() : base(0, CardType.Skill, CardRarity.Basic, TargetType.None) { }
 
@@ -158,26 +156,26 @@ public class SummonCard : CustomCardModel
     {
         var choices = new List<CardModel>
         {
-            CombatState!.CreateCard(ModelDb.Card<SummonOrbCard>(), Owner),
+            CombatState!.CreateCard(ModelDb.Card<SummonQuasCard>(), Owner),
             CombatState!.CreateCard(ModelDb.Card<SummonWexCard>(), Owner),
             CombatState!.CreateCard(ModelDb.Card<SummonExortCard>(), Owner),
         };
         var chosen = await CardSelectCmd.FromChooseACardScreen(choiceContext, choices, Owner, canSkip: false);
 
-        if (chosen is SummonOrbCard)
+        if (chosen is SummonQuasCard)
         {
-            decimal blockBase = ModelDb.Card<SummonOrbCard>().DynamicVars.Block.BaseValue;
-            await SummonOrbCard.PlayQuasEffect(choiceContext, cardPlay, Owner, CombatState!, blockBase);
+            decimal blockBase = ModelDb.Card<SummonQuasCard>().DynamicVars.Block.BaseValue;
+            await SummonQuasCard.PlayQuasEffect(choiceContext, cardPlay, Owner, (CombatState)CombatState!, blockBase);
         }
         else if (chosen is SummonWexCard)
         {
             decimal dmg = ModelDb.Card<SummonWexCard>().DynamicVars.Damage.BaseValue;
-            await SummonWexCard.PlayWexEffect(choiceContext, Owner, CombatState!, dmg, this);
+            await SummonWexCard.PlayWexEffect(choiceContext, Owner, (CombatState)CombatState!, dmg, this);
         }
         else if (chosen is SummonExortCard)
         {
             decimal dmg = ModelDb.Card<SummonExortCard>().DynamicVars.Damage.BaseValue;
-            await SummonExortCard.PlayExortEffect(choiceContext, Owner, CombatState!, dmg, this);
+            await SummonExortCard.PlayExortEffect(choiceContext, Owner, (CombatState)CombatState!, dmg, this);
         }
     }
 

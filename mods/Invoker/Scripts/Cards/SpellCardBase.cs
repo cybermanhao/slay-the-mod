@@ -1,4 +1,3 @@
-using BaseLib.Abstracts;
 using Invoker.Scripts.Keywords;
 using Invoker.Scripts.Relics;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,7 +10,7 @@ namespace Invoker.Scripts.Cards;
 /// 1-cost cards added to hand; provides enhancement check.
 /// Concrete subclasses must apply [Pool(typeof(InvokerCardPool))].
 /// </summary>
-public abstract class SpellCardBase : CustomCardModel
+public abstract class SpellCardBase : InvokerCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Scroll, CardKeyword.Exhaust];
 

@@ -1,4 +1,5 @@
 using Godot;
+using Invoker.Scripts.MiniGame;
 using Invoker.Scripts.Monsters;
 using Invoker.Scripts.Pools;
 using Invoker.Scripts.Powers;
@@ -21,7 +22,6 @@ public class ColdSnapCard : SpellCardBase
     protected override int SpellQ => 3;
     protected override int SpellW => 0;
     protected override int SpellE => 0;
-    public override string PortraitPath => "res://images/invoker/cards/cold_snap.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ColdSnapPower>(1m)];
 
     public ColdSnapCard() : base(CardType.Skill, TargetType.AnyEnemy) { }
@@ -37,7 +37,7 @@ public class ColdSnapCard : SpellCardBase
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
         int amount = (int)DynamicVars["ColdSnapPower"].BaseValue;
-        await PowerCmd.Apply<ColdSnapPower>(cardPlay.Target!, amount, Owner.Creature, this);
+        await CommonActions.Apply<ColdSnapPower>(cardPlay.Target!, this, amount);
     }
 
     protected override void OnUpgrade() => DynamicVars["ColdSnapPower"].UpgradeValueBy(1m);
@@ -50,14 +50,12 @@ public class GhostWalkCard : SpellCardBase
     protected override int SpellQ => 2;
     protected override int SpellW => 1;
     protected override int SpellE => 0;
-    public override string PortraitPath => "res://images/invoker/cards/ghost_walk.png";
-
     public GhostWalkCard() : base(CardType.Skill, TargetType.None, cost: 2) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<IntangiblePower>(Owner.Creature, 1, Owner.Creature, this);
-        await PowerCmd.Apply<GhostWalkPower>(Owner.Creature, 1, Owner.Creature, this);
+        await CommonActions.Apply<IntangiblePower>(Owner.Creature, this, 1);
+        await CommonActions.Apply<GhostWalkPower>(Owner.Creature, this, 1);
     }
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
@@ -70,7 +68,6 @@ public class IceWallCard : SpellCardBase
     protected override int SpellQ => 2;
     protected override int SpellW => 0;
     protected override int SpellE => 1;
-    public override string PortraitPath => "res://images/invoker/cards/ice_wall.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(4m, ValueProp.Move), new PowerVar<WeakPower>(1m)];
 
@@ -82,7 +79,7 @@ public class IceWallCard : SpellCardBase
         int weak = IsEnhanced() ? (int)DynamicVars.Weak.BaseValue + 1 : (int)DynamicVars.Weak.BaseValue;
         await DamageCmd.Attack(dmg).FromCard(this).TargetingAllOpponents(CombatState!).Execute(ctx);
         foreach (var enemy in CombatState!.HittableEnemies)
-            await PowerCmd.Apply<WeakPower>(enemy, weak, Owner.Creature, this);
+            await CommonActions.Apply<WeakPower>(enemy, this, weak);
     }
 
     protected override void OnUpgrade()
@@ -99,7 +96,6 @@ public class TornadoCard : SpellCardBase
     protected override int SpellQ => 1;
     protected override int SpellW => 2;
     protected override int SpellE => 0;
-    public override string PortraitPath => "res://images/invoker/cards/tornado.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(10m, ValueProp.Move), new CardsVar(1)];
 
@@ -127,26 +123,30 @@ public class DeafeningBlastCard : SpellCardBase
     protected override int SpellQ => 1;
     protected override int SpellW => 1;
     protected override int SpellE => 1;
-    public override string PortraitPath => "res://images/invoker/cards/deafening_blast.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(12m, ValueProp.Move), new PowerVar<WeakPower>(1m)];
+        [new DamageVar(10m, ValueProp.Move), new PowerVar<WeakPower>(2m), new DynamicVar("Chilled", 2m)];
 
     public DeafeningBlastCard() : base(CardType.Attack, TargetType.AllEnemies) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
-        // No command stone enhances QWE (three different elements)
-        decimal dmg = DynamicVars.Damage.BaseValue;
-        int weak = (int)DynamicVars.Weak.BaseValue;
+        decimal dmg    = DynamicVars.Damage.BaseValue;
+        int weak       = (int)DynamicVars.Weak.BaseValue;
+        int chilled    = (int)DynamicVars["Chilled"].BaseValue;
+
         await DamageCmd.Attack(dmg).FromCard(this).TargetingAllOpponents(CombatState!).Execute(ctx);
         foreach (var enemy in CombatState!.HittableEnemies)
-            await PowerCmd.Apply<WeakPower>(enemy, weak, Owner.Creature, this);
+        {
+            await PowerCmd.Apply<WeakPower>(ctx, new[] { enemy }, weak, Owner.Creature, this);
+            await PowerCmd.Apply<FrozenPower>(ctx, new[] { enemy }, chilled, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars.Weak.UpgradeValueBy(1m);
+        DynamicVars["Chilled"].UpgradeValueBy(1m);
     }
 }
 
@@ -178,7 +178,6 @@ public class AlacrityCard : SpellCardBase
     protected override int SpellQ => 0;
     protected override int SpellW => 2;
     protected override int SpellE => 1;
-    public override string PortraitPath => "res://images/invoker/cards/alacrity.png";
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new CardsVar(1), new DynamicVar("TempStrength", 3m)];
 
@@ -189,7 +188,7 @@ public class AlacrityCard : SpellCardBase
         int draw = IsEnhanced() ? (int)DynamicVars.Cards.BaseValue + 1 : (int)DynamicVars.Cards.BaseValue;
         int str = IsEnhanced() ? (int)DynamicVars["TempStrength"].BaseValue + 2 : (int)DynamicVars["TempStrength"].BaseValue;
         await CardPileCmd.Draw(ctx, draw, Owner);
-        await PowerCmd.Apply<TempStrengthPower>(Owner.Creature, str, Owner.Creature, this);
+        await CommonActions.Apply<TempStrengthPower>(Owner.Creature, this, str);
     }
 
     protected override void OnUpgrade()
@@ -206,24 +205,31 @@ public class ChaosMeteorCard : SpellCardBase
     protected override int SpellQ => 0;
     protected override int SpellW => 1;
     protected override int SpellE => 2;
-    public override string PortraitPath => "res://images/invoker/cards/chaos_meteor.png";
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new DamageVar(12m, ValueProp.Move), new DynamicVar("Burn", 3m)];
 
     public ChaosMeteorCard() : base(CardType.Attack, TargetType.AnyEnemy, cost: 2) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
         decimal mainDmg = IsEnhanced() ? DynamicVars.Damage.BaseValue + 4m : DynamicVars.Damage.BaseValue;
+        int burn        = IsEnhanced() ? (int)DynamicVars["Burn"].BaseValue + 1 : (int)DynamicVars["Burn"].BaseValue;
+
         await DamageCmd.Attack(mainDmg).FromCard(this).Targeting(cardPlay.Target!).Execute(ctx);
 
-        int[] chain = CurrentUpgradeLevel > 0
-            ? (IsEnhanced() ? new[] { 8, 7, 6, 5, 4 } : new[] { 7, 6, 5, 4, 3 })
-            : (IsEnhanced() ? new[] { 6, 5, 4, 3, 2 } : new[] { 5, 4, 3, 2, 1 });
+        // 多段小伤害——主要目的是触发急速冷却的冻结叠加
+        int[] chain = CurrentUpgradeLevel > 0 ? new[] { 4, 3, 2 } : new[] { 3, 2, 1 };
         foreach (int d in chain)
             await DamageCmd.Attack(d).FromCard(this).TargetingRandomOpponents(CombatState!).Execute(ctx);
+
+        await PowerCmd.Apply<BurnPower>(ctx, new[] { cardPlay.Target! }, burn, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(4m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars["Burn"].UpgradeValueBy(1m);
+    }
 }
 
 // ─── EEE ─── 阳炎之击 Sun Strike ─────────────────────────────────────────────
@@ -233,15 +239,33 @@ public class SunStrikeCard : SpellCardBase
     protected override int SpellQ => 0;
     protected override int SpellW => 0;
     protected override int SpellE => 3;
-    public override string PortraitPath => "res://images/invoker/cards/sun_strike.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(28m, ValueProp.Move)];
 
-    public SunStrikeCard() : base(CardType.Attack, TargetType.AnyEnemy, cost: 3) { }
+    public SunStrikeCard() : base(CardType.Attack, TargetType.None, cost: 3) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
-        decimal dmg = IsEnhanced() ? DynamicVars.Damage.BaseValue + 10m : DynamicVars.Damage.BaseValue;
-        await DamageCmd.Attack(dmg).FromCard(this).Targeting(cardPlay.Target!).Execute(ctx);
+        var hittableCreatures = CombatState?.HittableEnemies?.ToList() ?? [];
+        var enemies = hittableCreatures
+            .Select(e => new EnemyInfo(e.Name, e.MaxHp, e.CurrentHp))
+            .ToList();
+        if (enemies.Count == 0)
+            enemies.Add(new EnemyInfo("???", 1, 1));
+
+        decimal baseDmg = IsEnhanced() ? DynamicVars.Damage.BaseValue + 10m : DynamicVars.Damage.BaseValue;
+
+        var tcs  = new TaskCompletionSource<MiniGameResult>();
+        var node = new SunStrikeMiniGameNode(result => tcs.SetResult(result), enemies, baseDmg);
+        ((Godot.SceneTree)Godot.Engine.GetMainLoop()).Root.AddChild(node);
+
+        var result = await tcs.Task;
+        foreach (var (targetIndex, accuracy) in result.Hits)
+        {
+            decimal dmg = Math.Round(baseDmg * accuracy);
+            if (dmg > 0 && targetIndex < hittableCreatures.Count)
+                await DamageCmd.Attack(dmg).FromCard(this)
+                    .Targeting(hittableCreatures[targetIndex]).Execute(ctx);
+        }
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(10m);
@@ -254,28 +278,26 @@ public class ForgeSpiritCard : SpellCardBase
     protected override int SpellQ => 1;
     protected override int SpellW => 0;
     protected override int SpellE => 2;
-    public override string PortraitPath => "res://images/invoker/cards/forge_spirit.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("SpiritHp", 6m)];
 
     public ForgeSpiritCard() : base(CardType.Skill, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
-        int hp = IsEnhanced()
-            ? (int)DynamicVars["SpiritHp"].BaseValue + 6
-            : (int)DynamicVars["SpiritHp"].BaseValue;
-        int decay = hp >= 12 ? 4 : 3;
+        int hp    = IsEnhanced() ? (int)DynamicVars["SpiritHp"].BaseValue + 6 : (int)DynamicVars["SpiritHp"].BaseValue;
+        int turns = IsEnhanced() ? 4 : 3;
 
         var spirit = (ForgeSpiritMonster)ModelDb.Monster<ForgeSpiritMonster>().ToMutable();
-        spirit.InitialHp = hp;
-        spirit.DecayPerTurn = decay;
+        spirit.InitialHp     = hp;
+        spirit.TurnsRemaining = turns;
+        spirit.AttackDamage  = 5;
+
         var pet = CombatState!.CreateCreature(spirit, Owner.Creature.Side, null);
         await PlayerCmd.AddPet(pet, Owner);
-        // 行为由 ForgeSpiritPower 驱动（Power 挂在精灵身上，Owner = 精灵）
-        // Amount = 1 because Single stack type; decay is read from the monster.
-        await PowerCmd.Apply<ForgeSpiritPower>(pet, 1, Owner.Creature, this);
-        // 代替主人承受敌方攻击（同 Osty 机制）
-        await PowerCmd.Apply<DieForYouPower>(pet, 1, Owner.Creature, this);
+        // ForgeSpiritPower Amount = turns remaining (Counter type, visible in UI)
+        await PowerCmd.Apply<ForgeSpiritPower>(ctx, new[] { pet }, (decimal)turns, Owner.Creature, this);
+        // Takes hits for the player
+        await CommonActions.Apply<DieForYouPower>(pet, this, 1);
     }
 
     protected override void OnUpgrade() => DynamicVars["SpiritHp"].UpgradeValueBy(6);

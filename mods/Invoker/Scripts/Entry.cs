@@ -14,7 +14,8 @@ public class Entry
     public static void Init()
     {
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);
-        new Harmony("com.invoker.mod").PatchAll(typeof(Entry).Assembly);
+        var harmony = new Harmony("com.invoker.mod");
+        harmony.PatchAll(typeof(Entry).Assembly);
         Log.Info("InvokerMod initialized!");
     }
 }
