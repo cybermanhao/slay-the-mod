@@ -153,5 +153,17 @@
 
   "INVOKER-EXORT_INVOKE_CARD.title": "炎核祈唤",
   "INVOKER-EXORT_INVOKE_CARD.description": "对所有敌人造成 {Damage} 点伤害。[gold]切球（炎）[/gold]。[gold]祈唤[/gold]。",
-  "INVOKER-EXORT_INVOKE_CARD.upgrade_description": "对所有敌人造成 {Damage} 点伤害。[gold]切球（炎）[/gold]。[gold]祈唤[/gold]。"
+  "INVOKER-EXORT_INVOKE_CARD.upgrade_description": "对所有敌人造成 {Damage} 点伤害。[gold]切球（炎）[/gold]。[gold]祈唤[/gold]。",
+
+  "INVOKER-ELEMENTAL_TUNE_CARD.title": "元素调谐",
+  "INVOKER-ELEMENTAL_TUNE_CARD.description": "选择一种球。[gold]切球[/gold]两次。",
+  "INVOKER-ELEMENTAL_TUNE_CARD.upgrade_description": "选择一种球。[gold]切球[/gold]两次。[gold]保留[/gold]。",
+
+  "INVOKER-FATE_STRIKE_CARD.title": "天命一击",
+  "INVOKER-FATE_STRIKE_CARD.description": "造成 {Damage} 点伤害。[gold]祈唤[/gold]。",
+  "INVOKER-FATE_STRIKE_CARD.upgrade_description": "造成 {Damage} 点伤害。[gold]祈唤[/gold]。",
+
+  "INVOKER-ORB_INVOKE_CARD.title": "自选祈唤",
+  "INVOKER-ORB_INVOKE_CARD.description": "选择一个球。[gold]切球[/gold]。[gold]祈唤[/gold]。抽 1 张牌。",
+  "INVOKER-ORB_INVOKE_CARD.upgrade_description": "选择一个球。[gold]切球[/gold]。[gold]祈唤[/gold]。抽 1 张牌。（费用→0）"
 }

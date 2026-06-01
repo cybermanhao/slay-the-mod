@@ -155,5 +155,17 @@
 
   "INVOKER-EXORT_INVOKE_CARD.title": "Exort Invoke",
   "INVOKER-EXORT_INVOKE_CARD.description": "Deal {Damage} damage to ALL enemies. [gold]Switch Orb (Exort)[/gold]. [gold]Invoke[/gold].",
-  "INVOKER-EXORT_INVOKE_CARD.upgrade_description": "Deal {Damage} damage to ALL enemies. [gold]Switch Orb (Exort)[/gold]. [gold]Invoke[/gold]."
+  "INVOKER-EXORT_INVOKE_CARD.upgrade_description": "Deal {Damage} damage to ALL enemies. [gold]Switch Orb (Exort)[/gold]. [gold]Invoke[/gold].",
+
+  "INVOKER-ELEMENTAL_TUNE_CARD.title": "Elemental Tune",
+  "INVOKER-ELEMENTAL_TUNE_CARD.description": "Choose an orb type. [gold]Switch Orb[/gold] twice.",
+  "INVOKER-ELEMENTAL_TUNE_CARD.upgrade_description": "Choose an orb type. [gold]Switch Orb[/gold] twice. [gold]Retain[/gold].",
+
+  "INVOKER-FATE_STRIKE_CARD.title": "Fate Strike",
+  "INVOKER-FATE_STRIKE_CARD.description": "Deal {Damage} damage. [gold]Invoke[/gold].",
+  "INVOKER-FATE_STRIKE_CARD.upgrade_description": "Deal {Damage} damage. [gold]Invoke[/gold].",
+
+  "INVOKER-ORB_INVOKE_CARD.title": "Orb Invoke",
+  "INVOKER-ORB_INVOKE_CARD.description": "Choose an orb. [gold]Switch Orb[/gold]. [gold]Invoke[/gold]. Draw 1 card.",
+  "INVOKER-ORB_INVOKE_CARD.upgrade_description": "Choose an orb. [gold]Switch Orb[/gold]. [gold]Invoke[/gold]. Draw 1 card. (0 cost)"
 }

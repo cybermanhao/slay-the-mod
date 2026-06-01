@@ -139,3 +139,64 @@ public class ExortInvokeCard : InvokerCard
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }
+
+// ═══════════════════════════════════════════════════
+// 罕见/稀有 — 自选切球 & 终局
+// ═══════════════════════════════════════════════════
+
+/// <summary>
+/// 元素调谐 — Uncommon Skill: 自选切入一个球，切入两次。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class ElementalTuneCard : InvokerCard
+{
+    protected override string ImageFileName => "invoke";
+    public ElementalTuneCard() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.None) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await InvokeCmd.ChannelChosenOrb(ctx, this, count: 2);
+    }
+
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
+}
+
+/// <summary>
+/// 天命一击 — Rare Attack: 造成 11 伤害，进行一次祈唤。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class FateStrikeCard : InvokerCard
+{
+    protected override string ImageFileName => "strike_invoker";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m, ValueProp.Move)];
+    public FateStrikeCard() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target!).Execute(ctx);
+        await InvokeCmd.Execute(ctx, this);
+    }
+
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(4m);
+}
+
+/// <summary>
+/// 自选祈唤 — Rare Skill: 自选切入一个球，进行一次祈唤，抽 1 张牌。
+/// </summary>
+[Pool(typeof(InvokerCardPool))]
+public class OrbInvokeCard : InvokerCard
+{
+    protected override string ImageFileName => "invoke";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
+    public OrbInvokeCard() : base(1, CardType.Skill, CardRarity.Rare, TargetType.None) { }
+
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
+    {
+        await InvokeCmd.ChannelChosenOrb(ctx, this, count: 1);
+        await InvokeCmd.Execute(ctx, this);
+        await CardPileCmd.Draw(ctx, 1, Owner);
+    }
+
+    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+}
