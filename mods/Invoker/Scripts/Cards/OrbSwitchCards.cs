@@ -23,7 +23,7 @@ namespace Invoker.Scripts.Cards;
 [Pool(typeof(InvokerCardPool))]
 public class FlameStrikeCard : InvokerCard
 {
-    protected override string ImageFileName => "flame_burst";
+    protected override string ImageFileName => "flame_strike";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move)];
     public FlameStrikeCard() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy) { }
 
@@ -42,7 +42,7 @@ public class FlameStrikeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class SwiftThunderCard : InvokerCard
 {
-    protected override string ImageFileName => "swift_mind";
+    protected override string ImageFileName => "swift_thunder";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
     public SwiftThunderCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
 
@@ -61,7 +61,7 @@ public class SwiftThunderCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class IceShieldCard : InvokerCard
 {
-    protected override string ImageFileName => "ice_armor";
+    protected override string ImageFileName => "ice_shield";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(9m, ValueProp.Move)];
     public IceShieldCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
 
@@ -85,7 +85,7 @@ public class IceShieldCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class QuasInvokeCard : InvokerCard
 {
-    protected override string ImageFileName => "invoke";
+    protected override string ImageFileName => "quas_invoke";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
     public QuasInvokeCard() : base(1, CardType.Skill, CardRarity.Common, TargetType.None) { }
 
@@ -104,7 +104,7 @@ public class QuasInvokeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class WexInvokeCard : InvokerCard
 {
-    protected override string ImageFileName => "thunder_strike";
+    protected override string ImageFileName => "wex_invoke";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
     public WexInvokeCard() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy) { }
@@ -125,7 +125,7 @@ public class WexInvokeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class ExortInvokeCard : InvokerCard
 {
-    protected override string ImageFileName => "fireball";
+    protected override string ImageFileName => "exort_invoke";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
     public ExortInvokeCard() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.None) { }
@@ -150,7 +150,7 @@ public class ExortInvokeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class ElementalTuneCard : InvokerCard
 {
-    protected override string ImageFileName => "invoke";
+    protected override string ImageFileName => "elemental_tune";
     public ElementalTuneCard() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.None) { }
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
@@ -167,7 +167,7 @@ public class ElementalTuneCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class FateStrikeCard : InvokerCard
 {
-    protected override string ImageFileName => "strike_invoker";
+    protected override string ImageFileName => "fate_strike";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m, ValueProp.Move)];
     public FateStrikeCard() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy) { }
@@ -187,7 +187,7 @@ public class FateStrikeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class OrbInvokeCard : InvokerCard
 {
-    protected override string ImageFileName => "invoke";
+    protected override string ImageFileName => "orb_invoke";
     public override IEnumerable<CardKeyword> CanonicalKeywords => [InvokerKeywords.Invoke];
     public OrbInvokeCard() : base(1, CardType.Skill, CardRarity.Rare, TargetType.None) { }
 
@@ -212,7 +212,7 @@ public class OrbInvokeCard : InvokerCard
 [Pool(typeof(InvokerCardPool))]
 public class ElementalResonanceCard : InvokerCard
 {
-    protected override string ImageFileName => "invoke";
+    protected override string ImageFileName => "elemental_resonance";
     private bool _upgraded = false;
 
     public ElementalResonanceCard() : base(1, CardType.Power, CardRarity.Rare, TargetType.None) { }
