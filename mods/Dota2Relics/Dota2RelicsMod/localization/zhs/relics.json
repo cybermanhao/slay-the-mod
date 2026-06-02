@@ -1,0 +1,19 @@
+{
+  "DOTA_RELICS-BLINK_DAGGER_RELIC.title": "跳刀",
+  "DOTA_RELICS-BLINK_DAGGER_RELIC.description": "每次战斗中，首次打出技能牌时，获得 {Energy:diff()} [energy]。",
+
+  "DOTA_RELICS-EUL_SCEPTER_RELIC.title": "尤尔的神圣权杖",
+  "DOTA_RELICS-EUL_SCEPTER_RELIC.description": "每 3 回合开始时，获得 {Energy:diff()} [energy]。",
+
+  "DOTA_RELICS-SKULL_BASHER_RELIC.title": "晕锤",
+  "DOTA_RELICS-SKULL_BASHER_RELIC.description": "每次打出攻击牌后，对目标施加 {WeakPower:diff()} 层虚弱。",
+
+  "DOTA_RELICS-BLACK_KING_BAR_RELIC.title": "黑皇杖",
+  "DOTA_RELICS-BLACK_KING_BAR_RELIC.description": "每次战斗开始时，获得 {Block:diff()} 点格挡。",
+
+  "DOTA_RELICS-HEART_OF_TARRASQUE_RELIC.title": "龙心",
+  "DOTA_RELICS-HEART_OF_TARRASQUE_RELIC.description": "获得时，最大生命值 +{MaxHp:diff()}。战斗胜利后，恢复 {Heal:diff()} 点生命值。",
+
+  "DOTA_RELICS-REFRESHER_ORB_RELIC.title": "刷新球",
+  "DOTA_RELICS-REFRESHER_ORB_RELIC.description": "每次战斗中，首次[gold]消耗[/gold]一张牌后，获得 {Energy:diff()} [energy]。"
+}

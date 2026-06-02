@@ -1,0 +1,19 @@
+{
+  "DOTA_RELICS-BLINK_DAGGER_RELIC.title": "Blink Dagger",
+  "DOTA_RELICS-BLINK_DAGGER_RELIC.description": "The first time you play a Skill each combat, gain {Energy:diff()} [energy].",
+
+  "DOTA_RELICS-EUL_SCEPTER_RELIC.title": "Eul's Scepter",
+  "DOTA_RELICS-EUL_SCEPTER_RELIC.description": "Every 3rd turn start, gain {Energy:diff()} [energy].",
+
+  "DOTA_RELICS-SKULL_BASHER_RELIC.title": "Skull Basher",
+  "DOTA_RELICS-SKULL_BASHER_RELIC.description": "Whenever you play an Attack, apply {WeakPower:diff()} Weak to the target.",
+
+  "DOTA_RELICS-BLACK_KING_BAR_RELIC.title": "Black King Bar",
+  "DOTA_RELICS-BLACK_KING_BAR_RELIC.description": "At the start of each combat, gain {Block:diff()} Block.",
+
+  "DOTA_RELICS-HEART_OF_TARRASQUE_RELIC.title": "Heart of Tarrasque",
+  "DOTA_RELICS-HEART_OF_TARRASQUE_RELIC.description": "Upon pickup, gain {MaxHp:diff()} Max HP. After winning a combat, heal {Heal:diff()} HP.",
+
+  "DOTA_RELICS-REFRESHER_ORB_RELIC.title": "Refresher Orb",
+  "DOTA_RELICS-REFRESHER_ORB_RELIC.description": "The first time you [gold]Exhaust[/gold] a card each combat, gain {Energy:diff()} [energy]."
+}

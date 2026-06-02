@@ -169,5 +169,21 @@
 
   "INVOKER-ELEMENTAL_RESONANCE_CARD.title": "元素共鸣",
   "INVOKER-ELEMENTAL_RESONANCE_CARD.description": "每回合开始，将一张虚无的[gold]祈唤[/gold]加入手牌。",
-  "INVOKER-ELEMENTAL_RESONANCE_CARD.upgrade_description": "每回合开始，将一张费用为0的虚无[gold]祈唤[/gold]加入手牌。"
+  "INVOKER-ELEMENTAL_RESONANCE_CARD.upgrade_description": "每回合开始，将一张费用为0的虚无[gold]祈唤[/gold]加入手牌。",
+
+  "INVOKER-PRIMAL_SPARK_CARD.title": "原初之炎",
+  "INVOKER-PRIMAL_SPARK_CARD.description": "[gold]消耗[/gold]。获得 {Energy:diff()} [energy]。召唤 1 个随机元素球。",
+  "INVOKER-PRIMAL_SPARK_CARD.upgrade_description": "[gold]消耗[/gold]。获得 {Energy:diff()} [energy]。召唤 1 个随机元素球。",
+
+  "INVOKER-ORB_DISCHARGE_CARD.title": "法球放电",
+  "INVOKER-ORB_DISCHARGE_CARD.description": "[gold]消耗[/gold]。获得等于法球槽中法球数量的 [energy]（最多 3）。",
+  "INVOKER-ORB_DISCHARGE_CARD.upgrade_description": "获得等于法球槽中法球数量的 [energy]（最多 3）。",
+
+  "INVOKER-ARCANE_CONDUIT_CARD.title": "奥能导管",
+  "INVOKER-ARCANE_CONDUIT_CARD.description": "获得等于你法球槽中不同元素球种类数量的 [energy]（冰/雷/火，最多 3）。",
+  "INVOKER-ARCANE_CONDUIT_CARD.upgrade_description": "获得等于你法球槽中不同元素球种类数量的 [energy]（冰/雷/火，最多 3）。（费用→0）",
+
+  "INVOKER-INVOKE_RUSH_CARD.title": "祈唤冲势",
+  "INVOKER-INVOKE_RUSH_CARD.description": "[gold]消耗[/gold]。获得 {Energy:diff()} [energy]。抽 {Cards} 张牌。",
+  "INVOKER-INVOKE_RUSH_CARD.upgrade_description": "[gold]消耗[/gold]。获得 {Energy:diff()} [energy]。抽 {Cards} 张牌。"
 }

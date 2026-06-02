@@ -1,0 +1,11 @@
+{
+  "id": "Dota2RelicsMod",
+  "pck_name": "Dota2RelicsMod",
+  "name": "Dota2 Relics",
+  "author": "cybermanhao",
+  "description": "Dota2风格的遗物合集，可被其他Mod依赖使用",
+  "version": "0.1.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [{"id": "BaseLib", "min_version": "v0.1.0"}]
+}

@@ -171,5 +171,21 @@
 
   "INVOKER-ELEMENTAL_RESONANCE_CARD.title": "Elemental Resonance",
   "INVOKER-ELEMENTAL_RESONANCE_CARD.description": "Each turn start, add an Ethereal [gold]Invoke[/gold] to your hand.",
-  "INVOKER-ELEMENTAL_RESONANCE_CARD.upgrade_description": "Each turn start, add a free Ethereal [gold]Invoke[/gold] to your hand."
+  "INVOKER-ELEMENTAL_RESONANCE_CARD.upgrade_description": "Each turn start, add a free Ethereal [gold]Invoke[/gold] to your hand.",
+
+  "INVOKER-PRIMAL_SPARK_CARD.title": "Primal Spark",
+  "INVOKER-PRIMAL_SPARK_CARD.description": "[gold]Exhaust[/gold]. Gain {Energy:diff()} [energy]. Channel a random orb.",
+  "INVOKER-PRIMAL_SPARK_CARD.upgrade_description": "[gold]Exhaust[/gold]. Gain {Energy:diff()} [energy]. Channel a random orb.",
+
+  "INVOKER-ORB_DISCHARGE_CARD.title": "Orb Discharge",
+  "INVOKER-ORB_DISCHARGE_CARD.description": "[gold]Exhaust[/gold]. Gain [energy] equal to the number of orbs in your queue (max 3).",
+  "INVOKER-ORB_DISCHARGE_CARD.upgrade_description": "Gain [energy] equal to the number of orbs in your queue (max 3).",
+
+  "INVOKER-ARCANE_CONDUIT_CARD.title": "Arcane Conduit",
+  "INVOKER-ARCANE_CONDUIT_CARD.description": "Gain [energy] equal to the number of distinct orb types you have (Quas / Wex / Exort).",
+  "INVOKER-ARCANE_CONDUIT_CARD.upgrade_description": "Gain [energy] equal to the number of distinct orb types you have (Quas / Wex / Exort). (0 cost)",
+
+  "INVOKER-INVOKE_RUSH_CARD.title": "Invoke Rush",
+  "INVOKER-INVOKE_RUSH_CARD.description": "[gold]Exhaust[/gold]. Gain {Energy:diff()} [energy]. Draw {Cards} cards.",
+  "INVOKER-INVOKE_RUSH_CARD.upgrade_description": "[gold]Exhaust[/gold]. Gain {Energy:diff()} [energy]. Draw {Cards} cards."
 }
