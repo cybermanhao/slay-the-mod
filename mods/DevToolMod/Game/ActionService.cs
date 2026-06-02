@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.Events;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using Godot;
 
 namespace DevToolMod.Game;
@@ -43,8 +45,10 @@ public static class ActionService
             "play_card" => PlayCardAsync(request.card_index ?? 0, request.target_index),
             "open_character_select" => OpenCharacterSelectAsync(),
             "select_character" => SelectCharacterAsync(request.option_index),
+            "continue_run" => ContinueRunAsync(),
             "embark" => EmbarkAsync(),
             "choose_map_node" => ChooseMapNodeAsync(request.option_index),
+            "choose_event_option" => ChooseEventOptionAsync(request.option_index),
             "proceed" => ProceedAsync(),
             "select_card" => SelectCardAsync(request.option_index),
             _ => Task.FromResult(new ActionResult
@@ -52,7 +56,7 @@ public static class ActionService
                 action = request.action ?? "",
                 status = "error",
                 stable = false,
-                message = $"Unknown action '{request.action}'. Supported: end_turn, play_card, open_character_select, select_character, embark, choose_map_node, proceed, select_card"
+                message = $"Unknown action '{request.action}'. Supported: end_turn, play_card, open_character_select, select_character, embark, choose_map_node, choose_event_option, proceed, select_card"
             })
         };
     }
@@ -304,21 +308,49 @@ public static class ActionService
         };
     }
 
+    private static async Task<ActionResult> ContinueRunAsync()
+    {
+        var currentScreen = ActiveScreenContext.Instance.GetCurrentScreen();
+        if (currentScreen is not NMainMenu mainMenu)
+            return new ActionResult { action = "continue_run", status = "error", stable = false, message = "Not on main menu" };
+
+        var continueButton = mainMenu.GetNodeOrNull<NMainMenuTextButton>("MainMenuTextButtons/ContinueButton");
+        if (continueButton == null || !GodotObject.IsInstanceValid(continueButton))
+            return new ActionResult { action = "continue_run", status = "error", stable = false, message = "No continue button found (no active run)" };
+
+        continueButton.ForceClick();
+        var stable = await WaitForConditionAsync(
+            () => ActiveScreenContext.Instance.GetCurrentScreen() is not NMainMenu,
+            TimeSpan.FromSeconds(15));
+
+        return new ActionResult
+        {
+            action = "continue_run",
+            status = stable ? "completed" : "pending",
+            stable = stable,
+            message = stable ? "Run continued." : "Continue clicked but still transitioning."
+        };
+    }
+
     private static async Task<ActionResult> ChooseMapNodeAsync(int? optionIndex)
     {
         if (optionIndex == null)
             return new ActionResult { action = "choose_map_node", status = "error", stable = false, message = "option_index required" };
 
         var currentScreen = ActiveScreenContext.Instance.GetCurrentScreen();
+        var runState = RunManager.Instance.DebugOnlyGetState();
+
+        // Map is accessible from NMapScreen OR NMapRoom (same map, different context)
         var mapScreen = currentScreen as NMapScreen ?? NMapScreen.Instance;
-        if (mapScreen == null)
+        if (mapScreen == null || !GodotObject.IsInstanceValid(mapScreen) ||
+            !mapScreen.IsVisibleInTree() || currentScreen is not (NMapScreen or NMapRoom))
         {
             return new ActionResult
             {
                 action = "choose_map_node",
                 status = "error",
                 stable = false,
-                message = "Not on map screen"
+                message = "Not on map screen (must be NMapScreen or NMapRoom with map visible)"
             };
         }
 
@@ -340,14 +372,14 @@ public static class ActionService
         }
 
         var selectedNode = availableNodes[optionIndex.Value];
-        var roomEnteredFlag = false;
-        void OnRoomEntered() { roomEnteredFlag = true; }
+        var roomEntered = false;
+        void OnRoomEntered() { roomEntered = true; }
         RunManager.Instance.RoomEntered += OnRoomEntered;
         try
         {
             selectedNode.ForceClick();
             var stable = await WaitForConditionAsync(
-                () => roomEnteredFlag || (RunManager.Instance.DebugOnlyGetState()?.CurrentRoom != null),
+                () => roomEntered || CombatManager.Instance.IsInProgress,
                 TimeSpan.FromSeconds(10));
 
             return new ActionResult
@@ -362,6 +394,67 @@ public static class ActionService
         {
             RunManager.Instance.RoomEntered -= OnRoomEntered;
         }
+    }
+
+    private static async Task<ActionResult> ChooseEventOptionAsync(int? optionIndex)
+    {
+        if (optionIndex == null)
+            return new ActionResult { action = "choose_event_option", status = "error", stable = false, message = "option_index required" };
+
+        var eventModel = RunManager.Instance.EventSynchronizer.GetLocalEvent();
+        if (eventModel == null)
+            return new ActionResult { action = "choose_event_option", status = "error", stable = false, message = "No active event" };
+
+        // Finished event: only option 0 is valid (proceed/leave)
+        if (eventModel.IsFinished)
+        {
+            if (optionIndex != 0)
+                return new ActionResult { action = "choose_event_option", status = "error", stable = false, message = "Event is finished — only option_index 0 (leave) is valid" };
+
+            await NEventRoom.Proceed();
+            var stable = await WaitForConditionAsync(
+                () => RunManager.Instance.EventSynchronizer.GetLocalEvent() == null ||
+                      ActiveScreenContext.Instance.GetCurrentScreen() is not NEventRoom,
+                TimeSpan.FromSeconds(10));
+
+            return new ActionResult
+            {
+                action = "choose_event_option",
+                status = stable ? "completed" : "pending",
+                stable = stable,
+                message = stable ? "Event proceeded (left event room)." : "Proceed called but still transitioning."
+            };
+        }
+
+        // Non-finished event: choose an option
+        var options = eventModel.CurrentOptions;
+        if (optionIndex < 0 || optionIndex >= options.Count)
+            return new ActionResult
+            {
+                action = "choose_event_option",
+                status = "error",
+                stable = false,
+                message = $"option_index {optionIndex} out of range (found {options.Count} options)"
+            };
+
+        if (options[optionIndex.Value].IsLocked)
+            return new ActionResult { action = "choose_event_option", status = "error", stable = false, message = $"Option {optionIndex} is locked" };
+
+        var signatureBefore = eventModel.CurrentOptions.Count;
+        RunManager.Instance.EventSynchronizer.ChooseLocalOption(optionIndex.Value);
+
+        var stableOption = await WaitForConditionAsync(
+            () => eventModel.IsFinished || eventModel.CurrentOptions.Count != signatureBefore ||
+                  RunManager.Instance.EventSynchronizer.GetLocalEvent() == null,
+            TimeSpan.FromSeconds(10));
+
+        return new ActionResult
+        {
+            action = "choose_event_option",
+            status = stableOption ? "completed" : "pending",
+            stable = stableOption,
+            message = stableOption ? $"Chose event option {optionIndex}." : "Option chosen but still transitioning."
+        };
     }
 
     private static async Task<ActionResult> ProceedAsync()
