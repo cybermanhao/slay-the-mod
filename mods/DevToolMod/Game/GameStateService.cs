@@ -4,6 +4,12 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Nodes.Rewards;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Screens;
+using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
+using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
+using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Runs;
 
@@ -48,7 +54,8 @@ public class GameStateService
         try
         {
             var screen = ActiveScreenContext.Instance.GetCurrentScreen();
-            return screen?.ToString() ?? "unknown";
+            if (screen == null) return "unknown";
+            return screen.GetType().Name;
         }
         catch
         {
@@ -182,11 +189,37 @@ public class GameStateService
             {
                 actions.Add("end_turn");
                 actions.Add("play_card");
+                return actions;
             }
-            else
+
+            var screen = ActiveScreenContext.Instance.GetCurrentScreen();
+            switch (screen)
             {
-                actions.Add("proceed");
-                actions.Add("choose_map_node");
+                case NRewardsScreen:
+                    actions.Add("select_card");   // click a card reward to open card selection
+                    actions.Add("proceed");        // skip / take gold only and proceed
+                    break;
+                case NSimpleCardSelectScreen:
+                case NDeckCardSelectScreen:
+                    actions.Add("select_card");   // index into the card grid
+                    break;
+                case NMapScreen:
+                case NMapRoom:
+                    actions.Add("choose_map_node");
+                    break;
+                case NMainMenu:
+                    actions.Add("open_character_select");
+                    actions.Add("continue_run");
+                    break;
+                case NEventRoom:
+                    actions.Add("choose_event_option");
+                    actions.Add("proceed");
+                    break;
+                default:
+                    // Unknown screen — report both for fallback attempts
+                    actions.Add("proceed");
+                    actions.Add("choose_map_node");
+                    break;
             }
         }
         catch (Exception ex)

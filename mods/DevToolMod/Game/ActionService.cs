@@ -1,4 +1,5 @@
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Nodes;
@@ -51,12 +52,13 @@ public static class ActionService
             "choose_event_option" => ChooseEventOptionAsync(request.option_index),
             "proceed" => ProceedAsync(),
             "select_card" => SelectCardAsync(request.option_index),
+            "clear_hand" => ClearHandAsync(),
             _ => Task.FromResult(new ActionResult
             {
                 action = request.action ?? "",
                 status = "error",
                 stable = false,
-                message = $"Unknown action '{request.action}'. Supported: end_turn, play_card, open_character_select, select_character, embark, choose_map_node, choose_event_option, proceed, select_card"
+                message = $"Unknown action '{request.action}'. Supported: end_turn, play_card, open_character_select, select_character, embark, choose_map_node, choose_event_option, proceed, select_card, clear_hand"
             })
         };
     }
@@ -493,6 +495,24 @@ public static class ActionService
             stable = stable,
             message = stable ? "Proceeded." : "Proceed clicked but still transitioning."
         };
+    }
+
+    private static async Task<ActionResult> ClearHandAsync()
+    {
+        var combatState = CombatManager.Instance.DebugOnlyGetState();
+        if (combatState == null || !CombatManager.Instance.IsInProgress)
+            return new ActionResult { action = "clear_hand", status = "error", stable = false, message = "Not in combat" };
+
+        var player = combatState.Players.FirstOrDefault();
+        var hand = player?.PlayerCombatState?.Hand.Cards.ToList();
+        if (hand == null)
+            return new ActionResult { action = "clear_hand", status = "error", stable = false, message = "Hand unavailable" };
+
+        var count = hand.Count;
+        foreach (var card in hand)
+            await CardPileCmd.RemoveFromCombat(card, false);
+
+        return new ActionResult { action = "clear_hand", status = "completed", stable = true, message = $"Cleared {count} cards from hand." };
     }
 
     private static Task<ActionResult> SelectCardAsync(int? optionIndex)
