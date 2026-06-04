@@ -6,6 +6,7 @@ using Godot;
 using DevToolMod.Game;
 using DevToolMod.Console;
 using DevToolMod.SceneTree;
+using MegaCrit.Sts2.Core.Models;
 
 namespace DevToolMod.Server;
 
@@ -129,6 +130,8 @@ public partial class DevToolHttpServer : Node
 
             "/console" => await HandleConsoleAsync(query, req),
 
+            "/debug/relics" => (200, Json(HandleDebugRelics(query))),
+
             "/action" when method == "POST" => await HandleActionAsync(req),
 
             _ when path.StartsWith("/node/") =>
@@ -204,13 +207,23 @@ public partial class DevToolHttpServer : Node
         if (string.IsNullOrWhiteSpace(cmd) && req.HttpMethod == "POST")
         {
             using var reader = new StreamReader(req.InputStream, req.ContentEncoding);
-            var rawBody = await reader.ReadToEndAsync();
-            try
+            var rawBody = (await reader.ReadToEndAsync()).Trim();
+            if (!string.IsNullOrWhiteSpace(rawBody))
             {
-                var parsed = JsonSerializer.Deserialize<Dictionary<string, string>>(rawBody);
-                parsed?.TryGetValue("cmd", out cmd);
+                // Try JSON first: {"cmd": "..."}
+                if (rawBody.StartsWith("{"))
+                {
+                    try
+                    {
+                        var parsed = JsonSerializer.Deserialize<Dictionary<string, string>>(rawBody);
+                        parsed?.TryGetValue("cmd", out cmd);
+                    }
+                    catch { /* ignore parse errors */ }
+                }
+                // Fall back to plain text body as the command
+                if (string.IsNullOrWhiteSpace(cmd))
+                    cmd = rawBody;
             }
-            catch { /* ignore parse errors */ }
         }
 
         if (string.IsNullOrWhiteSpace(cmd))
@@ -242,6 +255,19 @@ public partial class DevToolHttpServer : Node
     // ---------------------------------------------------------------------------
     // Helpers
     // ---------------------------------------------------------------------------
+
+    private static object HandleDebugRelics(NameValueCollection query)
+    {
+        var filter = query["filter"] ?? "";
+        var relics = ModelDb.AllRelics
+            .Where(r => string.IsNullOrEmpty(filter) || r.Id.Entry.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            .Select(r => r.Id.Entry)
+            .ToList();
+        var pools = ModelDb.AllRelicPools
+            .Select(p => new { pool = p.GetType().Name, count = p.AllRelics.Count() })
+            .ToList();
+        return new { totalRelics = relics.Count, relics, pools };
+    }
 
     private static string Json<T>(T value) =>
         JsonSerializer.Serialize(value, JsonOpts);
