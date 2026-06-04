@@ -15,5 +15,29 @@
   "DOTARELICS-HEART_OF_TARRASQUE_RELIC.description": "获得时，最大生命值 +{MaxHp}。战斗胜利后，恢复 {Heal} 点生命值。",
 
   "DOTARELICS-REFRESHER_ORB_RELIC.title": "刷新球",
-  "DOTARELICS-REFRESHER_ORB_RELIC.description": "每次战斗中，首次[gold]消耗[/gold]一张牌后，获得 {Energy} [energy]。"
+  "DOTARELICS-REFRESHER_ORB_RELIC.description": "每次战斗中，首次[gold]消耗[/gold]一张牌后，获得 {Energy} [energy]。",
+
+  "DOTARELICS-DAEDALUS_RELIC.title": "代达罗斯",
+  "DOTARELICS-DAEDALUS_RELIC.description": "战斗开始时，获得 {StrengthPower} 层力量。",
+
+  "DOTARELICS-BUTTERFLY_RELIC.title": "蝴蝶",
+  "DOTARELICS-BUTTERFLY_RELIC.description": "每回合开始时，若格挡为 0，获得 {Block} 点格挡。",
+
+  "DOTARELICS-MJOLNIR_RELIC.title": "雷神之锤",
+  "DOTARELICS-MJOLNIR_RELIC.description": "每次打出攻击牌后，对目标施加 {VulnerablePower} 层易伤。",
+
+  "DOTARELICS-LINKENS_SPHER_RELIC.title": "林肯法球",
+  "DOTARELICS-LINKENS_SPHER_RELIC.description": "每回合开始时，获得 {Block} 点格挡。",
+
+  "DOTARELICS-SCYTHE_OF_VYSE_RELIC.title": "维斯法杖",
+  "DOTARELICS-SCYTHE_OF_VYSE_RELIC.description": "每次战斗中，首次打出技能牌后，对目标施加 {WeakPower} 层虚弱和 {VulnerablePower} 层易伤。",
+
+  "DOTARELICS-MANTA_STYLE_RELIC.title": "曼陀罗",
+  "DOTARELICS-MANTA_STYLE_RELIC.description": "每打出 3 张非攻击牌，获得 {Energy} [energy]。",
+
+  "DOTARELICS-ASSAULT_CUIRASS_RELIC.title": "突击胸甲",
+  "DOTARELICS-ASSAULT_CUIRASS_RELIC.description": "战斗开始时，获得 {Block} 点格挡，并对所有敌人施加 {WeakPower} 层虚弱。",
+
+  "DOTARELICS-SHIVAS_GUARD_RELIC.title": "希瓦的护卫",
+  "DOTARELICS-SHIVAS_GUARD_RELIC.description": "每 3 回合开始时，对所有敌人施加 {WeakPower} 层虚弱。"
 }
