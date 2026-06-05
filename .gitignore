@@ -1,6 +1,7 @@
 # Godot
 .godot/
 *.import
+*.uid
 
 # .NET
 bin/
@@ -36,4 +37,17 @@ reference/
 
 # Nested git repos (不纳入本仓库管理)
 packages/sts2-mcp-server/
+
+# 本地工具缓存
+.weixin-sync-buf.json
+backup/
+
+# AI 规划文档（临时产物）
+docs/superpowers/plans/
+
+# 生成资源中间产物
+**/images/generated_versions/
+
+# 本地 Claude 设置
+.claude/settings.local.json
 

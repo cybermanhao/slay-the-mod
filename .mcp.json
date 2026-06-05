@@ -12,15 +12,6 @@
     "cli-helper": {
       "command": "node",
       "args": ["C:/code/slay-the-mod/packages/cli-helper-mcp/dist/index.js"]
-    },
-    "sts2-agent": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "C:/code/slay-the-mod/reference/STS2-Agent/mcp_server",
-        "sts2-mcp-server"
-      ]
     }
   }
 }
