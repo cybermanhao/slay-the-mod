@@ -42,6 +42,9 @@ packages/sts2-mcp-server/
 .weixin-sync-buf.json
 backup/
 
+# GDRE Tools 二进制（通过 scripts/setup.ps1 下载）
+tools/GDRE_tools*/
+
 # AI 规划文档（临时产物）
 docs/superpowers/plans/
 

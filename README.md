@@ -2,6 +2,21 @@
 
 自然语言创建 Slay the Spire 2 Mod 的 Agent 工具平台。
 
+## Setup
+
+**Prerequisites:** [.NET 9](https://dotnet.microsoft.com/download) · [Node.js](https://nodejs.org) · [pnpm](https://pnpm.io) · [Godot 4.5.1 Mono](https://godotengine.org/download)
+
+```powershell
+git clone https://github.com/cybermanhao/slay-the-mod.git
+cd slay-the-mod
+.\scripts\setup.ps1
+```
+
+`setup.ps1` 会自动完成：
+- 下载 [GDRE Tools](https://github.com/bruvzg/gdsdecomp)（反编译游戏资源）到 `tools/`
+- `pnpm install` MCP Server 依赖
+- `dotnet restore` 所有 mod 项目
+
 ## Features
 
 - **MCP Server**: 代码生成、文件操作、项目构建工具
