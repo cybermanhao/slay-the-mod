@@ -42,6 +42,7 @@ public class EulScepterRelic : Dota2Relic
 
     public override Task AfterCombatEnd(CombatRoom _)
     {
+        _turnCount = 0;
         Status = RelicStatus.Normal;
         return Task.CompletedTask;
     }

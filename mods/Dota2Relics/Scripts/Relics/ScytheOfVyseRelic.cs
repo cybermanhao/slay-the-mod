@@ -36,12 +36,15 @@ public class ScytheOfVyseRelic : Dota2Relic
     {
         if (cardPlay.Card.Owner != Owner) return;
         if (cardPlay.Card.Type != CardType.Skill) return;
-        if (cardPlay.Target == null) return;
         if (_activated) return;
         _activated = true;
         Flash();
-        await PowerCmd.Apply<WeakPower>(context, new[] { cardPlay.Target! }, DynamicVars["WeakPower"].BaseValue, Owner.Creature, null);
-        await PowerCmd.Apply<VulnerablePower>(context, new[] { cardPlay.Target! }, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, null);
+        // Only apply debuffs when the skill had a target; untargeted skills still consume the activation
+        if (cardPlay.Target != null)
+        {
+            await PowerCmd.Apply<WeakPower>(context, new[] { cardPlay.Target }, DynamicVars["WeakPower"].BaseValue, Owner.Creature, null);
+            await PowerCmd.Apply<VulnerablePower>(context, new[] { cardPlay.Target }, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, null);
+        }
     }
 
     public override Task AfterCombatEnd(CombatRoom _)

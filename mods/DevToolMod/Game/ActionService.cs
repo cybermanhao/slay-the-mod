@@ -342,21 +342,13 @@ public static class ActionService
         var currentScreen = ActiveScreenContext.Instance.GetCurrentScreen();
         var runState = RunManager.Instance.DebugOnlyGetState();
 
-        // Map is accessible from NMapScreen OR NMapRoom (same map, different context)
-        var mapScreen = currentScreen as NMapScreen ?? NMapScreen.Instance;
-        if (mapScreen == null || !GodotObject.IsInstanceValid(mapScreen) ||
-            !mapScreen.IsVisibleInTree() || currentScreen is not (NMapScreen or NMapRoom))
-        {
-            return new ActionResult
-            {
-                action = "choose_map_node",
-                status = "error",
-                stable = false,
-                message = "Not on map screen (must be NMapScreen or NMapRoom with map visible)"
-            };
-        }
+        if (currentScreen is not (NMapScreen or NMapRoom))
+            return new ActionResult { action = "choose_map_node", status = "error", stable = false, message = "Not on map screen (must be NMapScreen or NMapRoom)" };
 
-        var availableNodes = FindDescendants<NMapPoint>(mapScreen)
+        // Search within the current screen node to avoid using a stale NMapScreen.Instance
+        // when currentScreen is NMapRoom (they are different scene tree nodes)
+        var searchRoot = currentScreen as Godot.Node;
+        var availableNodes = FindDescendants<NMapPoint>(searchRoot!)
             .Where(n => GodotObject.IsInstanceValid(n) && n.IsEnabled)
             .OrderBy(n => n.Point.coord.row)
             .ThenBy(n => n.Point.coord.col)

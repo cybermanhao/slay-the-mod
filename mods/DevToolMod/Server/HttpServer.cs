@@ -130,7 +130,7 @@ public partial class DevToolHttpServer : Node
 
             "/console" => await HandleConsoleAsync(query, req),
 
-            "/debug/relics" => (200, Json(HandleDebugRelics(query))),
+            "/debug/relics" => (200, Json(await GameThread.InvokeAsync(() => HandleDebugRelics(query)))),
 
             "/action" when method == "POST" => await HandleActionAsync(req),
 

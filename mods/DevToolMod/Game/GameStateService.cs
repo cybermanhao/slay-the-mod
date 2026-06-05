@@ -201,7 +201,9 @@ public class GameStateService
                     break;
                 case NSimpleCardSelectScreen:
                 case NDeckCardSelectScreen:
-                    actions.Add("select_card");   // index into the card grid
+                case NChooseACardSelectionScreen:
+                case NCardRewardSelectionScreen:
+                    actions.Add("select_card");
                     break;
                 case NMapScreen:
                 case NMapRoom:
